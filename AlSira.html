@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رحلة في رحاب السيرة النبوية ﷺ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#8B6914;
+  --green-dark:#1A3A2A;--green-mid:#2D5A3D;--green-light:#3D7A52;
+  --beige:#F5F0E8;--cream:#FBF8F2;--brown:#6B4E2A;
+  --text-dark:#1A1208;--text-mid:#3D2E0F;
+  --shadow:rgba(26,18,8,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;direction:rtl}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--beige)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(26,58,42,.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,.3);padding:0 1rem;height:58px;display:flex;align-items:center;gap:.8rem}
+.nav-logo{font-family:'Amiri',serif;font-size:1rem;color:var(--gold-light);white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;gap:.15rem;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{color:rgba(245,240,232,.8);text-decoration:none;font-size:.74rem;font-weight:600;padding:.3rem .6rem;border-radius:6px;transition:all .2s;cursor:pointer;white-space:nowrap;flex-shrink:0;border:none;background:none}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,.15)}
+
+/* ===== SEARCH BAR ===== */
+.nav-search{position:relative;flex-shrink:0}
+.nav-search input{background:rgba(255,255,255,.1);border:1px solid rgba(201,168,76,.3);color:var(--beige);font-family:'Cairo',sans-serif;font-size:.75rem;padding:.35rem .85rem .35rem 2rem;border-radius:20px;outline:none;width:160px;transition:all .3s;direction:rtl}
+.nav-search input::placeholder{color:rgba(245,240,232,.5)}
+.nav-search input:focus{background:rgba(255,255,255,.15);border-color:var(--gold);width:200px}
+.nav-search .s-icon{position:absolute;left:.6rem;top:50%;transform:translateY(-50%);color:rgba(201,168,76,.7);font-size:.85rem;pointer-events:none}
+.search-results{position:absolute;top:calc(100% + .4rem);left:0;right:0;background:var(--green-dark);border:1px solid rgba(201,168,76,.3);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:2000;max-height:320px;overflow-y:auto;display:none;min-width:280px}
+.search-results.open{display:block}
+.sr-item{padding:.7rem 1rem;cursor:pointer;border-bottom:1px solid rgba(201,168,76,.1);transition:background .2s}
+.sr-item:hover{background:rgba(201,168,76,.1)}
+.sr-item h4{font-family:'Amiri',serif;font-size:.9rem;color:var(--gold-light);margin-bottom:.15rem}
+.sr-item p{font-size:.72rem;color:rgba(245,240,232,.6)}
+.sr-section{font-size:.68rem;color:var(--gold-dark);padding:.5rem 1rem .2rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.sr-empty{padding:1.5rem;text-align:center;color:rgba(245,240,232,.5);font-size:.85rem}
+
+/* ===== PAGES ===== */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+.pg{padding:68px 1.5rem 2rem;max-width:1200px;margin:0 auto}
+
+/* ===== PAGE HEADER ===== */
+.ph{text-align:center;padding:1rem 1rem 2.5rem;max-width:750px;margin:0 auto}
+.ph h1{font-family:'Amiri',serif;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--green-dark);margin-bottom:.4rem}
+.ph p{color:var(--brown);font-size:.88rem;font-weight:300;line-height:2}
+.gold-line{width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:.7rem auto}
+
+/* ===== BUTTONS ===== */
+.back-top{display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;color:var(--brown);font-family:'Cairo',sans-serif;font-size:.85rem;cursor:pointer;padding:.4rem .8rem;border-radius:8px;transition:all .2s;margin-bottom:1rem}
+.back-top:hover{color:var(--green-dark);background:rgba(26,58,42,.07)}
+.back-bottom{display:flex;justify-content:center;margin:3rem auto 1rem;padding:1.5rem 0;border-top:1px solid rgba(201,168,76,.15)}
+.back-bottom button{background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--gold-light);border:none;padding:.8rem 2.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 4px 16px rgba(26,58,42,.3)}
+.back-bottom button:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,58,42,.4)}
+.btn-pri{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--text-dark);border:none;padding:.8rem 2rem;border-radius:50px;font-family:'Cairo',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 4px 18px rgba(201,168,76,.4)}
+.btn-pri:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(201,168,76,.5)}
+.btn-sec{background:transparent;color:var(--beige);border:1.5px solid rgba(245,240,232,.3);padding:.8rem 2rem;border-radius:50px;font-family:'Cairo',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;transition:all .3s}
+.btn-sec:hover{border-color:var(--gold-light);color:var(--gold-light)}
+
+/* ===== HADITH BOX ===== */
+.hb{background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(201,168,76,.03));border:1px solid rgba(201,168,76,.28);border-right:4px solid var(--gold);border-radius:12px;padding:.9rem 1.1rem;margin:.7rem 0;font-family:'Amiri',serif;font-size:.93rem;color:var(--text-mid);line-height:2.1}
+.hs{font-size:.72rem;color:var(--gold-dark);font-weight:700;margin-top:.35rem;font-family:'Cairo',sans-serif}
+
+/* ===== CARDS ===== */
+.card{background:white;border-radius:16px;padding:1.7rem;box-shadow:0 4px 20px var(--shadow);border:1px solid rgba(201,168,76,.1);cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:linear-gradient(180deg,var(--gold),var(--green-light));opacity:0;transition:.3s}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 36px var(--shadow);border-color:rgba(201,168,76,.3)}
+.card:hover::before{opacity:1}
+.card-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:.9rem;box-shadow:0 3px 10px rgba(26,58,42,.3)}
+.card h3{font-family:'Amiri',serif;font-size:1.15rem;color:var(--green-dark);margin-bottom:.45rem}
+.card p{font-size:.82rem;color:var(--brown);line-height:1.9;font-weight:300}
+.card-arrow{margin-top:.9rem;color:var(--gold);font-size:.8rem;font-weight:700}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.3rem;max-width:1200px;margin:0 auto}
+
+/* ===== SEC TITLE ===== */
+.sec-title{text-align:center;margin-bottom:2.5rem}
+.sec-title h2{font-family:'Amiri',serif;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--green-dark);margin-bottom:.3rem}
+.sec-title p{color:var(--brown);font-size:.85rem;font-weight:300}
+
+/* ===== MODAL ===== */
+.modal-ov{position:fixed;inset:0;background:rgba(8,18,10,.88);z-index:2000;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(5px)}
+.modal-ov.open{display:flex}
+.modal{background:var(--cream);border-radius:22px;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.5);animation:modalIn .3s ease;border:1px solid rgba(201,168,76,.2)}
+.mh{padding:1.7rem 2rem 1.1rem;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:22px 22px 0 0;position:relative}
+.mh h2{font-family:'Amiri',serif;font-size:1.55rem;color:var(--beige);line-height:1.4}
+.mh .sub{font-size:.8rem;color:rgba(201,168,76,.8);margin-top:.3rem}
+.mc{position:absolute;top:1.1rem;left:1.1rem;background:rgba(255,255,255,.15);border:none;color:white;width:32px;height:32px;border-radius:50%;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.mc:hover{background:rgba(255,255,255,.25)}
+.mb{padding:1.7rem 2rem}
+.mb p{font-size:.92rem;color:var(--text-mid);line-height:2.2;margin-bottom:.8rem;font-family:'Amiri',serif}
+.mb h4{font-family:'Amiri',serif;font-size:1.05rem;color:var(--green-dark);margin:1.1rem 0 .45rem;border-right:4px solid var(--gold);padding-right:.7rem}
+.msrc{margin-top:1.2rem;padding:.8rem 1rem;background:rgba(201,168,76,.07);border-radius:11px;border-right:3px solid var(--gold);font-size:.78rem;color:var(--gold-dark);font-weight:600}
+.hl{color:var(--gold-dark);font-weight:700}
+.mclose-btn{display:flex;justify-content:center;padding:1rem 2rem 1.5rem}
+.mclose-btn button{background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--gold-light);border:none;padding:.65rem 2rem;border-radius:30px;font-family:'Cairo',sans-serif;font-size:.88rem;cursor:pointer}
+
+/* ===== HERO ===== */
+#hero{min-height:100vh;background:radial-gradient(ellipse at 20% 50%,rgba(45,90,61,.4) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(201,168,76,.15) 0%,transparent 50%),linear-gradient(160deg,var(--green-dark) 0%,#0F2318 50%,#1A2E1A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 2rem 4rem;position:relative;overflow:hidden}
+.hero-pat{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M40 0L50 20L70 20L55 32L62 52L40 40L18 52L25 32L10 20L30 20z'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.bismillah{font-family:'Amiri',serif;font-size:clamp(1.1rem,3vw,1.6rem);color:var(--gold-light);margin-bottom:1.3rem;opacity:.9;animation:fadeDown 1s ease both}
+.hero-title{font-family:'Amiri',serif;font-size:clamp(2.4rem,8vw,4.8rem);color:var(--beige);line-height:1.2;animation:fadeDown 1s .2s ease both}
+.hero-title span{color:var(--gold-light);display:block}
+.hero-sub{font-size:clamp(.88rem,2vw,1.05rem);color:rgba(245,240,232,.68);max-width:520px;line-height:2;margin:.8rem 0 2.5rem;font-weight:300;animation:fadeIn 1s .5s ease both}
+.hero-cta{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 1s .7s ease both}
+.hero-stats{display:flex;gap:2rem;margin-top:3rem;animation:fadeUp 1s .9s ease both;flex-wrap:wrap;justify-content:center}
+.stat-num{font-family:'Amiri',serif;font-size:1.9rem;color:var(--gold-light);display:block}
+.stat-lbl{font-size:.75rem;color:rgba(245,240,232,.6);font-weight:300}
+.scroll-ind{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(245,240,232,.35);font-size:1.2rem;animation:bounce 2s infinite}
+
+/* ===== TIMELINE ===== */
+.tl-wrap{max-width:930px;margin:0 auto;position:relative}
+.tl-line{position:absolute;right:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--green-light),var(--gold));transform:translateX(50%)}
+.tl-item{display:flex;margin-bottom:2.2rem;position:relative}
+.tl-item:nth-child(odd){flex-direction:row-reverse;text-align:right}
+.tl-item:nth-child(even){text-align:left}
+.tl-c{width:44%;background:white;border-radius:15px;padding:1.3rem;box-shadow:0 4px 16px var(--shadow);border:1px solid rgba(201,168,76,.1);transition:all .3s;cursor:pointer}
+.tl-c:hover{box-shadow:0 8px 26px var(--shadow);border-color:rgba(201,168,76,.3);transform:scale(1.02)}
+.tl-dot{position:absolute;right:50%;top:1.2rem;width:13px;height:13px;background:var(--gold);border:3px solid white;border-radius:50%;transform:translateX(50%);box-shadow:0 0 0 3px rgba(201,168,76,.3);z-index:2}
+.tl-year{display:inline-block;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--gold-light);font-size:.68rem;font-weight:700;padding:.15rem .6rem;border-radius:20px;margin-bottom:.55rem}
+.tl-c h3{font-family:'Amiri',serif;font-size:1rem;color:var(--green-dark);margin-bottom:.38rem}
+.tl-c p{font-size:.8rem;color:var(--brown);line-height:1.9;font-weight:300}
+.tl-hadiths{margin-top:.7rem;display:none}
+.tl-c.expanded .tl-hadiths{display:block}
+.tl-meta{margin-top:.65rem;font-size:.7rem;color:var(--gold-dark);display:flex;gap:.5rem;flex-wrap:wrap}
+.mb-badge{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);padding:.1rem .5rem;border-radius:9px;font-size:.68rem}
+.tl-btn{background:none;border:1px solid rgba(201,168,76,.28);color:var(--gold-dark);padding:.25rem .7rem;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.7rem;cursor:pointer;margin-top:.6rem;transition:all .2s}
+.tl-btn:hover{background:rgba(201,168,76,.1)}
+
+/* ===== MAP ===== */
+.map-wrap{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 34px var(--shadow);border:1px solid rgba(201,168,76,.2)}
+.map-frame{width:100%;height:450px;background:linear-gradient(160deg,#0A1F12,#152B1E,#0E1F15);position:relative;overflow:hidden}
+.map-lbl{position:absolute;background:rgba(26,58,42,.93);border:1px solid rgba(201,168,76,.5);color:var(--gold-light);padding:.3rem .75rem;border-radius:20px;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .25s;backdrop-filter:blur(4px)}
+.map-lbl:hover,.map-lbl.active{background:rgba(201,168,76,.88);color:var(--text-dark);transform:scale(1.1)}
+.map-info{padding:1.4rem 2rem;background:white;border-top:1px solid rgba(201,168,76,.15);min-height:150px}
+.map-info h3{font-family:'Amiri',serif;font-size:1.2rem;color:var(--green-dark);margin-bottom:.4rem}
+.map-info p{font-size:.86rem;color:var(--brown);line-height:2}
+
+/* ===== STORIES ===== */
+.stories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.6rem;max-width:1200px;margin:0 auto}
+.sc{background:white;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px var(--shadow);cursor:pointer;transition:all .3s;border:1px solid rgba(201,168,76,.1)}
+.sc:hover{transform:translateY(-6px);box-shadow:0 14px 38px var(--shadow)}
+.sc-h{height:110px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;position:relative;overflow:hidden}
+.sc-h::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,white 100%)}
+.sc-b{padding:1.3rem}
+.story-tag{display:inline-block;background:rgba(201,168,76,.1);color:var(--gold-dark);font-size:.66rem;font-weight:700;padding:.16rem .62rem;border-radius:9px;margin-bottom:.55rem;border:1px solid rgba(201,168,76,.2)}
+.sc-b h3{font-family:'Amiri',serif;font-size:1.1rem;color:var(--green-dark);margin-bottom:.55rem;line-height:1.5}
+.sc-b p{font-size:.8rem;color:var(--brown);line-height:2;font-weight:300}
+.rt{margin-top:.75rem;font-size:.7rem;color:rgba(107,78,42,.55);display:flex;align-items:center;gap:.3rem}
+
+/* ===== MORALS ===== */
+.morals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.3rem;max-width:1100px;margin:0 auto}
+.mc-card{background:white;border-radius:17px;padding:1.7rem;box-shadow:0 4px 16px var(--shadow);cursor:pointer;transition:all .3s;border:1px solid rgba(201,168,76,.1);position:relative;overflow:hidden}
+.mc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--green-light));opacity:0;transition:.3s}
+.mc-card:hover{transform:translateY(-4px)}
+.mc-card:hover::after{opacity:1}
+.mc-card h3{font-family:'Amiri',serif;font-size:1.35rem;color:var(--green-dark);margin-bottom:.55rem}
+.mc-card p{font-size:.82rem;color:var(--brown);line-height:2}
+.mq{margin-top:.85rem;padding:.7rem .9rem;background:var(--beige);border-radius:9px;border-right:3px solid var(--gold);font-family:'Amiri',serif;font-size:.87rem;color:var(--text-mid);font-style:italic;line-height:1.9}
+
+/* ===== WIVES PAGE ===== */
+.wives-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem;max-width:1100px;margin:0 auto}
+.wife-card{background:white;border-radius:18px;padding:1.7rem;box-shadow:0 4px 18px var(--shadow);cursor:pointer;transition:all .3s;border:1px solid rgba(201,168,76,.1);position:relative;overflow:hidden}
+.wife-card:hover{transform:translateY(-5px);box-shadow:0 12px 34px var(--shadow);border-color:rgba(201,168,76,.3)}
+.wife-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--green-light));opacity:0;transition:.3s}
+.wife-card:hover::before{opacity:1}
+.wife-num{position:absolute;top:1rem;left:1rem;width:26px;height:26px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;font-family:'Cairo',sans-serif}
+.wife-name{font-family:'Amiri',serif;font-size:1.4rem;color:var(--green-dark);margin-bottom:.2rem}
+.wife-title{font-size:.72rem;color:var(--gold-dark);font-weight:700;margin-bottom:.7rem;display:block}
+.wife-hadiths-count{display:inline-flex;align-items:center;gap:.3rem;background:linear-gradient(135deg,rgba(26,58,42,.08),rgba(26,58,42,.04));border:1px solid rgba(26,58,42,.15);padding:.2rem .7rem;border-radius:20px;font-size:.7rem;color:var(--green-mid);font-weight:700;margin-bottom:.7rem}
+.wife-card p{font-size:.82rem;color:var(--brown);line-height:2}
+.wife-tag{display:inline-block;background:rgba(201,168,76,.08);color:var(--gold-dark);font-size:.66rem;padding:.15rem .55rem;border-radius:8px;border:1px solid rgba(201,168,76,.2);margin:.15rem .15rem 0 0}
+
+/* ===== WIFE MODAL ===== */
+.wife-modal-wrap{display:none}
+.wife-modal-wrap.open{display:block;position:fixed;inset:0;z-index:2001;background:rgba(8,18,10,.9);backdrop-filter:blur(5px);overflow-y:auto;padding:1rem}
+.wife-modal-inner{max-width:780px;margin:2rem auto;background:var(--cream);border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,.5);animation:modalIn .35s ease;border:1px solid rgba(201,168,76,.2);overflow:hidden}
+.wm-head{padding:2rem 2rem 1.3rem;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));position:relative}
+.wm-head h2{font-family:'Amiri',serif;font-size:1.9rem;color:var(--beige)}
+.wm-head .wm-sub{font-family:'Cairo',sans-serif;font-size:.82rem;color:rgba(201,168,76,.85);margin-top:.3rem}
+.wm-close{position:absolute;top:1.2rem;left:1.2rem;background:rgba(255,255,255,.15);border:none;color:white;width:34px;height:34px;border-radius:50%;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.wm-close:hover{background:rgba(255,255,255,.25)}
+.wm-body{padding:1.8rem 2rem 1rem}
+.wm-body h3{font-family:'Amiri',serif;font-size:1.15rem;color:var(--green-dark);margin:1.4rem 0 .55rem;border-right:4px solid var(--gold);padding-right:.8rem}
+.wm-body p{font-size:.9rem;color:var(--text-mid);line-height:2.2;font-family:'Amiri',serif;margin-bottom:.6rem}
+.wm-stat-row{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}
+.wm-stat{background:linear-gradient(135deg,rgba(26,58,42,.06),rgba(26,58,42,.03));border:1px solid rgba(26,58,42,.12);border-radius:12px;padding:.7rem 1.1rem;text-align:center;flex:1;min-width:100px}
+.wm-stat .sn{font-family:'Amiri',serif;font-size:1.6rem;color:var(--green-dark);display:block;font-weight:700}
+.wm-stat .sl{font-size:.7rem;color:var(--brown)}
+.wm-close-btn{display:flex;justify-content:center;padding:1rem 2rem 2rem}
+
+/* ===== QUIZ ===== */
+.quiz-wrap{max-width:760px;margin:0 auto}
+.quiz-progress{background:rgba(201,168,76,.15);border-radius:20px;height:8px;margin-bottom:2rem;overflow:hidden}
+.quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--green-light));border-radius:20px;transition:width .4s ease}
+.quiz-score-display{text-align:center;margin-bottom:1.5rem}
+.quiz-score-display span{font-family:'Amiri',serif;font-size:1.1rem;color:var(--green-dark)}
+.q-card{background:white;border-radius:20px;padding:2rem;box-shadow:0 6px 28px var(--shadow);border:1px solid rgba(201,168,76,.15);animation:fadeIn .4s ease}
+.q-num{font-size:.78rem;color:var(--gold-dark);font-weight:700;margin-bottom.9rem}
+.q-text{font-family:'Amiri',serif;font-size:1.2rem;color:var(--green-dark);line-height:1.8;margin-bottom:1.5rem}
+.q-options{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.q-opt{background:var(--beige);border:2px solid rgba(201,168,76,.2);border-radius:12px;padding:.9rem 1rem;font-family:'Cairo',sans-serif;font-size:.88rem;color:var(--text-mid);cursor:pointer;transition:all .25s;text-align:center;font-weight:600}
+.q-opt:hover{border-color:var(--gold);background:rgba(201,168,76,.1);transform:scale(1.02)}
+.q-opt.correct{border-color:#2E7D32;background:rgba(46,125,50,.1);color:#1B5E20}
+.q-opt.wrong{border-color:#C62828;background:rgba(198,40,40,.1);color:#7f0000}
+.q-opt.disabled{cursor:not-allowed;opacity:.7}
+.q-result{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:12px;font-family:'Amiri',serif;font-size:.95rem;line-height:2;display:none}
+.q-result.show{display:block}
+.q-result.correct-msg{background:rgba(46,125,50,.08);border:1px solid rgba(46,125,50,.25);color:#1B5E20;border-right:4px solid #2E7D32}
+.q-result.wrong-msg{background:rgba(198,40,40,.06);border:1px solid rgba(198,40,40,.2);color:#7f0000;border-right:4px solid #C62828}
+.q-src{font-size:.73rem;color:var(--gold-dark);font-weight:700;margin-top:.4rem;font-family:'Cairo',sans-serif}
+.q-next{margin-top:1.2rem;text-align:center}
+.q-next button{background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--gold-light);border:none;padding:.75rem 2.5rem;border-radius:30px;font-family:'Cairo',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .3s}
+.q-next button:hover{transform:translateY(-2px)}
+.quiz-end{text-align:center;padding:2rem}
+.quiz-end .score-big{font-family:'Amiri',serif;font-size:3.5rem;color:var(--gold);display:block;margin-bottom:.5rem}
+.quiz-end h3{font-family:'Amiri',serif;font-size:1.6rem;color:var(--green-dark);margin-bottom:.8rem}
+.quiz-end p{color:var(--brown);font-size:.9rem;line-height:2}
+.quiz-cats{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin:1.5rem 0}
+.quiz-cat-btn{padding:.5rem 1.2rem;border-radius:20px;font-family:'Cairo',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;border:2px solid rgba(201,168,76,.3);background:transparent;color:var(--green-dark)}
+.quiz-cat-btn:hover,.quiz-cat-btn.active{background:var(--gold);color:var(--text-dark);border-color:var(--gold)}
+
+/* ===== KIDS ===== */
+.kids-hero{background:linear-gradient(135deg,var(--green-dark),var(--green-mid));padding:85px 2rem 3rem;text-align:center;position:relative;overflow:hidden}
+.kids-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.3rem}
+.kids-card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px var(--shadow);cursor:pointer;transition:all .3s;border:2px solid transparent}
+.kids-card:hover{transform:translateY(-5px) scale(1.02);border-color:var(--gold);box-shadow:0 12px 32px rgba(201,168,76,.2)}
+.kc-top{height:105px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.kc-body{padding:1.2rem}
+.kc-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:#FF8C42;color:white;border-radius:50%;font-size:.75rem;font-weight:700;margin-bottom:.5rem}
+.kc-body h3{font-family:'Amiri',serif;font-size:1.1rem;color:var(--green-dark);margin-bottom:.45rem}
+.kc-body p{font-size:.8rem;color:#555;line-height:1.9}
+.kh{background:linear-gradient(135deg,rgba(76,175,80,.07),rgba(76,175,80,.03));border:1px solid rgba(76,175,80,.22);border-right:4px solid #4CAF50;border-radius:11px;padding:.85rem 1rem;margin:.7rem 0;font-family:'Amiri',serif;font-size:.92rem;color:var(--text-mid);line-height:2.1}
+.ks{font-size:.7rem;color:#2E7D32;font-weight:700;margin-top:.35rem;font-family:'Cairo',sans-serif}
+
+/* ===== SHAMAIL / COMPANIONS / DUAA / LESSONS ===== */
+.shmail-grid,.comp-grid,.duaa-grid,.lessons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.3rem;max-width:1100px;margin:0 auto}
+.shmail-card,.comp-card,.duaa-card{background:white;border-radius:17px;padding:1.7rem;box-shadow:0 4px 16px var(--shadow);border:1px solid rgba(201,168,76,.1);transition:all .3s;cursor:pointer}
+.shmail-card:hover,.comp-card:hover,.duaa-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px var(--shadow)}
+.shmail-card h3,.comp-card h3{font-family:'Amiri',serif;font-size:1.15rem;color:var(--green-dark);margin-bottom:.7rem}
+.comp-name{font-family:'Amiri',serif;font-size:1.3rem;color:var(--green-dark);margin-bottom:.2rem}
+.comp-title{font-size:.72rem;color:var(--gold-dark);font-weight:700;margin-bottom:.7rem;display:block}
+.duaa-card h3{font-family:'Amiri',serif;font-size:1.1rem;color:var(--green-dark);margin-bottom:.55rem}
+.duaa-text{font-family:'Amiri',serif;font-size:1.05rem;color:var(--text-dark);line-height:2.2;background:rgba(201,168,76,.07);border-radius:9px;padding:.8rem 1rem;margin:.55rem 0;border-right:3px solid var(--gold)}
+.duaa-meaning{font-size:.8rem;color:var(--brown);line-height:1.9;font-style:italic}
+.lesson-card{background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:17px;padding:1.7rem;color:var(--beige);transition:all .3s;cursor:pointer}
+.lesson-card:hover{transform:translateY(-4px) scale(1.02)}
+.lesson-num{font-family:'Amiri',serif;font-size:2.3rem;color:rgba(201,168,76,.2);line-height:1;margin-bottom:.35rem}
+.lesson-card h3{font-family:'Amiri',serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:.65rem}
+.lesson-card p{font-size:.83rem;color:rgba(245,240,232,.82);line-height:2}
+.lesson-qref{margin-top:.85rem;font-size:.75rem;color:rgba(201,168,76,.68);font-style:italic}
+
+/* ===== FOOTER ===== */
+footer{background:var(--green-dark);color:rgba(245,240,232,.7);text-align:center;padding:2rem;font-size:.82rem;border-top:1px solid rgba(201,168,76,.2)}
+footer .f-logo{font-family:'Amiri',serif;font-size:1.4rem;color:var(--gold-light);margin-bottom:.35rem}
+footer p{margin-top:.2rem;font-weight:300}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+@keyframes modalIn{from{opacity:0;transform:scale(.92) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  nav{flex-wrap:wrap;height:auto;padding:.5rem 1rem;gap:.5rem}
+  .nav-search input{width:130px}
+  .tl-line{right:18px;transform:none}
+  .tl-item{flex-direction:column!important;padding-right:40px;text-align:right!important}
+  .tl-c{width:100%}
+  .tl-dot{right:10px;transform:none}
+  .q-options{grid-template-columns:1fr}
+  .pg{padding:80px 1rem 2rem}
+  .wm-head h2{font-size:1.5rem}
+  .mb{padding:1.2rem 1.2rem}
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">رحلة في رحاب السيرة ﷺ</div>
+  <div class="nav-links">
+    <a onclick="showPage('home')" id="nav-home" class="active">الرئيسية</a>
+    <a onclick="showPage('timeline')" id="nav-timeline">الخط الزمني</a>
+    <a onclick="showPage('map')" id="nav-map">الخريطة</a>
+    <a onclick="showPage('stories')" id="nav-stories">القصص</a>
+    <a onclick="showPage('morals')" id="nav-morals">الأخلاق</a>
+    <a onclick="showPage('shamail')" id="nav-shamail">الشمائل</a>
+    <a onclick="showPage('wives')" id="nav-wives">أمهات المؤمنين</a>
+    <a onclick="showPage('companions')" id="nav-companions">الصحابة</a>
+    <a onclick="showPage('duaa')" id="nav-duaa">الأدعية</a>
+    <a onclick="showPage('lessons')" id="nav-lessons">الدروس</a>
+    <a onclick="showPage('quiz')" id="nav-quiz">❓ أسئلة</a>
+    <a onclick="showPage('kids')" id="nav-kids">🌟 للأطفال</a>
+  </div>
+  <div class="nav-search">
+    <span class="s-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="ابحث في السيرة..." oninput="doSearch(this.value)" onblur="setTimeout(()=>closeSearch(),200)">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</nav>
+
+<!-- ==================== HOME ==================== -->
+<div id="home" class="page active">
+  <section id="hero">
+    <div class="hero-pat"></div>
+    <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+    <h1 class="hero-title">رحلة في رحاب<span>السيرة النبوية ﷺ</span></h1>
+    <div class="gold-line"></div>
+    <p class="hero-sub">سافر عبر الزمن وعِش أحداث حياة خير البشر محمد ﷺ — موقع موثَّق بالمصادر الصحيحة</p>
+    <div class="hero-cta">
+      <button class="btn-pri" onclick="showPage('timeline')">ابدأ الرحلة ←</button>
+      <button class="btn-sec" onclick="showPage('quiz')">❓ اختبر معلوماتك</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">٦٣</span><span class="stat-lbl">عامًا من العطاء</span></div>
+      <div class="stat"><span class="stat-num">١١</span><span class="stat-lbl">أم المؤمنين</span></div>
+      <div class="stat"><span class="stat-num">١٢</span><span class="stat-lbl">قسمًا تفاعليًا</span></div>
+      <div class="stat"><span class="stat-num">٧</span><span class="stat-lbl">مصادر موثقة</span></div>
+    </div>
+    <div class="scroll-ind">↓</div>
+  </section>
+  <div class="pg" style="padding-top:2rem">
+    <div class="sec-title"><h2>أقسام الموقع</h2><div class="gold-line"></div><p>اختر بابًا تدخل منه إلى رحاب السيرة</p></div>
+    <div class="cards-grid">
+      <div class="card" onclick="showPage('timeline')"><div class="card-icon">📜</div><h3>الخط الزمني</h3><p>رحلة زمنية كاملة من المولد حتى الوفاة مع الأحاديث الصحيحة.</p><div class="card-arrow">ابدأ الرحلة →</div></div>
+      <div class="card" onclick="showPage('map')"><div class="card-icon">🗺️</div><h3>خريطة السيرة</h3><p>الأماكن المقدسة والتاريخية — من غار حراء إلى تبوك.</p><div class="card-arrow">استكشف →</div></div>
+      <div class="card" onclick="showPage('stories')"><div class="card-icon">✨</div><h3>قصص من السيرة</h3><p>قصص مؤثرة بأسلوب أدبي مع الأحاديث الصحيحة.</p><div class="card-arrow">اقرأ →</div></div>
+      <div class="card" onclick="showPage('morals')"><div class="card-icon">🌿</div><h3>أخلاقه ﷺ</h3><p>الرحمة والصبر والتواضع والعدل والصدق والحلم — مع الأحاديث.</p><div class="card-arrow">تأمل →</div></div>
+      <div class="card" onclick="showPage('shamail')"><div class="card-icon">🌹</div><h3>شمائله الجسدية</h3><p>وصفه ﷺ في هيئته ومشيته وكلامه وضحكته وعبادته.</p><div class="card-arrow">تعرَّف →</div></div>
+      <div class="card" onclick="showPage('wives')" style="border-color:rgba(201,168,76,.3)"><div class="card-icon" style="background:linear-gradient(135deg,#7B2D42,#A84060)">🌺</div><h3>أمهات المؤمنين</h3><p>زوجاته الكريمات ﷺ — سيرتهن ومواقفهن وأحاديثهن عنه.</p><div class="card-arrow" style="color:var(--gold)">اعرف أكثر →</div></div>
+      <div class="card" onclick="showPage('companions')"><div class="card-icon">👥</div><h3>مع صحابته</h3><p>كيف كان ﷺ مع أصحابه — وفاءً وحبًا ومزاحًا.</p><div class="card-arrow">اقرأ →</div></div>
+      <div class="card" onclick="showPage('duaa')"><div class="card-icon">🤲</div><h3>أدعيته وذكره</h3><p>أجمل الأدعية الثابتة في مواقف الحياة المختلفة.</p><div class="card-arrow">ادعُ معه →</div></div>
+      <div class="card" onclick="showPage('lessons')"><div class="card-icon">💡</div><h3>ماذا نتعلم؟</h3><p>دروس معاصرة خالدة مع الأحاديث الداعمة لها.</p><div class="card-arrow">تعلم →</div></div>
+      <div class="card" onclick="showPage('quiz')" style="background:linear-gradient(135deg,#1A2A3A,#2D3A4A);border-color:rgba(33,150,243,.3)"><div class="card-icon" style="background:rgba(33,150,243,.2)">❓</div><h3 style="color:#90CAF9">أسئلة ثقافية</h3><p style="color:rgba(245,240,232,.75)">اختبر معلوماتك بأسئلة ممتعة كثيرة من السيرة النبوية!</p><div class="card-arrow" style="color:#64B5F6">ابدأ الاختبار →</div></div>
+      <div class="card" onclick="showPage('kids')" style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-color:var(--gold)"><div class="card-icon" style="background:rgba(201,168,76,.2)">🌟</div><h3 style="color:var(--gold-light)">قسم الأطفال</h3><p style="color:rgba(245,240,232,.8)">قصص وأحاديث مبسطة عن رحمة النبي ﷺ بالأطفال.</p><div class="card-arrow" style="color:var(--gold-light)">للأطفال →</div></div>
+      <div class="card" style="background:var(--beige);border:1.5px solid rgba(201,168,76,.3)"><div class="card-icon">📚</div><h3>المصادر المعتمدة</h3><p>الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • الصلابي</p><div class="card-arrow">جميع المعلومات موثقة ✓</div></div>
+    </div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div><p>المصادر: الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • الصلابي</p><p style="margin-top:.4rem;font-size:.73rem;opacity:.45">اللهم صلِّ وسلم على سيدنا محمد وعلى آله وصحبه أجمعين</p></footer>
+</div>
+<!-- ==================== TIMELINE ==================== -->
+<div id="timeline" class="page">
+  <div class="pg">
+    <div class="ph"><button class="back-top" onclick="showPage('home')">← الرئيسية</button><h1>الخط الزمني للسيرة</h1><div class="gold-line"></div><p>رحلة زمنية كاملة — اضغط على أي حدث لعرض الأحاديث</p></div>
+    <div class="tl-wrap">
+      <div class="tl-line"></div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٥٧١ م</span><h3>المولد الشريف ونشأته ﷺ</h3>
+          <p>وُلد ﷺ بمكة يوم الاثنين في عام الفيل. أرضعته حليمة السعدية. شُقَّ صدره في بني سعد. مات أبوه قبل مولده وأمه وهو ابن ست سنين.</p>
+          <div class="tl-hadiths">
+            <div class="hb">«سُئِل ﷺ عن صَومِ يومِ الاثنين قال: ذاكَ يومٌ وُلِدتُ فيه، وأُنزِل عليَّ فيه»<div class="hs">📖 صحيح مسلم — كتاب الصيام</div></div>
+            <div class="hb">«إنَّ أُمِّي رأتْ حين وضَعَتْني نورًا أضاءتْ له قُصورُ الشَّام»<div class="hs">📖 مسند أحمد | الصلابي — السيرة النبوية</div></div>
+            <div class="hb">«أنَّ جبريلَ أتاه وهو يلعبُ مع الغِلمانِ فأخذَه فصَرَعَه وشقَّ عن قلبِه فاستَخرجَ منه عَلَقةً فقال: هذا حظُّ الشَّيطانِ منك»<div class="hs">📖 صحيح مسلم — كتاب الإيمان</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 مكة المكرمة</span><span class="mb-badge">📖 مسلم • أحمد</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٥٩٥ م</span><h3>زواجه من خديجة ﵂</h3>
+          <p>سافر بتجارتها إلى الشام فربح ضعف المعتاد. تزوجها وهو ٢٥ وهي ٤٠. كانت نعم الزوجة والسند.</p>
+          <div class="tl-hadiths">
+            <div class="hb">«آمَنتْ بي حين كَذَّبني الناسُ، وصدَّقَتْني حين كَذَّبوني، وواسَتْني بمالِها حين حرَّمَني الناسُ»<div class="hs">📖 مسند أحمد</div></div>
+            <div class="hb">قالت عائشة: «ما غِرتُ على أحدٍ من نساءِ النبيِّ ﷺ ما غِرتُ على خديجةَ، وما رأيتُها قطُّ، ولكنَّ النبيَّ ﷺ كان يُكثِرُ ذِكرَها»<div class="hs">📖 صحيح البخاري — كتاب المناقب</div></div>
+            <div class="hb">«خيرُ نسائِها خديجةُ بنتُ خُوَيلِد»<div class="hs">📖 صحيح البخاري — كتاب المناقب</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 مكة</span><span class="mb-badge">📖 البخاري • أحمد</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦١٠ م</span><h3>بداية الوحي في غار حراء</h3>
+          <p>في ليلة القدر من رمضان نزل جبريل وقال: اقرأ. فُرض الوحي وكانت أول آية: ﴿اقرأ باسم ربك الذي خلق﴾.</p>
+          <div class="tl-hadiths">
+            <div class="hb">«فَرَجَع بها رسولُ اللهِ ﷺ يَرجُفُ فُؤادُه... فقالَ: زَمِّلوني زَمِّلوني»<div class="hs">📖 صحيح البخاري — باب بدء الوحي</div></div>
+            <div class="hb">قالت خديجة: «كلَّا واللهِ لا يُخزيكَ اللهُ أبدًا، إنَّكَ لَتَصِلُ الرَّحِمَ وتَحمِلُ الكَلَّ وتَكسِبُ المَعدومَ وتَقري الضَّيفَ»<div class="hs">📖 صحيح البخاري — باب بدء الوحي</div></div>
+            <div class="hb">قال ورقةُ: «هذا الناموسُ الذي نزَّل اللهُ على موسى، يا ليتَني فيها جَذَعًا، يا ليتَني أكونُ حيًّا حينَ يُخرِجُكَ قومُك»<div class="hs">📖 صحيح البخاري — باب بدء الوحي</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 غار حراء</span><span class="mb-badge">📖 البخاري</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦١٠–٦٢٢ م</span><h3>الدعوة في مكة والأذى</h3>
+          <p>ثلاثة عشر عامًا من الدعوة السرية ثم الجهرية. تعذيب المستضعفين. حصار شعب أبي طالب ثلاث سنين. الإسراء والمعراج وفرض الصلوات. عام الحزن.</p>
+          <div class="tl-hadiths">
+            <div class="hb">مرَّ ﷺ بعمَّارٍ وأبَوَيه يُعذَّبون فقال: «صبرًا آلَ ياسرٍ، فإنَّ مَوعِدَكم الجنَّةُ»<div class="hs">📖 الحاكم في المستدرك | الرحيق المختوم</div></div>
+            <div class="hb">«لَقَد أُوذِيتُ في اللهِ وما يُؤذى أحدٌ، وأُخِفتُ في اللهِ وما يُخافُ أحدٌ»<div class="hs">📖 سنن الترمذي — المناقب</div></div>
+            <div class="hb">«فُرِضَتْ عليَّ الصَّلاةُ خمسينَ ثم رُدَّتْ إلى خَمسٍ، فنودِيَ: يا محمَّدُ إنَّه لا يُبدَّلُ القولُ لَدَيَّ وإنَّها بالخَمسِ خمسون»<div class="hs">📖 صحيح البخاري — مواقيت الصلاة</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 مكة</span><span class="mb-badge">📖 البخاري • مسلم • الترمذي</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦٢٢ م — ١ هـ</span><h3>الهجرة إلى المدينة المنورة</h3>
+          <p>خرج ﷺ وأبو بكر ﵁ ليلًا. مكثا في غار ثور ثلاثة أيام. وصلا المدينة فاستقبلوه بالأفراح.</p>
+          <div class="tl-hadiths">
+            <div class="hb">قال أبو بكر: «قلتُ للنبيِّ ﷺ وأنا في الغار: لو أنَّ أحدَهم نظَر تحتَ قَدَمَيه لأبصَرَنا. قال: ما ظنُّكَ باثنَينِ اللهُ ثالثُهما»<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+            <div class="hb">لمَّا قدِم النبيُّ ﷺ المدينةَ كان الناسُ يُنشِدون: «طلَعَ البَدرُ علينا مِن ثَنِيَّاتِ الوَداعِ...»<div class="hs">📖 المواهب اللدنية | الشمائل المحمدية</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 مكة ← المدينة</span><span class="mb-badge">📖 البخاري</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦٢٢–٦٢٥ م</span><h3>بناء الدولة — بدر وأحد</h3>
+          <p>بنى المسجد النبوي وآخى بين المهاجرين والأنصار. بدر: انتصار ٣١٣ على ألف. أحد: استشهاد ٧٠ والجرح النبوي.</p>
+          <div class="tl-hadiths">
+            <div class="hb">«قدِم عبدُالرحمنِ بنُ عَوفٍ فآخى النبيُّ ﷺ بينَه وبين سعدِ بنِ الرَّبيع فقال سعدٌ: مالي نِصفان...»<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+            <div class="hb">قال ﷺ يومَ بدرٍ: «اللهمَّ هذه قُريشٌ قد أقبَلَتْ بخُيلائِها... اللهمَّ فَنَصرَك الذي وعَدتَني»<div class="hs">📖 صحيح مسلم — كتاب الجهاد</div></div>
+            <div class="hb">«كيفَ يُفلِحُ قومٌ شَجُّوا نبيَّهم؟» فأنزَل اللهُ: ﴿ليسَ لك من الأمرِ شيءٌ﴾<div class="hs">📖 صحيح مسلم — كتاب الجهاد</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 المدينة • بدر • أحد</span><span class="mb-badge">📖 البخاري • مسلم</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦٢٧ م — ٥ هـ</span><h3>غزوة الأحزاب — الخندق</h3>
+          <p>١٠,٠٠٠ مقاتل يحاصرون المدينة. أشار سلمان الفارسي بالخندق. حفر النبي ﷺ بنفسه. انسحب الأحزاب بعد شهر.</p>
+          <div class="tl-hadiths">
+            <div class="hb">كانوا يَحفِرون ويُنشِدون: «نحنُ الذينَ بايَعوا محمَّدا على الجهادِ ما بَقِينا أبَدا» فيُجيبُهم ﷺ: «اللهمَّ لا خيرَ إلَّا خيرُ الآخِرةِ فبارِكْ في الأنصارِ والمهاجِرةِ»<div class="hs">📖 صحيح البخاري — الجهاد</div></div>
+            <div class="hb">«رأيتُ رسولَ اللهِ ﷺ يَحمِلُ التُّرابَ حتَّى اغبَرَّ بطنُه»<div class="hs">📖 صحيح البخاري — الجهاد</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 المدينة</span><span class="mb-badge">📖 البخاري</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦٢٨ م — ٦ هـ</span><h3>صلح الحديبية — الفتح المبين</h3>
+          <p>خرج ﷺ بـ١٤٠٠ معتمرًا فصُدَّ. وقَّع الصلح. في أقل من عامين أسلم أضعاف ما أسلم في عشرين سنة.</p>
+          <div class="tl-hadiths">
+            <div class="hb">قال عمر: «أَوَلسنا على الحقِّ وعدوُّنا على الباطلِ؟ قال: بلى. قلتُ: فَلِمَ نُعطي الدَّنيَّةَ في ديننا؟ قال: أنا عبدُ اللهِ ورسولُه ولن أُخالِفَ أمرَه»<div class="hs">📖 صحيح البخاري — كتاب الشروط</div></div>
+            <div class="hb">«تَعُدُّونَ فتحَ مكَّةَ فتحًا، ونحنُ نَعُدُّ الفتحَ بيعةَ الرِّضوانِ يومَ الحُديبيةِ»<div class="hs">📖 صحيح البخاري — الجهاد</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 الحديبية</span><span class="mb-badge">📖 البخاري</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦٣٠ م — ٨ هـ</span><h3>فتح مكة المكرمة</h3>
+          <p>دخل ﷺ مكة في رمضان رأسه منكوسًا على رأس ١٠,٠٠٠. طهَّر الكعبة من الأصنام. أعلن العفو العام.</p>
+          <div class="tl-hadiths">
+            <div class="hb">«جاءَ الحقُّ وزَهَقَ الباطِلُ إنَّ الباطِلَ كانَ زَهوقًا» وهو يَطعَنُ الأصنامَ<div class="hs">📖 صحيح البخاري</div></div>
+            <div class="hb">«يا معشَرَ قُريشٍ... اذهَبوا فأنتُم الطُّلَقاءُ»<div class="hs">📖 ابن هشام — السيرة | الرحيق المختوم</div></div>
+            <div class="hb">«دخَل مكَّةَ وعليه عِمامةٌ سَوداءُ»<div class="hs">📖 صحيح مسلم — كتاب الحج</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 مكة المكرمة</span><span class="mb-badge">📖 البخاري • مسلم • ابن هشام</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦٣٢ م — ١٠ هـ</span><h3>حجة الوداع — الوصية الخالدة</h3>
+          <p>حجته الوحيدة مع ١٢٤,٠٠٠ صحابي. خطبة الوداع في عرفة. نزل: ﴿اليوم أكملتُ لكم دينكم﴾.</p>
+          <div class="tl-hadiths">
+            <div class="hb">«إنَّ دِماءَكم وأموالَكم وأعراضَكم حَرامٌ عليكم كحُرمةِ يومِكم هذا في شهرِكم هذا»<div class="hs">📖 صحيح البخاري — الحج</div></div>
+            <div class="hb">«تَرَكتُ فيكم ما لن تَضِلُّوا بعدَه: كتابَ اللهِ وسُنَّتي»<div class="hs">📖 موطأ مالك | الحاكم</div></div>
+            <div class="hb">«ألا هل بلَّغتُ؟» فيقولون: نعم. فيقول: «اللهمَّ اشهَدْ» — ثلاثًا<div class="hs">📖 صحيح البخاري — الحج</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 عرفات</span><span class="mb-badge">📖 البخاري • مسلم</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c" onclick="this.classList.toggle('expanded')">
+          <span class="tl-year">٦٣٢ م — ١١ هـ</span><h3>وفاته ﷺ</h3>
+          <p>في الثاني عشر من ربيع الأول، انتقل ﷺ إلى الرفيق الأعلى في بيت عائشة ﵂. آخر كلماته: "الرفيق الأعلى".</p>
+          <div class="tl-hadiths">
+            <div class="hb">قالت عائشة: «كانتْ آخِرُ كلمةٍ تَكلَّم بها: اللهمَّ الرَّفيقَ الأعلى»<div class="hs">📖 صحيح البخاري — المغازي</div></div>
+            <div class="hb">قال أبو بكر: «مَن كانَ يعبُدُ محمَّدًا فإنَّ محمَّدًا قد ماتَ، ومَن كانَ يعبُدُ اللهَ فإنَّ اللهَ حيٌّ لا يَموتُ» ثم تلا: ﴿وما محمَّدٌ إلَّا رسولٌ﴾<div class="hs">📖 صحيح البخاري — المغازي</div></div>
+            <div class="hb">«لمَّا كانَ اليومُ الذي ماتَ فيه ﷺ أَظلَم منها كلُّ شيءٍ» — أنس ﵁<div class="hs">📖 سنن الترمذي — المناقب</div></div>
+          </div>
+          <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
+          <div class="tl-meta"><span class="mb-badge">📍 المدينة المنورة</span><span class="mb-badge">📖 البخاري • الترمذي</span></div>
+        </div><div class="tl-dot"></div>
+      </div>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+
+<!-- ==================== MAP ==================== -->
+<div id="map" class="page">
+  <div class="pg">
+    <div class="ph"><button class="back-top" onclick="showPage('home')">← الرئيسية</button><h1>خريطة السيرة</h1><div class="gold-line"></div><p>اضغط على أي موقع لتعرف قصته مع الأحاديث الصحيحة</p></div>
+    <div class="map-wrap">
+      <div class="map-frame">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 55%,rgba(45,90,61,.6) 0%,transparent 55%)"></div>
+        <div id="mapHint" style="text-align:center;color:rgba(245,240,232,.4);font-size:.85rem;padding-top:3rem">🗺️ اضغط على أي مدينة لمعرفة قصتها</div>
+        <div class="map-lbl" style="top:44%;right:28%" onclick="showMapInfo('mecca')">● مكة المكرمة</div>
+        <div class="map-lbl" style="top:32%;right:30%" onclick="showMapInfo('hira')">● غار حراء</div>
+        <div class="map-lbl" style="top:58%;right:35%" onclick="showMapInfo('taif')">● الطائف</div>
+        <div class="map-lbl" style="top:20%;right:49%" onclick="showMapInfo('madinah')">● المدينة المنورة</div>
+        <div class="map-lbl" style="top:17%;right:38%" onclick="showMapInfo('badr')">● بدر</div>
+        <div class="map-lbl" style="top:14%;right:51%" onclick="showMapInfo('uhud')">● أحد</div>
+        <div class="map-lbl" style="top:40%;right:19%" onclick="showMapInfo('hudaybiya')">● الحديبية</div>
+        <div class="map-lbl" style="top:9%;right:60%" onclick="showMapInfo('khaybar')">● خيبر</div>
+        <div class="map-lbl" style="top:4%;right:66%" onclick="showMapInfo('tabuk')">● تبوك</div>
+        <div class="map-lbl" style="top:28%;right:70%" onclick="showMapInfo('quds')">● القدس</div>
+      </div>
+      <div class="map-info" id="mapInfo"><p style="color:rgba(107,78,42,.45);text-align:center;padding:1rem 0">اختر موقعًا من الأزرار أدناه أو من الخريطة</p></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem;justify-content:center">
+      <button class="btn-pri" style="font-size:.76rem;padding:.42rem 1rem" onclick="showMapInfo('mecca')">مكة</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('madinah')">المدينة</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('hira')">غار حراء</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('badr')">بدر</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('uhud')">أحد</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('taif')">الطائف</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('hudaybiya')">الحديبية</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('khaybar')">خيبر</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('tabuk')">تبوك</button>
+      <button style="font-size:.76rem;padding:.42rem 1rem;border-radius:20px;border:1.5px solid rgba(26,58,42,.3);color:var(--green-dark);background:transparent;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:600" onclick="showMapInfo('quds')">القدس</button>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+<!-- ==================== STORIES ==================== -->
+<div id="stories" class="page">
+  <div class="pg">
+    <div class="ph"><button class="back-top" onclick="showPage('home')">← الرئيسية</button><h1>قصص من السيرة</h1><div class="gold-line"></div><p>لحظات من نور — قصص مؤثرة بالأحاديث الصحيحة</p></div>
+    <div class="stories-grid">
+      <div class="sc" onclick="openModal('children')"><div class="sc-h" style="background:linear-gradient(135deg,#1A3A2A,#2D5A3D)">🌸</div><div class="sc-b"><span class="story-tag">رحمة</span><h3>رحمة النبي ﷺ بالأطفال</h3><p>كيف كان يُقبِّلهم ويدعو لهم ويُطيل السجود من أجلهم.</p><div class="rt">⏱ ٣ دقائق</div></div></div>
+      <div class="sc" onclick="openModal('bedouin')"><div class="sc-h" style="background:linear-gradient(135deg,#2D3A1A,#4A5A2D)">🕌</div><div class="sc-b"><span class="story-tag">حلم</span><h3>الأعرابي في المسجد</h3><p>درس خالد في الرفق بالجاهل وتعليم الجاهل بالحكمة.</p><div class="rt">⏱ دقيقتان</div></div></div>
+      <div class="sc" onclick="openModal('taif')"><div class="sc-h" style="background:linear-gradient(135deg,#3A1A1A,#5A2D2D)">🌧️</div><div class="sc-b"><span class="story-tag">صبر</span><h3>موقفه من أهل الطائف</h3><p>رُدَّ وأُهين فدعا لهم بالهداية بدلًا من الانتقام.</p><div class="rt">⏱ ٣ دقائق</div></div></div>
+      <div class="sc" onclick="openModal('fathmecca')"><div class="sc-h" style="background:linear-gradient(135deg,#1A2A3A,#2D4A5A)">⚔️</div><div class="sc-b"><span class="story-tag">عفو</span><h3>عفوه يوم فتح مكة</h3><p>"اذهبوا فأنتم الطلقاء" — أعظم مشهد عفو في التاريخ.</p><div class="rt">⏱ دقيقتان</div></div></div>
+      <div class="sc" onclick="openModal('neighbor')"><div class="sc-h" style="background:linear-gradient(135deg,#2A1A3A,#4A2D5A)">🏠</div><div class="sc-b"><span class="story-tag">جوار</span><h3>تعامله مع جيرانه</h3><p>أحاديث صحيحة كثيرة في وصيته بالجار وكرمه معهم.</p><div class="rt">⏱ ٣ دقائق</div></div></div>
+      <div class="sc" onclick="openModal('humility')"><div class="sc-h" style="background:linear-gradient(135deg,#1A3A35,#2D5A52)">🌿</div><div class="sc-b"><span class="story-tag">تواضع</span><h3>تواضعه مع الصحابة</h3><p>كان سيد القوم يخدمهم ويعمل بيده ولا يتميز عنهم.</p><div class="rt">⏱ دقيقتان</div></div></div>
+      <div class="sc" onclick="openModal('food')"><div class="sc-h" style="background:linear-gradient(135deg,#2A3A1A,#3A5A2D)">🍯</div><div class="sc-b"><span class="story-tag">زهد</span><h3>طعامه وعيشه ﷺ</h3><p>ما شبع آل محمد من خبز البُرِّ ثلاث ليالٍ تباعًا.</p><div class="rt">⏱ دقيقتان</div></div></div>
+      <div class="sc" onclick="openModal('smile_story')"><div class="sc-h" style="background:linear-gradient(135deg,#1A3A2A,#2A5A3A)">😊</div><div class="sc-b"><span class="story-tag">بشاشة</span><h3>ابتسامته ومزاحه ﷺ</h3><p>كان أكثر الناس تبسُّمًا ومزاحه صادق لا يؤذي.</p><div class="rt">⏱ دقيقتان</div></div></div>
+      <div class="sc" onclick="openModal('animals')"><div class="sc-h" style="background:linear-gradient(135deg,#3A2A1A,#5A4A2D)">🐦</div><div class="sc-b"><span class="story-tag">رحمة</span><h3>رحمته بالحيوانات</h3><p>نهى عن تعذيب الحيوان وأمر بالرفق — أحاديث صحيحة.</p><div class="rt">⏱ دقيقتان</div></div></div>
+      <div class="sc" onclick="openModal('poor_story')"><div class="sc-h" style="background:linear-gradient(135deg,#3A3A1A,#5A5A2D)">🤲</div><div class="sc-b"><span class="story-tag">كرم</span><h3>كرمه مع الفقراء</h3><p>ما سأله أحد شيئًا قط فقال لا — مواقف الكرم الفياض.</p><div class="rt">⏱ دقيقتان</div></div></div>
+      <div class="sc" onclick="openModal('women_story')"><div class="sc-h" style="background:linear-gradient(135deg,#3A1A2A,#5A2D3A)">🌺</div><div class="sc-b"><span class="story-tag">إنصاف</span><h3>تكريمه للمرأة</h3><p>أعلن حقوق المرأة في خطبة الوداع — ومواقف موثقة.</p><div class="rt">⏱ دقيقتان</div></div></div>
+      <div class="sc" onclick="openModal('friends_story')"><div class="sc-h" style="background:linear-gradient(135deg,#1A2A3A,#1A3A4A)">🤝</div><div class="sc-b"><span class="story-tag">صداقة</span><h3>مع أصدقائه الكرام</h3><p>كان يزورهم ويمزح معهم ويسأل عن غائبهم ويعود مريضهم.</p><div class="rt">⏱ دقيقتان</div></div></div>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+
+<!-- ==================== MORALS ==================== -->
+<div id="morals" class="page">
+  <div class="pg">
+    <div class="ph"><button class="back-top" onclick="showPage('home')">← الرئيسية</button><h1>أخلاق النبي ﷺ</h1><div class="gold-line"></div><p>﴿وَإِنَّكَ لَعَلَى خُلُقٍ عَظِيمٍ﴾ — مع الأحاديث الصحيحة</p></div>
+    <div class="morals-grid">
+      <div class="mc-card" onclick="openModal('mercy')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">💚</span><h3>الرحمة</h3><p>كان رحيمًا بالكبير والصغير والمسلم وغيره وحتى بالحيوان.</p>
+        <div class="hb" style="font-size:.82rem">«ارحَموا مَن في الأرضِ يَرحَمْكم مَن في السَّماءِ»<div class="hs">📖 الترمذي</div></div>
+        <div class="mq">رُئي ﷺ يُطيلُ السجودَ لأنَّ الحسينَ ركِبَ على ظهرِه</div></div>
+      <div class="mc-card" onclick="openModal('patience')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">🌊</span><h3>الصبر</h3><p>صبر على فقد أبنائه وزوجته وعمه وعلى أذى المشركين ثلاثة عشر عامًا.</p>
+        <div class="hb" style="font-size:.82rem">«لَقَد أُوذِيتُ في اللهِ وما يُؤذى أحدٌ»<div class="hs">📖 الترمذي</div></div>
+        <div class="mq">"الصبر عند الصدمة الأولى" — البخاري</div></div>
+      <div class="mc-card" onclick="openModal('tawadu')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">🌱</span><h3>التواضع</h3><p>كان يعبر على الصبيان فيُسلِّم ويزور المرضى ويعمل بيده.</p>
+        <div class="hb" style="font-size:.82rem">«ما ضَرَب بيَدِه خادِمًا قَطُّ ولا امرأةً»<div class="hs">📖 مسلم</div></div>
+        <div class="mq">كان يجلس بين أصحابه فلا يتميز عنهم حتى يسأل الغريب عنه</div></div>
+      <div class="mc-card" onclick="openModal('justice')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">⚖️</span><h3>العدل</h3><p>لم يفرق بين شريف ووضيع ولا بين مسلم وغيره في الحكم.</p>
+        <div class="hb" style="font-size:.82rem">«لو أنَّ فاطِمةَ بنتَ محمَّدٍ سَرَقَتْ لَقَطَعتُ يَدَها»<div class="hs">📖 البخاري</div></div>
+        <div class="mq">قضى ﷺ لرجل يهودي في خصومة مع مسلم</div></div>
+      <div class="mc-card" onclick="openModal('honesty')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">✨</span><h3>الصدق</h3><p>لُقِّب بالأمين قبل النبوة وشهد له أعداؤه بالصدق.</p>
+        <div class="hb" style="font-size:.82rem">«إنَّ الصِّدقَ يَهدي إلى البِرِّ وإنَّ البِرَّ يَهدي إلى الجنَّةِ»<div class="hs">📖 البخاري</div></div>
+        <div class="mq">قال أبو سفيان لهرقل: "ما جرَّبنا عليه كذبًا قط"</div></div>
+      <div class="mc-card" onclick="openModal('hilm')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">🕊️</span><h3>الحلم</h3><p>ما انتقم ﷺ لنفسه قط وما خُيِّر بين أمرين إلا اختار أيسرهما.</p>
+        <div class="hb" style="font-size:.82rem">«ما خُيِّرَ بينَ أَمرَينِ إلَّا أخَذَ أَيسَرَهُما ما لم يكُنْ إثمًا»<div class="hs">📖 البخاري</div></div>
+        <div class="mq">أعطى من جاءه بجفاء وابتسم وزاده</div></div>
+      <div class="mc-card" onclick="openModal('karam')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">🌊</span><h3>الكرم</h3><p>كان ﷺ أجود الناس. ما رُئي مادًّا يده بالرد لسائل.</p>
+        <div class="hb" style="font-size:.82rem">«كانَ أجوَدَ الناسِ... كالرِّيحِ المُرسَلة»<div class="hs">📖 البخاري</div></div>
+        <div class="mq">أعطى رجلًا غنمًا بين جبلين فأسلم قومه فرحًا بكرمه</div></div>
+      <div class="mc-card" onclick="openModal('haya2')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">🌸</span><h3>الحياء</h3><p>كان ﷺ أشد حياءً من العذراء في خدرها.</p>
+        <div class="hb" style="font-size:.82rem">«كانَ أشَدَّ حَياءً مِن العَذراءِ في خِدرِها»<div class="hs">📖 البخاري</div></div>
+        <div class="mq">إذا أراد عتاب أحد قال: "ما بال أقوام" ولا يُسمِّي أحدًا</div></div>
+      <div class="mc-card" onclick="openModal('wafa2')"><span style="font-size:2rem;margin-bottom:.8rem;display:block">💛</span><h3>الوفاء</h3><p>كان أوفى الناس بالعهد وأكثرهم حفظًا للمعروف.</p>
+        <div class="hb" style="font-size:.82rem">«ثم يَتذَكَّرُ خَديجةَ فيَبعَثُ إلى صَديقاتِها بعدَ وَفاتِها»<div class="hs">📖 البخاري</div></div>
+        <div class="mq">كان إذا أُهدي له شيء تذكَّر خديجة وبعث به إلى صديقاتها</div></div>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+
+<!-- ==================== SHAMAIL ==================== -->
+<div id="shamail" class="page">
+  <div class="pg">
+    <div class="ph"><button class="back-top" onclick="showPage('home')">← الرئيسية</button><h1>شمائل النبي ﷺ</h1><div class="gold-line"></div><p>وصفه الجسدي وسمته وهيئته كما رواه أصحابه — من صحيح الشمائل المحمدية</p></div>
+    <div class="shmail-grid">
+      <div class="shmail-card" onclick="openModal('sh_face')"><h3>🌟 وجهه الشريف</h3>
+        <div class="hb" style="font-size:.82rem">«كانَ أحسَنَ الناسِ وَجهًا وأَحسَنَهم خَلقًا، ليسَ بالطَّويلِ البائنِ ولا بالقَصيرِ»<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+        <div class="hb" style="font-size:.82rem">«رأيتُه في ليلةٍ قمراءَ فكانَ عِندي أحسَنَ من القمرِ» — جابر<div class="hs">📖 صحيح الشمائل المحمدية</div></div></div>
+      <div class="shmail-card" onclick="openModal('sh_walk')"><h3>🚶 مشيته وهيئته</h3>
+        <div class="hb" style="font-size:.82rem">«إذا مَشى تَقلَّعَ كأنَّما يَنحَطُّ من صَبَبٍ، وإذا التَفَت التَفَت جميعًا»<div class="hs">📖 صحيح الشمائل — الترمذي</div></div>
+        <div class="hb" style="font-size:.82rem">«كانَ أشَدَّ الناسِ مِشيةً يَمشي مَشيَ الشُّجعانِ»<div class="hs">📖 صحيح الشمائل المحمدية</div></div></div>
+      <div class="shmail-card" onclick="openModal('sh_speech')"><h3>🗣️ كلامه وحديثه</h3>
+        <div class="hb" style="font-size:.82rem">«كانَ كلامُه كلامًا فَصلًا يَفهَمُه كلُّ من سَمِعَه» — عائشة<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+        <div class="hb" style="font-size:.82rem">«كانَ يُعيدُ الكلمةَ ثلاثًا لتُعقَلَ عنه» — أنس<div class="hs">📖 صحيح الشمائل المحمدية</div></div></div>
+      <div class="shmail-card" onclick="openModal('sh_laugh')"><h3>😊 ضحكته وبشاشته</h3>
+        <div class="hb" style="font-size:.82rem">«ما رأيتُ أحدًا أكثَرَ تَبسُّمًا من رسولِ اللهِ ﷺ» — عبدالله بن الحارث<div class="hs">📖 صحيح الشمائل — الترمذي</div></div>
+        <div class="hb" style="font-size:.82rem">«كانَ لا يضحَكُ إلَّا تَبسُّمًا»<div class="hs">📖 صحيح الشمائل المحمدية</div></div></div>
+      <div class="shmail-card" onclick="openModal('sh_prayer')"><h3>🌙 عبادته وقيام الليل</h3>
+        <div class="hb" style="font-size:.82rem">«كانَ يقومُ حتَّى تَتَفطَّرَ قَدَماه، فقالت له عائشة: لِمَ تَفعَلُ هذا وقد غُفِر لك؟ قال: أَفلا أكونُ عبدًا شكورًا»<div class="hs">📖 صحيح البخاري — التهجد</div></div></div>
+      <div class="shmail-card" onclick="openModal('sh_eat')"><h3>🍯 أكله وشربه</h3>
+        <div class="hb" style="font-size:.82rem">«كانَ لا يذُمُّ طعامًا، إن اشتَهاهُ أكَله وإن كَرِهَه تَرَكَه»<div class="hs">📖 صحيح مسلم</div></div>
+        <div class="hb" style="font-size:.82rem">«كانَ يأكُلُ بثلاثِ أصابعَ ويَلعَقُ يَدَه قبلَ أن يَمسَحَها»<div class="hs">📖 صحيح مسلم</div></div></div>
+      <div class="shmail-card" onclick="openModal('sh_sleep')"><h3>🌙 نومه ﷺ</h3>
+        <div class="hb" style="font-size:.82rem">«إذا أخَذَ مَضجَعَه قرأ: بسمِ اللهِ اللهمَّ باسمِك أموتُ وأَحيا»<div class="hs">📖 صحيح البخاري — الدعوات</div></div></div>
+      <div class="shmail-card" onclick="openModal('sh_clothes')"><h3>👘 لباسه وهيئته</h3>
+        <div class="hb" style="font-size:.82rem">«البَسوا البياضَ فإنَّها أطهَرُ وأطيَبُ»<div class="hs">📖 الترمذي</div></div>
+        <div class="hb" style="font-size:.82rem">«رأيتُه وعليه ثوبانِ أخضَرانِ» — أبو رمثة<div class="hs">📖 صحيح الشمائل المحمدية</div></div></div>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+
+<!-- ==================== COMPANIONS ==================== -->
+<div id="companions" class="page">
+  <div class="pg">
+    <div class="ph"><button class="back-top" onclick="showPage('home')">← الرئيسية</button><h1>مع صحابته الكرام</h1><div class="gold-line"></div><p>كيف كان ﷺ مع أصحابه — حبًا ووفاءً ومزاحًا</p></div>
+    <div class="sec-title" style="margin-top:0;margin-bottom:1.5rem"><h2 style="font-size:1.5rem">الخلفاء الراشدون</h2><div class="gold-line"></div></div>
+    <div class="comp-grid" style="margin-bottom:2.5rem">
+      <div class="comp-card" onclick="openModal('abubakr')"><div class="comp-name">أبو بكر الصديق ﵁</div><span class="comp-title">خليل النبي ﷺ — الصاحب في الغار</span>
+        <div class="hb" style="font-size:.8rem">«لو كنتُ مُتَّخِذًا من أهلِ الأرضِ خليلًا لاتَّخذتُ أبا بكرٍ خليلًا»<div class="hs">📖 مسلم</div></div></div>
+      <div class="comp-card" onclick="openModal('umar')"><div class="comp-name">عمر بن الخطاب ﵁</div><span class="comp-title">الفاروق — فارق الله به الحق والباطل</span>
+        <div class="hb" style="font-size:.8rem">«إنَّ اللهَ جَعَل الحقَّ على لسانِ عمرَ وقلبِه»<div class="hs">📖 الترمذي</div></div></div>
+      <div class="comp-card" onclick="openModal('uthman')"><div class="comp-name">عثمان بن عفان ﵁</div><span class="comp-title">ذو النورين — تستحي منه الملائكة</span>
+        <div class="hb" style="font-size:.8rem">«أَلا أَستَحيي مِن رجُلٍ تَستَحيي مِنه الملائكةُ؟»<div class="hs">📖 مسلم</div></div></div>
+      <div class="comp-card" onclick="openModal('ali')"><div class="comp-name">علي بن أبي طالب ﵁</div><span class="comp-title">باب مدينة العلم</span>
+        <div class="hb" style="font-size:.8rem">«أنتَ منِّي وأنا منك»<div class="hs">📖 البخاري</div></div></div>
+    </div>
+    <div class="sec-title" style="margin-bottom:1.5rem"><h2 style="font-size:1.5rem">أصحابه المقربون</h2><div class="gold-line"></div></div>
+    <div class="comp-grid">
+      <div class="comp-card" onclick="openModal('anas')"><div class="comp-name">أنس بن مالك ﵁</div><span class="comp-title">خادمه عشر سنين</span>
+        <div class="hb" style="font-size:.8rem">«ما قالَ لي أُفٍّ قطُّ، ولا قالَ لشيءٍ فعَلتُه: لِمَ فعَلتَه»<div class="hs">📖 مسلم</div></div></div>
+      <div class="comp-card" onclick="openModal('bilal')"><div class="comp-name">بلال بن رباح ﵁</div><span class="comp-title">مؤذن النبي ﷺ وحبيبه</span>
+        <div class="hb" style="font-size:.8rem">قال ﷺ: «يا بلالُ حدِّثني بأرجى عملٍ عَمِلتَه في الإسلامِ»<div class="hs">📖 البخاري</div></div></div>
+      <div class="comp-card" onclick="openModal('zaid')"><div class="comp-name">زيد بن حارثة ﵁</div><span class="comp-title">حِبُّ رسول الله ﷺ</span>
+        <div class="hb" style="font-size:.8rem">«ما دعَوتُ زيدًا قطُّ إلَّا قلتُ: زيدٌ حِبِّي»<div class="hs">📖 الترمذي</div></div></div>
+      <div class="comp-card" onclick="openModal('ibnmasood')"><div class="comp-name">عبدالله بن مسعود ﵁</div><span class="comp-title">حامل نعليه وطهوره</span>
+        <div class="hb" style="font-size:.8rem">«مَن أحبَّ أن يقرأَ القرآنَ غضًّا فليقرأه بقراءةِ ابنِ أمِّ عَبدٍ»<div class="hs">📖 ابن ماجه</div></div></div>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+
+<!-- ==================== DUAA ==================== -->
+<div id="duaa" class="page">
+  <div class="pg">
+    <div class="ph"><button class="back-top" onclick="showPage('home')">← الرئيسية</button><h1>أدعيته وذكره ﷺ</h1><div class="gold-line"></div><p>أجمل الأدعية الثابتة في مواقف الحياة المختلفة</p></div>
+    <div class="duaa-grid">
+      <div class="duaa-card"><h3>🌙 دعاء النوم</h3><div class="duaa-text">«اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا»</div><div class="duaa-meaning">يقوله إذا أوى إلى فراشه</div><div class="hs" style="margin-top:.5rem">📖 صحيح البخاري — الدعوات</div></div>
+      <div class="duaa-card"><h3>☀️ دعاء الاستيقاظ</h3><div class="duaa-text">«الحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ»</div><div class="duaa-meaning">عند الاستيقاظ من النوم</div><div class="hs" style="margin-top:.5rem">📖 صحيح البخاري</div></div>
+      <div class="duaa-card"><h3>🍽️ دعاء الطعام</h3><div class="duaa-text">«بِسْمِ اللَّهِ، وَإِذَا نَسِيَ أَحَدُكُمْ فَلْيَقُلْ: بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ»</div><div class="duaa-meaning">قبل الأكل — وإن نسي يقولها أثناءه</div><div class="hs" style="margin-top:.5rem">📖 أبو داود | الترمذي</div></div>
+      <div class="duaa-card"><h3>🤲 سيد الاستغفار</h3><div class="duaa-text">«اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ...»</div><div class="duaa-meaning">قال ﷺ: "من قالها موقنًا فمات دخل الجنة"</div><div class="hs" style="margin-top:.5rem">📖 صحيح البخاري — الدعوات</div></div>
+      <div class="duaa-card"><h3>💛 دعاء الكرب</h3><div class="duaa-text">«لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ»</div><div class="duaa-meaning">كان يقوله عند الشدة والكرب</div><div class="hs" style="margin-top:.5rem">📖 صحيح البخاري — الدعوات</div></div>
+      <div class="duaa-card"><h3>🌧️ دعاء المطر</h3><div class="duaa-text">«اللَّهُمَّ صَيِّبًا نَافِعًا»</div><div class="duaa-meaning">كان يقوله حين ينزل المطر</div><div class="hs" style="margin-top:.5rem">📖 صحيح البخاري</div></div>
+      <div class="duaa-card"><h3>🌟 دعاء ذي النون</h3><div class="duaa-text">«لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ»</div><div class="duaa-meaning">قال ﷺ: "لم يدع بها مسلم إلا استجاب الله له"</div><div class="hs" style="margin-top:.5rem">📖 الترمذي | أحمد</div></div>
+      <div class="duaa-card"><h3>📿 أحب الكلام إلى الله</h3><div class="duaa-text">«سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ»</div><div class="duaa-meaning">«خفيفتان على اللسان ثقيلتان في الميزان حبيبتان إلى الرحمن»</div><div class="hs" style="margin-top:.5rem">📖 صحيح البخاري</div></div>
+      <div class="duaa-card"><h3>🏠 دعاء دخول البيت</h3><div class="duaa-text">«اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلِجِ وَخَيْرَ الْمَخْرَجِ»</div><div class="duaa-meaning">عند دخول البيت</div><div class="hs" style="margin-top:.5rem">📖 أبو داود | ابن ماجه</div></div>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+
+<!-- ==================== LESSONS ==================== -->
+<div id="lessons" class="page">
+  <div class="pg">
+    <div class="ph"><button class="back-top" onclick="showPage('home')">← الرئيسية</button><h1>ماذا نتعلم من السيرة؟</h1><div class="gold-line"></div><p>دروس معاصرة خالدة مع الأحاديث الداعمة لها</p></div>
+    <div class="lessons-grid">
+      <div class="lesson-card"><div class="lesson-num">٠١</div><h3>القيادة بالقدوة</h3><p>حفر الخندق مع أصحابه حتى اغبرَّ صدره. القائد الحقيقي يسير في المقدمة.</p>
+        <div style="background:rgba(201,168,76,.1);border-radius:8px;padding:.6rem .8rem;margin-top:.7rem;font-size:.76rem;color:var(--gold-light)">«كانَ يَحمِلُ التُّرابَ معَهم» — البخاري</div></div>
+      <div class="lesson-card"><div class="lesson-num">٠٢</div><h3>الصبر في الأزمات</h3><p>فقد زوجته وعمه في عام واحد ثم ذهب للطائف فأُهين — ولم يستسلم.</p>
+        <div style="background:rgba(201,168,76,.1);border-radius:8px;padding:.6rem .8rem;margin-top:.7rem;font-size:.76rem;color:var(--gold-light)">«الصَّبرُ عند الصَّدمةِ الأُولى» — البخاري</div></div>
+      <div class="lesson-card"><div class="lesson-num">٠٣</div><h3>قوة العفو</h3><p>فتح مكة علَّمنا أن أقوى سلاح المنتصر هو العفو لا الانتقام.</p>
+        <div style="background:rgba(201,168,76,.1);border-radius:8px;padding:.6rem .8rem;margin-top:.7rem;font-size:.76rem;color:var(--gold-light)">«اذهَبوا فأنتُم الطُّلَقاءُ» — ابن هشام</div></div>
+      <div class="lesson-card"><div class="lesson-num">٠٤</div><h3>بناء المجتمع</h3><p>المؤاخاة بين المهاجرين والأنصار نموذج في بناء مجتمع بالقيم لا بالدم.</p>
+        <div style="background:rgba(201,168,76,.1);border-radius:8px;padding:.6rem .8rem;margin-top:.7rem;font-size:.76rem;color:var(--gold-light)">«مَثَلُ المُؤمنينَ كالجَسَدِ» — مسلم</div></div>
+      <div class="lesson-card"><div class="lesson-num">٠٥</div><h3>التخطيط الاستراتيجي</h3><p>الخندق وصلح الحديبية نماذج في الاستراتيجية البعيدة المدى.</p>
+        <div style="background:rgba(201,168,76,.1);border-radius:8px;padding:.6rem .8rem;margin-top:.7rem;font-size:.76rem;color:var(--gold-light)">«إنَّ الحربَ خُدعةٌ» — البخاري</div></div>
+      <div class="lesson-card"><div class="lesson-num">٠٦</div><h3>العدالة الاجتماعية</h3><p>ألغى الفوارق الطبقية وجعل التقوى وحدها معيار التفاضل.</p>
+        <div style="background:rgba(201,168,76,.1);border-radius:8px;padding:.6rem .8rem;margin-top:.7rem;font-size:.76rem;color:var(--gold-light)">«كلُّكم لآدمَ وآدمُ من تُرابٍ» — الترمذي</div></div>
+      <div class="lesson-card"><div class="lesson-num">٠٧</div><h3>إدارة التغيير</h3><p>في ٢٣ عامًا حوَّل مجتمعًا قبليًا إلى حضارة — بالتدرج والحكمة.</p>
+        <div style="background:rgba(201,168,76,.1);border-radius:8px;padding:.6rem .8rem;margin-top:.7rem;font-size:.76rem;color:var(--gold-light)">«يَسِّروا ولا تُعَسِّروا» — البخاري</div></div>
+      <div class="lesson-card"><div class="lesson-num">٠٨</div><h3>الذكاء العاطفي</h3><p>كان يسمي كل شخص باسمه ويهتم بشؤونه ويسأل عن غائبه ويعود مريضه.</p>
+        <div style="background:rgba(201,168,76,.1);border-radius:8px;padding:.6rem .8rem;margin-top:.7rem;font-size:.76rem;color:var(--gold-light)">«حقُّ المسلمِ على المسلمِ ست» — مسلم</div></div>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+<!-- ==================== WIVES OF THE PROPHET ==================== -->
+<div id="wives" class="page">
+  <div class="pg">
+    <div class="ph">
+      <button class="back-top" onclick="showPage('home')">← الرئيسية</button>
+      <h1>أمهات المؤمنين</h1>
+      <div class="gold-line"></div>
+      <p>﴿النَّبِيُّ أَوْلَى بِالْمُؤْمِنِينَ مِنْ أَنفُسِهِمْ وَأَزْوَاجُهُ أُمَّهَاتُهُمْ﴾ — الأحزاب: ٦</p>
+    </div>
+
+    <!-- Stats bar -->
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2.5rem">
+      <div style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--beige);border-radius:14px;padding:.9rem 1.5rem;text-align:center;flex:1;min-width:130px">
+        <div style="font-family:'Amiri',serif;font-size:2rem;color:var(--gold-light);display:block">١١</div>
+        <div style="font-size:.75rem;opacity:.8">عدد أمهات المؤمنين</div>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--beige);border-radius:14px;padding:.9rem 1.5rem;text-align:center;flex:1;min-width:130px">
+        <div style="font-family:'Amiri',serif;font-size:2rem;color:var(--gold-light);display:block">٢٩٤٢</div>
+        <div style="font-size:.75rem;opacity:.8">حديث رواه عائشة ﵂</div>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--beige);border-radius:14px;padding:.9rem 1.5rem;text-align:center;flex:1;min-width:130px">
+        <div style="font-family:'Amiri',serif;font-size:2rem;color:var(--gold-light);display:block">٢</div>
+        <div style="font-size:.75rem;opacity:.8">توفيتا في حياته ﷺ</div>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--beige);border-radius:14px;padding:.9rem 1.5rem;text-align:center;flex:1;min-width:130px">
+        <div style="font-family:'Amiri',serif;font-size:2rem;color:var(--gold-light);display:block">٩</div>
+        <div style="font-size:.75rem;opacity:.8">تُوُفِّين بعد وفاته ﷺ</div>
+      </div>
+    </div>
+
+    <div class="wives-grid">
+
+      <!-- 1. خديجة -->
+      <div class="wife-card" onclick="openWife('khadija')">
+        <div class="wife-num">١</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">خديجة بنت خويلد ﵂</div>
+          <span class="wife-title">أم المؤمنين — أولى زوجاته ﷺ وأحبُّهن إليه</span>
+          <div class="wife-hadiths-count">📚 مرويات صحيحة كثيرة عن فضلها</div>
+          <p>أول من آمن بالنبي ﷺ وأول من صدَّقه وآزره بمالها ونفسها. كانت أم أبنائه الستة. توفيت في عام الحزن قبل الهجرة.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">أول المؤمنين</span>
+            <span class="wife-tag">أم الأبناء</span>
+            <span class="wife-tag">سيدة نساء الجنة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. عائشة -->
+      <div class="wife-card" onclick="openWife('aisha')">
+        <div class="wife-num">٢</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">عائشة بنت أبي بكر ﵂</div>
+          <span class="wife-title">الصدِّيقة بنت الصدِّيق — أحبُّ الناس إليه</span>
+          <div class="wife-hadiths-count">📚 ٢٩٤٢ حديثًا في المسانيد</div>
+          <p>أكثر الصحابيات رواية للحديث. أعلم النساء في الفقه والسيرة والشعر والطب. كانت يده الشريفة في حجرها حين وفاته ﷺ.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">أحبُّ نسائه إليه</span>
+            <span class="wife-tag">الفقيهة</span>
+            <span class="wife-tag">أم المحدِّثين</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. حفصة -->
+      <div class="wife-card" onclick="openWife('hafsa')">
+        <div class="wife-num">٣</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">حفصة بنت عمر ﵂</div>
+          <span class="wife-title">حافظة القرآن الكريم</span>
+          <div class="wife-hadiths-count">📚 ٦٠ حديثًا في المسانيد</div>
+          <p>بنت عمر بن الخطاب ﵁. كانت صوَّامة قوَّامة. عندها المصحف الذي جمعه أبو بكر الصديق ﵁. طلَّقها النبي ﷺ ثم راجعها.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">حافظة القرآن</span>
+            <span class="wife-tag">الصوَّامة القوَّامة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. أم سلمة -->
+      <div class="wife-card" onclick="openWife('umm_salama')">
+        <div class="wife-num">٤</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">أم سلمة هند بنت أبي أمية ﵂</div>
+          <span class="wife-title">العقلاء الفقيهات — صاحبة المشورة الحكيمة</span>
+          <div class="wife-hadiths-count">📚 ٣٧٨ حديثًا في المسانيد</div>
+          <p>أولى المهاجرات. أشارت عليه ﷺ يوم الحديبية بالمشورة الحكيمة فأخذ بها. أطول أزواجه ﷺ عمرًا، توفيت عام ٦١ هـ.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">أولى المهاجرات</span>
+            <span class="wife-tag">صاحبة المشورة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. زينب بنت جحش -->
+      <div class="wife-card" onclick="openWife('zaynab_jahsh')">
+        <div class="wife-num">٥</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">زينب بنت جحش ﵂</div>
+          <span class="wife-title">التي زوَّجها الله من فوق سبع سماوات</span>
+          <div class="wife-hadiths-count">📚 ١١ حديثًا في المسانيد</div>
+          <p>زوَّجها الله ﷻ من النبي ﷺ بالوحي. كانت تفخر بذلك وتقول: "زوَّجكن أهاليكن وزوَّجني الله من فوق عرشه". أكثرهن صدقةً وتصدُّقًا.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">زواج من السماء</span>
+            <span class="wife-tag">أكثرهن صدقة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. زينب بنت خزيمة -->
+      <div class="wife-card" onclick="openWife('zaynab_khuzaima')">
+        <div class="wife-num">٦</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">زينب بنت خزيمة ﵂</div>
+          <span class="wife-title">أم المساكين</span>
+          <div class="wife-hadiths-count">📚 توفيت بعد زواجه ﷺ بشهرين أو ثلاثة</div>
+          <p>لُقِّبت بأم المساكين لكثرة إطعامها وسخائها. توفيت في حياة النبي ﷺ بعد نحو ثلاثة أشهر من زواجها منه.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">أم المساكين</span>
+            <span class="wife-tag">توفيت في حياته ﷺ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. جويرية -->
+      <div class="wife-card" onclick="openWife('juwayriya')">
+        <div class="wife-num">٧</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">جويرية بنت الحارث ﵂</div>
+          <span class="wife-title">أيمن امرأة على قومها</span>
+          <div class="wife-hadiths-count">📚 ٧ أحاديث في المسانيد</div>
+          <p>بنت سيد بني المصطلق. أعتقها النبي ﷺ وتزوجها فأعتق المسلمون مئة بيت من بني المصطلق إكرامًا لها. قالت عائشة: "ما رأيتُ امرأةً أعظم بركةً على قومها منها".</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">بركة على قومها</span>
+            <span class="wife-tag">سبب عتق مئة بيت</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. صفية -->
+      <div class="wife-card" onclick="openWife('safiyya')">
+        <div class="wife-num">٨</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">صفية بنت حيي ﵂</div>
+          <span class="wife-title">بنت ملك وزوجة نبي</span>
+          <div class="wife-hadiths-count">📚 ١٠ أحاديث في المسانيد</div>
+          <p>من نسل هارون عليه السلام. أسلمت وتزوجها النبي ﷺ وأعتقها وجعل عتقها صداقها. كانت تفخر بنسبها فقال ﷺ: "قولي: إن أبي لهارون وعمي موسى وزوجي محمد".</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">من نسل هارون</span>
+            <span class="wife-tag">صداقها عتقها</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. أم حبيبة -->
+      <div class="wife-card" onclick="openWife('umm_habiba')">
+        <div class="wife-num">٩</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">أم حبيبة رملة بنت أبي سفيان ﵂</div>
+          <span class="wife-title">المهاجرة إلى الحبشة — زوَّجها النجاشي</span>
+          <div class="wife-hadiths-count">📚 ٦٥ حديثًا في المسانيد</div>
+          <p>هاجرت إلى الحبشة مع زوجها عبيد الله بن جحش فارتدَّ وتنصَّر وتوفي، فبقيت وحدها. فخطبها النبي ﷺ وزوَّجه إياها النجاشي وأمهرها عنه أربعة آلاف درهم.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">مهاجرة الحبشة</span>
+            <span class="wife-tag">زوَّجها النجاشي</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. ميمونة -->
+      <div class="wife-card" onclick="openWife('maymuna')">
+        <div class="wife-num">١٠</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">ميمونة بنت الحارث ﵂</div>
+          <span class="wife-title">آخر من تزوجها النبي ﷺ</span>
+          <div class="wife-hadiths-count">📚 ٤٦ حديثًا في المسانيد</div>
+          <p>تزوجها النبي ﷺ في عمرة القضاء عام ٧ هـ وهي آخر من تزوج. قال عنها ابن عباس: "كانت من أبرِّ الناس وأوصلهم". توفيت عام ٦١ هـ.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">آخر من تزوج</span>
+            <span class="wife-tag">من أبرِّ الناس</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. سودة -->
+      <div class="wife-card" onclick="openWife('sawda')">
+        <div class="wife-num">١١</div>
+        <div style="padding-right:2rem">
+          <div class="wife-name">سودة بنت زمعة ﵂</div>
+          <span class="wife-title">أول من تزوجها بعد خديجة</span>
+          <div class="wife-hadiths-count">📚 ٥ أحاديث في المسانيد</div>
+          <p>أول من تزوجها النبي ﷺ بعد وفاة خديجة. كانت امرأةً طيبةً تُضحِك رسول الله ﷺ. آثرت يومها لعائشة حبًا للنبي ﷺ.</p>
+          <div style="margin-top:.7rem">
+            <span class="wife-tag">أول من بعد خديجة</span>
+            <span class="wife-tag">تُضحِك النبي ﷺ</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Info Note -->
+    <div style="background:linear-gradient(135deg,rgba(26,58,42,.07),rgba(26,58,42,.03));border:1px solid rgba(26,58,42,.15);border-right:4px solid var(--gold);border-radius:14px;padding:1.2rem 1.5rem;margin:2rem 0;text-align:center">
+      <p style="font-family:'Amiri',serif;font-size:.95rem;color:var(--text-mid);line-height:2.1">
+        ﴿وَمَا كَانَ لَكُمْ أَن تُؤْذُوا رَسُولَ اللَّهِ وَلَا أَن تَنكِحُوا أَزْوَاجَهُ مِن بَعْدِهِ أَبَدًا﴾<br>
+        <span style="font-size:.8rem;color:var(--gold-dark);font-family:'Cairo',sans-serif">الأحزاب: ٥٣ — اضغط على كل اسم لمعرفة قصتها الكاملة وأحاديثها</span>
+      </p>
+    </div>
+
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+
+<!-- ==================== WIFE MODAL ==================== -->
+<div class="wife-modal-wrap" id="wifeModal">
+  <div class="wife-modal-inner">
+    <div class="wm-head">
+      <button class="wm-close" onclick="closeWife()">✕</button>
+      <h2 id="wmTitle"></h2>
+      <div class="wm-sub" id="wmSub"></div>
+    </div>
+    <div class="wm-body" id="wmBody"></div>
+    <div class="wm-close-btn">
+      <button onclick="closeWife()" style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:var(--gold-light);border:none;padding:.75rem 2.5rem;border-radius:30px;font-family:'Cairo',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer">← العودة لأمهات المؤمنين</button>
+    </div>
+  </div>
+</div>
+<!-- ==================== QUIZ ==================== -->
+<div id="quiz" class="page">
+  <div class="pg">
+    <div class="ph">
+      <button class="back-top" onclick="showPage('home')">← الرئيسية</button>
+      <h1>أسئلة عن حياة النبي ﷺ</h1>
+      <div class="gold-line"></div>
+      <p>اختبر معلوماتك بأسئلة ثقافية ممتعة — موثَّقة من المصادر الصحيحة</p>
+    </div>
+
+    <!-- Category selector -->
+    <div style="text-align:center;margin-bottom:1.8rem">
+      <p style="font-size:.85rem;color:var(--brown);margin-bottom:1rem;font-weight:600">اختر تصنيف الأسئلة:</p>
+      <div class="quiz-cats">
+        <button class="quiz-cat-btn active" onclick="selectCat('all',this)">الكل</button>
+        <button class="quiz-cat-btn" onclick="selectCat('sira',this)">السيرة</button>
+        <button class="quiz-cat-btn" onclick="selectCat('morals',this)">الأخلاق</button>
+        <button class="quiz-cat-btn" onclick="selectCat('wives',this)">أمهات المؤمنين</button>
+        <button class="quiz-cat-btn" onclick="selectCat('battles',this)">الغزوات</button>
+        <button class="quiz-cat-btn" onclick="selectCat('companions',this)">الصحابة</button>
+        <button class="quiz-cat-btn" onclick="selectCat('shamail',this)">الشمائل</button>
+      </div>
+    </div>
+
+    <div class="quiz-wrap" id="quizWrap">
+      <div class="quiz-score-display">
+        <span id="scoreDisplay">النتيجة: <strong id="scoreNum">0</strong> / <strong id="totalNum">0</strong></span>
+      </div>
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="progressBar" style="width:0%"></div></div>
+      <div id="quizContent"></div>
+    </div>
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div></footer>
+</div>
+
+<!-- ==================== KIDS ==================== -->
+<div id="kids" class="page">
+  <div class="kids-hero">
+    <button class="back-top" onclick="showPage('home')" style="color:var(--gold-light);margin-bottom:.8rem">← الرئيسية</button>
+    <div style="display:inline-block;background:rgba(255,140,66,.2);border:2px solid #FF8C42;color:#FF8C42;padding:.28rem 1.1rem;border-radius:20px;font-size:.82rem;font-weight:700;margin-bottom:.8rem">🌟 قسم خاص للأطفال</div>
+    <h1 style="font-family:'Amiri',serif;font-size:clamp(1.8rem,6vw,3rem);color:var(--gold-light)">النبي ﷺ يُحبُّ الأطفال</h1>
+    <div class="gold-line"></div>
+    <p style="color:rgba(245,240,232,.8);font-size:.92rem;line-height:2;max-width:460px;margin:0 auto 1rem">تعرَّف على النبي محمد ﷺ — كيف كان يُحبُّ الأطفال ويلعب معهم ويُقبِّلهم ويدعو لهم 💚</p>
+  </div>
+
+  <div style="padding:2.5rem 1.5rem;max-width:1100px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:2rem">
+      <h2 style="font-family:'Amiri',serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--green-dark);margin-bottom:.3rem">مواقف النبي ﷺ مع الأطفال</h2>
+      <div style="width:55px;height:3px;background:linear-gradient(90deg,#FF8C42,#4CAF50);border-radius:2px;margin:.6rem auto"></div>
+    </div>
+    <div class="kids-grid">
+
+      <div class="kids-card" onclick="openModal('k_kiss')">
+        <div class="kc-top" style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9)">🌸</div>
+        <div class="kc-body">
+          <div class="kc-num">١</div>
+          <h3>كان يُقبِّل الأطفال</h3>
+          <p>كان النبي ﷺ يُقبِّل الحسن والحسين ويضمُّهما إليه بمحبة</p>
+          <div class="kh">«مَن لا يَرحَمُ لا يُرحَمُ» — لما رأى رجلًا لم يُقبِّل أولاده<div class="ks">📖 البخاري • مسلم</div></div>
+        </div>
+      </div>
+
+      <div class="kids-card" onclick="openModal('k_prayer')">
+        <div class="kc-top" style="background:linear-gradient(135deg,#E3F2FD,#BBDEFB)">🕌</div>
+        <div class="kc-body">
+          <div class="kc-num">٢</div>
+          <h3>أطال السجود من أجل طفل!</h3>
+          <p>كان ﷺ يصلي فركب الحسين على ظهره فأطال السجود حتى ينزل وحده!</p>
+          <div class="kh">«إنَّ ابني ارتَحَلَني فكَرِهتُ أن أُعجِّلَه»<div class="ks">📖 النسائي | الحاكم</div></div>
+        </div>
+      </div>
+
+      <div class="kids-card" onclick="openModal('k_bird')">
+        <div class="kc-top" style="background:linear-gradient(135deg,#F3E5F5,#E1BEE7)">🐦</div>
+        <div class="kc-body">
+          <div class="kc-num">٣</div>
+          <h3>سأل عن عصفور طفل صغير</h3>
+          <p>كان لأبي عُمير طائر صغير اسمه "النُّغير" فمات. فسأل النبي ﷺ عنه!</p>
+          <div class="kh">«يا أبا عُمَيرٍ ما فَعَلَ النُّغَيرُ؟»<div class="ks">📖 البخاري | مسلم</div></div>
+        </div>
+      </div>
+
+      <div class="kids-card" onclick="openModal('k_food')">
+        <div class="kc-top" style="background:linear-gradient(135deg,#FFF3E0,#FFE0B2)">🍇</div>
+        <div class="kc-body">
+          <div class="kc-num">٤</div>
+          <h3>علَّم طفلًا آداب الأكل</h3>
+          <p>جلس طفل يأكل ويده تتحرك في كل الصحن، فعلَّمه ﷺ بكلمات بسيطة جميلة</p>
+          <div class="kh">«يا غُلامُ سمِّ اللهَ وكُلْ بيَمينِك وكُلْ ممَّا يَليك»<div class="ks">📖 البخاري • مسلم</div></div>
+        </div>
+      </div>
+
+      <div class="kids-card" onclick="openModal('k_hug')">
+        <div class="kc-top" style="background:linear-gradient(135deg,#E8F5E9,#A5D6A7)">🤗</div>
+        <div class="kc-body">
+          <div class="kc-num">٥</div>
+          <h3>كان يحمل الأطفال ويدعو لهم</h3>
+          <p>كان ﷺ يضع الحسن والحسين على فخذيه ويدعو لهما بالرحمة</p>
+          <div class="kh">«اللهمَّ ارحَمهُما فإنِّي أَرحَمُهما»<div class="ks">📖 صحيح البخاري</div></div>
+        </div>
+      </div>
+
+      <div class="kids-card" onclick="openModal('k_fatima')">
+        <div class="kc-top" style="background:linear-gradient(135deg,#FFEBEE,#FFCDD2)">🌹</div>
+        <div class="kc-body">
+          <div class="kc-num">٦</div>
+          <h3>حبُّه لفاطمة ابنته</h3>
+          <p>كان ﷺ إذا دخلت فاطمة قام إليها وقبَّلها وأجلسها في مكانه</p>
+          <div class="kh">«فاطِمةُ بَضعةٌ مِنِّي فمَن أَغضَبَها أَغضَبَني»<div class="ks">📖 صحيح البخاري</div></div>
+        </div>
+      </div>
+
+      <div class="kids-card" onclick="openModal('k_play')">
+        <div class="kc-top" style="background:linear-gradient(135deg,#E8EAF6,#C5CAE9)">🏃</div>
+        <div class="kc-body">
+          <div class="kc-num">٧</div>
+          <h3>كان يداعب الأطفال</h3>
+          <p>كان ﷺ يمسح وجوه الأطفال ويداعبهم ويمزح معهم</p>
+          <div class="kh">«كانَ يَمسَحُ وُجوهَ الغِلمانِ ويُداعِبُهم»<div class="ks">📖 صحيح الشمائل المحمدية</div></div>
+        </div>
+      </div>
+
+      <div class="kids-card" onclick="openModal('k_dua')">
+        <div class="kc-top" style="background:linear-gradient(135deg,#FFF8E1,#FFE082)">🤲</div>
+        <div class="kc-body">
+          <div class="kc-num">٨</div>
+          <h3>كان يدعو للأطفال ببركة</h3>
+          <p>كان الصحابة يُحضِرون أطفالهم الجُدد ليُبرِّك عليهم النبي ﷺ</p>
+          <div class="kh">«كانَ يُؤتَى بالصِّبيانِ فيُبَرِّكُ عليهم ويُحنِّكُهم»<div class="ks">📖 صحيح مسلم</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Special love message -->
+    <div style="margin:2.5rem 0;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:20px;padding:2rem;text-align:center;color:var(--beige)">
+      <div style="font-size:2.5rem;margin-bottom:.7rem">💛</div>
+      <h3 style="font-family:'Amiri',serif;font-size:1.6rem;color:var(--gold-light);margin-bottom:.6rem">تذكَّر دائمًا</h3>
+      <p style="font-family:'Amiri',serif;font-size:1rem;line-height:2.1;max-width:480px;margin:0 auto">النبي ﷺ كان يتمنى أن يراك! قال ﷺ: «وَدِدتُ أنِّي رأيتُ إخوانَنا» قالوا: أَوَلَسنا إخوانَك؟ قال: «أنتم أَصحابي، وإخوانِي الذين لم يَأتوا بَعدُ»</p>
+      <div style="font-size:.75rem;color:rgba(201,168,76,.7);margin-top:.6rem">📖 صحيح مسلم — كتاب الطهارة</div>
+    </div>
+
+    <div class="back-bottom"><button onclick="showPage('home')">← العودة للرئيسية</button></div>
+  </div>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div><p>اللهم صلِّ وسلم على سيدنا محمد ﷺ</p></footer>
+</div>
+
+<!-- ==================== GENERAL MODAL ==================== -->
+<div class="modal-ov" id="storyModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="mh">
+      <div id="mEmoji" style="font-size:2rem;margin-bottom:.6rem"></div>
+      <button class="mc" onclick="closeModal()">✕</button>
+      <h2 id="mTitle"></h2>
+      <div class="sub" id="mSub"></div>
+    </div>
+    <div class="mb" id="mBody"></div>
+    <div class="mclose-btn"><button onclick="closeModal()">← إغلاق والعودة</button></div>
+  </div>
+</div>
+<script>
+// ===========================
+// PAGE NAVIGATION
+// ===========================
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById(id);
+  if(pg)pg.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const nl=document.getElementById('nav-'+id);
+  if(nl)nl.classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='quiz')initQuiz();
+}
+
+// ===========================
+// MAP DATA
+// ===========================
+const mapData={
+  mecca:{title:'مكة المكرمة — أم القرى',year:'٥٧١–٦٣٢ م',text:'هنا وُلد النبي ﷺ وترعرع وعاش أربعين عامًا. شهدت الدعوة السرية والجهرية وفتحها عام ٨ هـ. طهَّر الكعبة من ٣٦٠ صنمًا.',hadiths:['«اذهَبوا فأنتُم الطُّلَقاءُ» — يوم فتح مكة | ابن هشام','«جاءَ الحقُّ وزَهَقَ الباطِلُ» — البخاري'],src:'📖 الرحيق المختوم • ابن هشام • البخاري'},
+  hira:{title:'غار حراء — مهبط الوحي',year:'٦١٠ م',text:'على جبل النور. كان ﷺ يتحنَّث فيه الأيام ذوات العدد. نزل فيه أول الوحي: ﴿اقرأ باسم ربك الذي خلق﴾.',hadiths:['«فَرجَع بها يَرجُفُ فُؤادُه...» — البخاري'],src:'📖 صحيح البخاري — باب بدء الوحي'},
+  taif:{title:'الطائف — محطة الابتلاء',year:'٦١٩ م',text:'رُدَّ ﷺ وأُدميت قدماه. فلمَّا عُرض عليه أن يُطبق الجبلان على أهل الطائف قال: "بل أرجو أن يُخرج الله من أصلابهم من يعبده".',hadiths:['«بل أرجو أن يُخرِجَ اللهُ من أصلابِهم من يعبُدُه» — مسلم'],src:'📖 صحيح مسلم'},
+  madinah:{title:'المدينة المنورة — دار الهجرة',year:'٦٢٢–٦٣٢ م',text:'استقبلته بالأناشيد فرحًا. أسَّس الدولة الإسلامية وبنى المسجد النبوي. وفيها قبره الشريف.',hadiths:['«اللهمَّ حبِّبْ إلينا المدينةَ كحُبِّنا مكَّة أو أشَدَّ» — البخاري'],src:'📖 البخاري • ابن هشام'},
+  badr:{title:'بدر — يوم الفرقان',year:'٦٢٤ م — ١٧ رمضان',text:'أولى المعارك الكبرى. ٣١٣ مسلمًا انتصروا على ١٠٠٠. دعا النبي ﷺ ربه بإخلاص قبل المعركة.',hadiths:['«اللهمَّ هذه قُريشٌ...» — مسلم'],src:'📖 الرحيق المختوم • مسلم'},
+  uhud:{title:'أُحد — درس المحنة',year:'٦٢٥ م — ٣ هـ',text:'جُرح النبي ﷺ وكُسرت رباعيته واستُشهد ٧٠ صحابيًا. علَّمنا الصبر على الابتلاء.',hadiths:['«كيفَ يُفلِحُ قومٌ شَجُّوا نبيَّهم؟» — مسلم'],src:'📖 ابن هشام • مسلم'},
+  hudaybiya:{title:'الحديبية — الفتح المبين',year:'٦٢٨ م — ٦ هـ',text:'صلح بدا ظاهره في غير صالح المسلمين لكن الله سمَّاه فتحًا. في أقل من عامين أسلم أضعاف ما أسلم في عشرين سنة.',hadiths:['«الفتحُ بَيعةُ الرِّضوانِ» — البخاري'],src:'📖 البخاري • الرحيق المختوم'},
+  khaybar:{title:'خيبر — فتح الحصون',year:'٦٢٨ م — ٧ هـ',text:'قال ﷺ: "لأعطين الراية غدًا رجلًا يُحب الله ورسوله ويُحبه الله" — فكانت لعلي بن أبي طالب.',hadiths:['«لأُعطِيَنَّ الرَّايةَ غدًا رجُلًا يُحِبُّ اللهَ ورسولَه» — البخاري'],src:'📖 البخاري • مسلم'},
+  tabuk:{title:'تبوك — الساعة العسيرة',year:'٦٣٠ م — ٩ هـ',text:'آخر غزوات النبي ﷺ الكبرى. ٣٠٠٠٠ مقاتل في حر الصيف. مواقف بطولية في البذل والتضحية والصدق.',hadiths:['«مَن جهَّز غازيًا فقد غَزا» — البخاري'],src:'📖 ابن هشام • الرحيق المختوم'},
+  quds:{title:'القدس — الإسراء والمعراج',year:'٦٢٠ م',text:'أُسري بالنبي ﷺ من المسجد الحرام إلى المسجد الأقصى ثم عُرج به إلى السماوات العلا. فُرضت الصلوات الخمس في تلك الليلة.',hadiths:['«بَينَما أنا في المسجدِ الحرامِ إذ جاءَني جبريلُ...» — البخاري'],src:'📖 صحيح البخاري — الصلاة'}
+};
+
+function showMapInfo(key){
+  const d=mapData[key];if(!d)return;
+  document.getElementById('mapHint').style.display='none';
+  document.querySelectorAll('.map-lbl').forEach(l=>l.classList.remove('active'));
+  let hh=(d.hadiths||[]).map(h=>`<div class="hb" style="font-size:.82rem;margin:.45rem 0">${h}</div>`).join('');
+  document.getElementById('mapInfo').innerHTML=`<h3>${d.title}</h3><span style="display:inline-block;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);padding:.12rem .55rem;border-radius:9px;font-size:.7rem;color:var(--gold-dark);margin:.3rem 0">${d.year}</span><p style="margin-top:.6rem;font-size:.86rem;color:var(--brown);line-height:2">${d.text}</p>${hh}<div style="margin-top:.6rem;font-size:.76rem;color:var(--gold-dark);font-weight:600">${d.src}</div>`;
+}
+
+// ===========================
+// WIVES DATA (COMPLETE)
+// ===========================
+const wivesData={
+  khadija:{
+    title:'خديجة بنت خويلد ﵂',
+    sub:'أولى زوجاته ﷺ | أم المؤمنين | سيدة نساء الجنة',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٢٥</span><span class="sl">سنه عمره حين الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٦</span><span class="sl">أبناء منها</span></div>
+      <div class="wm-stat"><span class="sn">٢٥</span><span class="sl">سنة زواج</span></div>
+    </div>
+    <h3>نسبها وصفاتها</h3>
+    <p>خديجة بنت خويلد بن أسد القرشية. كانت تُلقَّب في الجاهلية بـ"الطاهرة". كانت امرأةً حكيمةً عاقلةً شريفةً ذات مال. هي أولى من أسلم من البشر.</p>
+    <h3>أحاديث النبي ﷺ عنها</h3>
+    <div class="hb">«آمَنتْ بي حين كَذَّبني الناسُ، وصدَّقَتْني حين كَذَّبوني، وواسَتْني بمالِها حين حرَّمَني الناسُ، ورزَقَني اللهُ وَلَدَها وحرَمَني أولادَ غيرِها»<div class="hs">📖 مسند أحمد</div></div>
+    <div class="hb">«خيرُ نسائِها خديجةُ بنتُ خُوَيلِد، وخيرُ نسائِها مريمُ بنتُ عِمران»<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+    <div class="hb">بشَّرها جبريلُ ببيتٍ في الجنَّةِ من قصَبٍ لا صَخَبَ فيه ولا نَصَبَ<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+    <div class="hb">قالت عائشة: «ما غِرتُ على أحدٍ من نساءِ النبيِّ ما غِرتُ على خديجةَ، وما رأيتُها قطُّ، ولكنَّ النبيَّ ﷺ كان يُكثِرُ ذِكرَها، ورُبَّما ذبَح الشَّاةَ ثم يُقطِّعُها فيَبعَثُ بها إلى صَديقاتِ خديجةَ»<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+    <h3>وفاتها وحزن النبي ﷺ</h3>
+    <p>توفيت في رمضان عام ١٠ من البعثة بمكة قبل الهجرة بثلاث سنين. سمَّى النبي ﷺ ذلك العام "عام الحزن". ظلَّ يذكرها ويترحَّم عليها حتى وفاته ﷺ.</p>
+    <div class="msrc">المصادر: صحيح البخاري — كتاب المناقب | مسند أحمد | الرحيق المختوم</div>`
+  },
+  aisha:{
+    title:'عائشة بنت أبي بكر الصديق ﵂',
+    sub:'الصدِّيقة بنت الصدِّيق | أعلم نساء الأمة | أحبُّ النساء إليه ﷺ',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٢٩٤٢</span><span class="sl">حديثًا رواه</span></div>
+      <div class="wm-stat"><span class="sn">٦٦</span><span class="sl">سنة عمرها</span></div>
+      <div class="wm-stat"><span class="sn">٥٨هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>مكانتها عند النبي ﷺ</h3>
+    <div class="hb">سُئل ﷺ: «أيُّ الناسِ أحَبُّ إليك؟» قال: «عائشةُ». قيل: من الرجال؟ قال: «أبوها»<div class="hs">📖 سنن الترمذي — المناقب</div></div>
+    <div class="hb">«فضلُ عائشةَ على النِّساءِ كفَضلِ الثَّريدِ على سائرِ الطَّعامِ»<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+    <div class="hb">كان ﷺ إذا أراد سفرًا أقرَع بين نسائه فأيَّتهن خرَج سهمُها خرَج بها معه<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+    <h3>أحاديثها الصحيحة عنه ﷺ</h3>
+    <div class="hb">«كانَ رسولُ اللهِ ﷺ يَصنَعُ في بيتِه خِدمةَ أهلِه، فإذا حضَرَتِ الصَّلاةُ خرَج إلى الصَّلاةِ»<div class="hs">📖 صحيح البخاري — الأدب</div></div>
+    <div class="hb">«كانَ خُلُقُه القرآنَ» — جواباً لمن سأل عن خُلُقِه ﷺ<div class="hs">📖 صحيح مسلم — صلاة المسافرين</div></div>
+    <div class="hb">«كانَ يَكونُ في مِهنةِ أهلِه — يَخيطُ ثوبَه، ويَخصِفُ نَعلَه»<div class="hs">📖 مسند أحمد | صحيح الشمائل المحمدية</div></div>
+    <div class="hb">«ما ضَرَب رسولُ اللهِ ﷺ بيَدِه امرأةً ولا خادِمًا قَطُّ»<div class="hs">📖 صحيح مسلم — الفضائل</div></div>
+    <div class="hb">«كانَ يتَبَسَّمُ في وَجهِ كلِّ أحَد»<div class="hs">📖 صحيح الشمائل المحمدية للترمذي</div></div>
+    <h3>موقف حادثة الإفك</h3>
+    <p>اتُّهِمت بالباطل، فأنزل الله براءتها من السماء في عشر آيات من سورة النور. قال النبي ﷺ: "أبشري يا عائشة، أما والله لقد أكرمكِ الله".</p>
+    <div class="hb">«برَّأكِ اللهُ من فوقِ سَبعِ سماواتٍ»<div class="hs">📖 صحيح البخاري — التفسير | سورة النور</div></div>
+    <h3>وفاة النبي ﷺ في حجرها</h3>
+    <div class="hb">«توفِّيَ النبيُّ ﷺ ورأسُه بينَ سَحرِي ونَحري»<div class="hs">📖 صحيح البخاري — المغازي</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • الترمذي • صحيح الشمائل المحمدية</div>`
+  },
+  hafsa:{
+    title:'حفصة بنت عمر بن الخطاب ﵂',
+    sub:'حافظة القرآن | الصوَّامة القوَّامة | بنت الفاروق',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٦٠</span><span class="sl">حديثًا رواه</span></div>
+      <div class="wm-stat"><span class="sn">٣هـ</span><span class="sl">سنة الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٤٥هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>نسبها ومكانتها</h3>
+    <p>بنت عمر بن الخطاب ﵁. توفي عنها زوجها الأول خنيس بن حذافة في المدينة. فخطبها عمر لأبي بكر وعثمان فاعتذرا، فخطبها النبي ﷺ فتزوَّجها.</p>
+    <h3>أحاديثها الصحيحة</h3>
+    <div class="hb">قال ﷺ لجبريل حين أخبره أن حفصة صوَّامة قوَّامة: «حفصةُ صوَّامةٌ قوَّامةٌ وهي زوجَتُك في الجنَّةِ»<div class="hs">📖 سنن ابن ماجه | المستدرك للحاكم</div></div>
+    <div class="hb">كانتْ حفصةُ تقرأُ في المصحفِ فدخَل عليها أخوها عبدالله بن عمر وقال: ما هذا؟ قالت: هذا المصحفُ الذي جَمَعَه أبو بكرٍ وأَمَر عمرُ أن يكونَ عندي<div class="hs">📖 فتح الباري — ابن حجر</div></div>
+    <h3>موقفها في الطلاق والمراجعة</h3>
+    <p>طلَّقها النبي ﷺ مرةً، فأتاه جبريل وقال: "راجِع حفصة فإنها صوَّامة قوَّامة وإنها زوجتك في الجنة"، فراجعها ﷺ.</p>
+    <div class="msrc">المصادر: ابن ماجه • الحاكم • ابن هشام</div>`
+  },
+  umm_salama:{
+    title:'أم سلمة هند بنت أبي أمية ﵂',
+    sub:'أولى المهاجرات | صاحبة المشورة الحكيمة | أطولهن عمرًا',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٣٧٨</span><span class="sl">حديثًا رواه</span></div>
+      <div class="wm-stat"><span class="sn">٤هـ</span><span class="sl">سنة الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٦١هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>هجرتها الأولى</h3>
+    <p>هي وزوجها أبو سلمة من أوائل المهاجرين إلى الحبشة ثم إلى المدينة. توفي أبو سلمة من جراحات أحد، فعدَّت وتزوجها النبي ﷺ.</p>
+    <h3>أحاديثها الصحيحة</h3>
+    <div class="hb">«كانَ رسولُ اللهِ ﷺ إذا خرَج من بيتِه قال: بسمِ اللهِ تَوكَّلتُ على اللهِ، اللهمَّ إنِّي أعوذُ بكَ أن أَضِلَّ أو أُضَلَّ...»<div class="hs">📖 سنن الترمذي | أبو داود</div></div>
+    <div class="hb">«ما من مسلمٍ تُصيبُه مُصيبةٌ فيقولُ إنَّا للهِ وإنَّا إليه راجعون، اللهمَّ أجُرني في مُصيبتي واخلُف لي خيرًا منها إلَّا أَجَره اللهُ وأَخلَفَ له خيرًا منها»<div class="hs">📖 صحيح مسلم — الجنائز</div></div>
+    <h3>مشورتها يوم الحديبية</h3>
+    <p>لمَّا أُبرم صلح الحديبية وأحجم الصحابة عن الحلق والنحر حزنًا، أشارت أم سلمة على النبي ﷺ بأن يخرج ويحلق رأسه أمامهم دون أن يكلِّم أحدًا. ففعل ﷺ فتبعه الجميع.</p>
+    <div class="hb">فقالت: «يا نبيَّ اللهِ أتُحِبُّ ذلك؟ اخرُجْ ثم لا تُكلِّم أحدًا حتَّى تَنحَرَ وتَحلِق» ففعَل فتابَعه الناسُ<div class="hs">📖 صحيح البخاري — الشروط</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • الترمذي • أبو داود</div>`
+  },
+  zaynab_jahsh:{
+    title:'زينب بنت جحش ﵂',
+    sub:'التي زوَّجها الله من فوق سبع سماوات | أكثرهن صدقةً وتصدُّقًا',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">١١</span><span class="sl">حديثًا رواه</span></div>
+      <div class="wm-stat"><span class="sn">٥هـ</span><span class="sl">سنة الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٢٠هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>زواجها من فوق السماء</h3>
+    <p>كانت زوجة زيد بن حارثة ﵁ مُتَبنَّى النبي ﷺ، فطلَّقها زيد ثم زوَّجها الله من النبي ﷺ بالوحي لإبطال حرمة التبني، وأنزل فيها قرآنًا يُتلى.</p>
+    <div class="hb">﴿فَلَمَّا قَضَى زَيْدٌ مِّنْهَا وَطَرًا زَوَّجْنَاكَهَا﴾ — الأحزاب: ٣٧<div class="hs">📖 القرآن الكريم</div></div>
+    <div class="hb">كانت تقولُ لنساءِ النبيِّ: «زوَّجَكُنَّ أهاليكُنَّ وزوَّجَني اللهُ من فوقِ سَبعِ سماواتٍ»<div class="hs">📖 صحيح البخاري — التوحيد</div></div>
+    <h3>أحاديثها الصحيحة</h3>
+    <div class="hb">«اتَّقوا اللهَ في النِّساءِ فإنَّهُنَّ عندَكم عَوانٌ» — روَتْه من خطبة الوداع<div class="hs">📖 مسند أحمد</div></div>
+    <h3>كرمها الفياض</h3>
+    <p>قالت عائشة: "وكانت زينب تُسامِيني في المنزلة من رسول الله ﷺ، وما رأيتُ امرأةً خيرًا في الدين من زينب وأتقى لله وأصدق حديثًا وأوصل للرحم وأعظم صدقةً".</p>
+    <div class="hb">قال ﷺ: «أسرَعُكُنَّ لَحاقًا بي أطوَلُكُنَّ يَدًا» — فكانتْ أولَهن وفاةً زينبُ لأنَّها كانتْ أكثَرَهن صَدَقةً<div class="hs">📖 صحيح مسلم — فضائل الصحابة</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • أحمد</div>`
+  },
+  zaynab_khuzaima:{
+    title:'زينب بنت خزيمة ﵂',
+    sub:'أم المساكين — لُقِّبت بهذا لكثرة إطعامها',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٣</span><span class="sl">أشهر تقريبًا زواجها</span></div>
+      <div class="wm-stat"><span class="sn">٤هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>نسبها ومكانتها</h3>
+    <p>زينب بنت خزيمة بن الحارث من قبيلة هوازن. كانت تُلقَّب بـ"أم المساكين" حتى في الجاهلية لكثرة إطعامها المساكين وسخائها. كانت قبلَه زوجةً لعبيدة بن الحارث الذي استُشهد ببدر.</p>
+    <h3>زواجها ووفاتها</h3>
+    <p>تزوَّجها النبي ﷺ في ربيع الأول عام ٤ هـ. توفيت في حياته ﷺ بعد نحو ثلاثة أشهر أو أقل. وهي إحدى الزوجتين اللتين ماتتا في حياته ﷺ، والأخرى خديجة.</p>
+    <div class="msrc">المصادر: ابن هشام — السيرة | الصلابي — السيرة النبوية</div>`
+  },
+  juwayriya:{
+    title:'جويرية بنت الحارث ﵂',
+    sub:'أيمن امرأة على قومها — سبب عتق مئة بيت من بني المصطلق',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٧</span><span class="sl">أحاديث في المسانيد</span></div>
+      <div class="wm-stat"><span class="sn">٥هـ</span><span class="sl">سنة الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٥٦هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>قصة زواجها</h3>
+    <p>كانت بنت سيد بني المصطلق. وقَعَتْ في سهم ثابت بن قيس غنيمةً. فجاءت النبي ﷺ تستعين به في أداء كتابة المكاتبة. فأدَّى ﷺ كتابتها وتزوَّجها. فلمَّا علم الصحابة بذلك أعتقوا كل من في أيديهم من بني المصطلق إكرامًا لصِهرها.</p>
+    <h3>شهادة عائشة لها</h3>
+    <div class="hb">قالتْ عائشةُ: «ما رأيتُ امرأةً أعظمَ بَرَكةً على قَومِها مِن جُوَيرِيةَ» — لأنَّه بسَبَبِ زَواجِها أُعتِقَ من قَومِها مئةُ بيتٍ<div class="hs">📖 سنن أبي داود | المستدرك للحاكم</div></div>
+    <h3>أحاديثها الصحيحة</h3>
+    <div class="hb">عن جُوَيريةَ: أنَّ النبيَّ ﷺ خرَج من عندِها ثم رجَع فوجَدَها تَذكُرُ اللهَ فقال: «لقد قلتُ بعدَكِ أربعَ كلماتٍ ثلاثَ مرَّاتٍ لو وُزِنَتْ بما قلتِ لَوَزَنَتْهُنَّ: سُبحانَ اللهِ وبحمدِه عددَ خَلقِه»<div class="hs">📖 صحيح مسلم — الذكر والدعاء</div></div>
+    <div class="msrc">المصادر: مسلم • أبو داود • الحاكم</div>`
+  },
+  safiyya:{
+    title:'صفية بنت حيي ﵂',
+    sub:'بنت ملك وزوجة نبي — من نسل هارون عليه السلام',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">١٠</span><span class="sl">أحاديث في المسانيد</span></div>
+      <div class="wm-stat"><span class="sn">٧هـ</span><span class="sl">سنة الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٥٠هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>نسبها الكريم</h3>
+    <p>صفية بنت حيي بن أخطب من بني النضير من بني إسرائيل من نسل هارون بن عمران عليه السلام. أسلمت حين فتح خيبر.</p>
+    <h3>ردُّ النبي ﷺ على من آذاها بنسبها</h3>
+    <div class="hb">جاءتْ صفيَّةُ تَبكي فقيل: قالتْ حفصةُ أنتِ ابنةُ يهوديٍّ. فقال ﷺ: «قولي: إنَّ أبي هارونُ، وإنَّ عمِّي موسى، وإنَّ زوجي محمَّدٌ»<div class="hs">📖 سنن الترمذي — المناقب</div></div>
+    <h3>أحاديثها الصحيحة</h3>
+    <div class="hb">«كانَ رسولُ اللهِ ﷺ مُعتَكِفًا فأَتَيتُه أَزورُه ليلًا فحدَّثتُه ثم قمتُ لأنقَلِبَ فقامَ معي يَقلِبُني...»<div class="hs">📖 صحيح البخاري — الاعتكاف</div></div>
+    <h3>صداقها العتق</h3>
+    <p>أعتقها النبي ﷺ وجعل عتقها صداقها. وأقام وليمتها بحَيسٍ — تمر وسمن وأقِط.</p>
+    <div class="hb">«أعتَقَها وجعَل عِتقَها صَداقَها»<div class="hs">📖 صحيح البخاري — النكاح</div></div>
+    <div class="msrc">المصادر: البخاري • الترمذي</div>`
+  },
+  umm_habiba:{
+    title:'أم حبيبة رملة بنت أبي سفيان ﵂',
+    sub:'المهاجرة إلى الحبشة | زوَّجها النجاشي للنبي ﷺ',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٦٥</span><span class="sl">حديثًا رواه</span></div>
+      <div class="wm-stat"><span class="sn">٧هـ</span><span class="sl">سنة الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٤٤هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>قصة هجرتها وثباتها</h3>
+    <p>هاجرت مع زوجها عبيدالله بن جحش إلى الحبشة هروبًا من أذى قريش، ثم ارتدَّ زوجها وتنصَّر وتوفي هناك. فبقيت ثابتةً على إسلامها وحيدةً في أرض غريبة.</p>
+    <h3>زواجها الفريد</h3>
+    <p>خطبها النبي ﷺ وأرسل إلى النجاشي يطلب تزويجها. فزوَّجها النجاشي عن النبي ﷺ وأمهرها عنه أربعة آلاف درهم وأولم عنه وأرسلها مع شرحبيل بن حسنة إلى المدينة.</p>
+    <h3>أحاديثها الصحيحة</h3>
+    <div class="hb">«مَن صلَّى اثنَتَي عَشرةَ ركعةً في يومٍ وليلةٍ بُنِيَ له بها بيتٌ في الجنَّةِ»<div class="hs">📖 صحيح مسلم — صلاة المسافرين</div></div>
+    <div class="hb">لمَّا جاء أبوها أبو سُفيان ليجلس على فِراش النبيِّ ﷺ طوَتْه وقالتْ: هذا فِراشُ رسولِ اللهِ ﷺ وأنتَ مُشرِكٌ نَجِسٌ<div class="hs">📖 صحيح البخاري — التفسير</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • ابن هشام</div>`
+  },
+  maymuna:{
+    title:'ميمونة بنت الحارث ﵂',
+    sub:'آخر من تزوجها النبي ﷺ | من أبرِّ الناس وأوصلهم',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٤٦</span><span class="sl">حديثًا رواه</span></div>
+      <div class="wm-stat"><span class="sn">٧هـ</span><span class="sl">سنة الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٦١هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>زواجها في عمرة القضاء</h3>
+    <p>تزوَّجها النبي ﷺ في عمرة القضاء عام ٧ هـ. وقيل إنها وهبتْ نفسها للنبي ﷺ فأنزل الله: ﴿وَامْرَأَةً مُّؤْمِنَةً إِن وَهَبَتْ نَفْسَهَا لِلنَّبِيِّ﴾.</p>
+    <h3>شهادة ابن عباس لها</h3>
+    <div class="hb">قال ابنُ عبَّاسٍ: «كانتْ مَيمونةُ من أبَرِّ الناسِ وأوصَلِهم»<div class="hs">📖 فتح الباري | الطبقات لابن سعد</div></div>
+    <h3>أحاديثها الصحيحة</h3>
+    <div class="hb">«بِتُّ عند ميمونةَ فقام النبيُّ ﷺ من الليلِ... ثم صلَّى ركعتَينِ ركعتَينِ حتَّى صلَّى ثمانَ ركعاتٍ ثم أوتَر» — ابن عبَّاس<div class="hs">📖 صحيح البخاري — التهجد</div></div>
+    <div class="hb">روَتْ عن النبي ﷺ أنه كان يُصلِّي ويَضَعُ يدَه على رأسِها أو يَمرُّ بين يدَيها وهي حائض<div class="hs">📖 صحيح البخاري — الحيض</div></div>
+    <div class="msrc">المصادر: البخاري • ابن سعد • فتح الباري</div>`
+  },
+  sawda:{
+    title:'سودة بنت زمعة ﵂',
+    sub:'أول من تزوجها بعد خديجة | كانت تُضحِك رسول الله ﷺ',
+    body:`
+    <div class="wm-stat-row">
+      <div class="wm-stat"><span class="sn">٥</span><span class="sl">أحاديث في المسانيد</span></div>
+      <div class="wm-stat"><span class="sn">١٠ق.هـ</span><span class="sl">سنة الزواج</span></div>
+      <div class="wm-stat"><span class="sn">٥٤هـ</span><span class="sl">سنة وفاتها</span></div>
+    </div>
+    <h3>زواجها الأول بعد خديجة</h3>
+    <p>هي أولى من تزوَّجها النبي ﷺ بعد وفاة خديجة ﵂. كانت أرملةً توفي عنها زوجها السكران بن عمرو في الحبشة مسلمًا. تزوَّجها ﷺ لحمايتها وكرم أهلها.</p>
+    <h3>إيثارها يومها لعائشة</h3>
+    <p>لمَّا كبِرت سودة، خشيت أن يطلِّقها النبي ﷺ، فوهَبت يومها لعائشة ﵂ حبًّا للنبي ﷺ وحرصًا على البقاء في عصمته حتى يُحشَر معه يوم القيامة.</p>
+    <div class="hb">﴿وَإِنِ امْرَأَةٌ خَافَتْ مِن بَعْلِهَا نُشُوزًا أَوْ إِعْرَاضًا﴾ — نزلتْ في شأنِ سودةَ<div class="hs">📖 صحيح البخاري — التفسير | النساء: ١٢٨</div></div>
+    <h3>بشاشتها مع النبي ﷺ</h3>
+    <div class="hb">كانتْ سودةُ امرأةً ضَحوكًا، وكانت تُضحِكُ رسولَ اللهِ ﷺ<div class="hs">📖 صحيح الشمائل المحمدية | الطبقات لابن سعد</div></div>
+    <div class="msrc">المصادر: البخاري • صحيح الشمائل • ابن سعد</div>`
+  }
+};
+
+function openWife(key){
+  const w=wivesData[key];if(!w)return;
+  document.getElementById('wmTitle').textContent=w.title;
+  document.getElementById('wmSub').textContent=w.sub;
+  document.getElementById('wmBody').innerHTML=w.body;
+  document.getElementById('wifeModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeWife(){
+  document.getElementById('wifeModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('wifeModal').addEventListener('click',function(e){if(e.target===this)closeWife();});
+
+// ===========================
+// QUIZ DATA
+// ===========================
+const allQuestions=[
+  // SIRA
+  {cat:'sira',q:'في أي يوم من الأسبوع وُلد النبي ﷺ؟',opts:['الاثنين','الجمعة','الأحد','السبت'],ans:0,exp:'قال ﷺ: "ذاك يومٌ وُلِدتُ فيه" حين سُئل عن صوم الاثنين.',src:'📖 صحيح مسلم — الصيام'},
+  {cat:'sira',q:'كم عمر النبي ﷺ حين بدأ الوحي؟',opts:['٤٠ سنة','٣٥ سنة','٤٥ سنة','٣٠ سنة'],ans:0,exp:'بدأ الوحي حين كان في الأربعين من عمره ﷺ.',src:'📖 صحيح البخاري — بدء الوحي'},
+  {cat:'sira',q:'كم سنة مكث النبي ﷺ يدعو في مكة؟',opts:['١٣ سنة','١٠ سنوات','٢٠ سنة','٧ سنوات'],ans:0,exp:'مكث ﷺ في مكة ثلاثة عشر عامًا بعد البعثة ثم هاجر.',src:'📖 الرحيق المختوم | صحيح البخاري'},
+  {cat:'sira',q:'في أي شهر ووقت كانت الهجرة النبوية؟',opts:['ربيع الأول — الليل','رمضان — النهار','محرم — الصباح','شوال — المساء'],ans:0,exp:'هاجر النبي ﷺ في ربيع الأول ووصل المدينة في ١٢ ربيع الأول.',src:'📖 ابن هشام — السيرة النبوية'},
+  {cat:'sira',q:'من قال: "ما ظنُّكَ باثنَينِ اللهُ ثالثُهما" في الغار؟',opts:['النبي ﷺ لأبي بكر','أبو بكر للنبي ﷺ','عمر لأبي بكر','جبريل للنبي ﷺ'],ans:0,exp:'قاله النبي ﷺ لأبي بكر ﵁ لمَّا خاف أن يُرى.',src:'📖 صحيح البخاري — المناقب'},
+  {cat:'sira',q:'كم عدد المسلمين في غزوة بدر؟',opts:['٣١٣','٥٠٠','١٠٠٠','٢٠٠'],ans:0,exp:'كان المسلمون ٣١٣ مقاتلًا بينما المشركون ألف.',src:'📖 الرحيق المختوم | البخاري'},
+  {cat:'sira',q:'ما اسم جبل الوحي في مكة؟',opts:['جبل النور','جبل عرفات','جبل ثور','جبل أبي قبيس'],ans:0,exp:'غار حراء الذي نزل فيه الوحي يقع في جبل النور.',src:'📖 صحيح البخاري — بدء الوحي'},
+  {cat:'sira',q:'من أشار بحفر الخندق على النبي ﷺ؟',opts:['سلمان الفارسي','عمر بن الخطاب','علي بن أبي طالب','أبو بكر الصديق'],ans:0,exp:'كانت فكرة الخندق فارسيةً اقترحها سلمان الفارسي ﵁.',src:'📖 ابن هشام — الخندق'},
+  {cat:'sira',q:'في أي شهر وسنة كان فتح مكة؟',opts:['رمضان ٨هـ','محرم ٩هـ','رمضان ٧هـ','شعبان ٨هـ'],ans:0,exp:'كان فتح مكة في رمضان من السنة الثامنة الهجرية.',src:'📖 الرحيق المختوم | البخاري'},
+  {cat:'sira',q:'كم عدد الصحابة في حجة الوداع تقريبًا؟',opts:['١٢٤ ألفًا','٥٠ ألفًا','١٠ آلاف','٣٠ ألفًا'],ans:0,exp:'قيل إنهم كانوا نحو ١٢٤ ألفًا وقيل أكثر.',src:'📖 صحيح مسلم — الحج'},
+  // MORALS
+  {cat:'morals',q:'بماذا لُقِّب النبي ﷺ في الجاهلية؟',opts:['الأمين','الصادق','الكريم','الحكيم'],ans:0,exp:'لُقِّب ﷺ بالأمين لصدقه وأمانته قبل البعثة.',src:'📖 ابن هشام — السيرة النبوية'},
+  {cat:'morals',q:'ما الحديث الصحيح عن خُلُق النبي ﷺ برواية عائشة؟',opts:['كانَ خُلُقُه القرآنَ','كان يُطيل الصمت','كان لا يتكلم إلا في الضرورة','كان شديدًا على الجميع'],ans:0,exp:'سُئلت عائشة عن خُلُقه ﷺ فقالت: "كانَ خُلُقُه القرآنَ".',src:'📖 صحيح مسلم — صلاة المسافرين'},
+  {cat:'morals',q:'كيف كان ضحك النبي ﷺ؟',opts:['تبسُّمًا فقط','بصوت عالٍ','بصوت منخفض','لا يضحك أبدًا'],ans:0,exp:'قالت عائشة: "ما رأيتُه يضحك حتى أرى لَهَواتِه إنما كان يتبسَّمُ".',src:'📖 صحيح البخاري — الأدب | صحيح الشمائل'},
+  {cat:'morals',q:'ما الذي لم يفعله النبي ﷺ قط حين يُقدَّم له طعام؟',opts:['لم يذمَّه أبدًا','لم يأكله','لم يشكر عليه','لم يدعُ عليه'],ans:0,exp:'كان لا يذم طعامًا — إن اشتهاه أكله وإن كرهه تركه.',src:'📖 صحيح مسلم — الأشربة'},
+  {cat:'morals',q:'ما قول النبي ﷺ عن الرحمة؟',opts:['ارحموا من في الأرض يرحمكم من في السماء','الرحمة نصف الإيمان','بالرحمة تُبنى الأمم','الراحم يُرحَم دائمًا'],ans:0,exp:'قال ﷺ: "ارحموا من في الأرض يرحمكم من في السماء".',src:'📖 سنن الترمذي — البر والصلة'},
+  // WIVES
+  {cat:'wives',q:'من هي أولى زوجات النبي ﷺ وأكثرهن محبةً إليه؟',opts:['خديجة بنت خويلد','عائشة بنت أبي بكر','حفصة بنت عمر','أم سلمة'],ans:0,exp:'قال ﷺ: "آمنتْ بي حين كذَّبني الناس..." وبشَّر جبريلُ خديجةَ ببيت في الجنة.',src:'📖 البخاري — المناقب'},
+  {cat:'wives',q:'من أكثر أمهات المؤمنين رواية للحديث؟',opts:['عائشة بنت أبي بكر','أم سلمة','حفصة','ميمونة'],ans:0,exp:'روَت عائشة ﵂ نحو ٢٩٤٢ حديثًا وهي أكثر الصحابيات رواية.',src:'📖 مقدمة الفتح — ابن حجر'},
+  {cat:'wives',q:'كيف أخبر النبي ﷺ عن أسرع نسائه لحاقًا به؟',opts:['أطولكن يدًا','أكثركن صيامًا','أعلمكن بالقرآن','أجملكن خلقًا'],ans:0,exp:'قال ﷺ: "أسرعكن لحاقًا بي أطولكن يدًا" — أي أكثرهن صدقة.',src:'📖 صحيح مسلم — فضائل الصحابة'},
+  {cat:'wives',q:'من كانت تُضحِك رسول الله ﷺ وكانت بشوشةً ظريفة؟',opts:['سودة بنت زمعة','عائشة بنت أبي بكر','أم حبيبة','جويرية'],ans:0,exp:'كانت سودة ﵂ امرأةً ضحوكًا تُضحك النبي ﷺ.',src:'📖 صحيح الشمائل المحمدية | ابن سعد'},
+  {cat:'wives',q:'من قالت لأبيها حين جلس على فراش النبي ﷺ: "هذا فراش رسول الله وأنت مشرك"؟',opts:['أم حبيبة','عائشة','زينب بنت جحش','حفصة'],ans:0,exp:'أم حبيبة ﵂ رفضت أن يجلس أبوها أبو سفيان على فراش النبي ﷺ قبل إسلامه.',src:'📖 صحيح البخاري — التفسير'},
+  {cat:'wives',q:'من زوَّج النبيَّ ﷺ أمَّ حبيبة وهو في الحبشة؟',opts:['النجاشي','أبو سفيان','عمرو بن العاص','خالد بن الوليد'],ans:0,exp:'زوَّجها النجاشيُّ ملكُ الحبشة من النبي ﷺ وأمهرها عنه.',src:'📖 ابن هشام | صحيح أبي داود'},
+  // BATTLES
+  {cat:'battles',q:'ما اسم أول غزوة كبرى في الإسلام؟',opts:['غزوة بدر','غزوة أحد','غزوة تبوك','غزوة الخندق'],ans:0,exp:'بدر الكبرى في ١٧ رمضان ٢هـ كانت أول المعارك الفاصلة.',src:'📖 البخاري | الرحيق المختوم'},
+  {cat:'battles',q:'كيف سمَّى الله صلح الحديبية؟',opts:['فتحًا مبينًا','نصرًا عزيزًا','انتصارًا عظيمًا','فرجًا كريمًا'],ans:0,exp:'أنزل الله: ﴿إنَّا فتَحنا لك فتحًا مُبينًا﴾ في سورة الفتح.',src:'📖 صحيح البخاري — الجهاد'},
+  {cat:'battles',q:'من أعطاه النبي ﷺ الراية يوم خيبر؟',opts:['علي بن أبي طالب','أبو بكر الصديق','عمر بن الخطاب','الزبير بن العوام'],ans:0,exp:'قال ﷺ: "لأعطينَّ الراية رجلًا يُحبُّ الله ورسوله" فكانت لعلي ﵁.',src:'📖 صحيح البخاري — المغازي'},
+  {cat:'battles',q:'ماذا قال النبي ﷺ لأهل مكة يوم الفتح؟',opts:['اذهبوا فأنتم الطلقاء','لا رحمة لكم اليوم','تفرَّقوا إلى بيوتكم','لكم الأمان إلا من سلَّ سيفًا'],ans:0,exp:'قال ﷺ: "اذهبوا فأنتم الطلقاء" وهو أعظم عفو في التاريخ.',src:'📖 ابن هشام — السيرة | الرحيق المختوم'},
+  {cat:'battles',q:'كم عدد الغزوات التي غزاها النبي ﷺ بنفسه؟',opts:['٢٧','٣٦','١٥','٢٠'],ans:0,exp:'غزا النبي ﷺ بنفسه ٢٧ غزوة وقيل غير ذلك.',src:'📖 صحيح البخاري — المغازي'},
+  // COMPANIONS
+  {cat:'companions',q:'من قال النبي ﷺ فيه: "لو كنتُ مُتَّخِذًا خليلًا لاتَّخذتُه"؟',opts:['أبو بكر','عمر','علي','عثمان'],ans:0,exp:'قال ﷺ لأبي بكر: "لو كنتُ متَّخِذًا من أهل الأرض خليلًا..."',src:'📖 صحيح مسلم — فضائل الصحابة'},
+  {cat:'companions',q:'من خدم النبي ﷺ عشر سنوات وقال: "ما قال لي أُفٍّ قط"؟',opts:['أنس بن مالك','بلال بن رباح','زيد بن حارثة','ابن مسعود'],ans:0,exp:'أنس ﵁ خدمه ﷺ عشر سنوات ولم يسمع منه كلمة أذى.',src:'📖 صحيح مسلم — الفضائل'},
+  {cat:'companions',q:'من سمَّاه النبي ﷺ "حِبِّي"؟',opts:['زيد بن حارثة','بلال بن رباح','أبو ذر الغفاري','عمار بن ياسر'],ans:0,exp:'قال ﷺ: "ما دعوتُ زيدَ بنَ حارثةَ قطُّ إلا قلتُ: زيدٌ حِبِّي".',src:'📖 الترمذي — المناقب'},
+  {cat:'companions',q:'من قال النبي ﷺ إن الله جعل الحق على لسانه وقلبه؟',opts:['عمر بن الخطاب','أبو بكر الصديق','علي بن أبي طالب','عثمان بن عفان'],ans:0,exp:'قال ﷺ: "إن الله جعل الحق على لسان عمر وقلبه".',src:'📖 سنن الترمذي — المناقب'},
+  // SHAMAIL
+  {cat:'shamail',q:'بمَ وصف جابر بن عبدالله جمال النبي ﷺ؟',opts:['أحسن من القمر','كالشمس في وسط النهار','كالبدر ليلة تمامه','كالنور في الظلام'],ans:0,exp:'قال جابر ﵁: "فكان عندي أحسن من القمر" — يصف وجهه ﷺ.',src:'📖 صحيح الشمائل المحمدية للترمذي'},
+  {cat:'shamail',q:'ما وصف مشية النبي ﷺ؟',opts:['كأنه ينحطُّ من صَبَب','كالريح المندفعة','ببطء وتأنٍّ','يمشي متعجلًا دومًا'],ans:0,exp:'وصف علي ﵁ مشيته بأنه "إذا مشى تقلَّعَ كأنما ينحطُّ من صَبَب".',src:'📖 صحيح الشمائل المحمدية للترمذي'},
+  {cat:'shamail',q:'من وصف خُلُق النبي ﷺ بأنه القرآن؟',opts:['عائشة ﵂','أم سلمة ﵂','حفصة ﵂','أم حبيبة ﵂'],ans:0,exp:'قالت عائشة ﵂ حين سُئلت عن خُلُقه: "كانَ خُلُقُه القرآنَ".',src:'📖 صحيح مسلم — صلاة المسافرين'},
+  {cat:'shamail',q:'ما الذي كان يفعله النبي ﷺ في بيته حسب ما روَت عائشة؟',opts:['يخيط ثوبه ويخصف نعله','يجلس ويتعبد فقط','ينتظر أن يُخدَم','لا يعمل شيئًا'],ans:0,exp:'قالت عائشة: "كان في مِهنةِ أهلِه — يَخيطُ ثوبَه ويَخصِفُ نَعلَه".',src:'📖 مسند أحمد | صحيح الشمائل المحمدية'},
+];
+
+let currentQuestions=[];
+let currentQ=0;
+let score=0;
+let answered=false;
+let currentCat='all';
+
+function selectCat(cat,btn){
+  currentCat=cat;
+  document.querySelectorAll('.quiz-cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  initQuiz();
+}
+
+function initQuiz(){
+  currentQuestions=currentCat==='all'?[...allQuestions]:allQuestions.filter(q=>q.cat===currentCat);
+  // Shuffle
+  currentQuestions.sort(()=>Math.random()-.5);
+  currentQ=0;score=0;answered=false;
+  document.getElementById('totalNum').textContent=currentQuestions.length;
+  document.getElementById('scoreNum').textContent=0;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const wrap=document.getElementById('quizContent');
+  if(currentQ>=currentQuestions.length){
+    const pct=Math.round((score/currentQuestions.length)*100);
+    let emoji=pct>=80?'🏆':pct>=60?'⭐':'📚';
+    let msg=pct>=80?'ممتاز! أنت متميز في معرفة السيرة النبوية':pct>=60?'جيد جدًا! تعلَّمت الكثير':pct>=40?'حسنًا! تحتاج إلى مراجعة أكثر':'استمر في القراءة والتعلم';
+    wrap.innerHTML=`<div class="quiz-end"><span class="score-big">${emoji}</span><h3>${msg}</h3><p>حصلت على <strong>${score}</strong> من <strong>${currentQuestions.length}</strong> — نسبة النجاح: <strong>${pct}%</strong></p><br><button class="btn-pri" onclick="initQuiz()" style="margin-top:1rem">🔄 إعادة الاختبار</button></div>`;
+    return;
+  }
+  answered=false;
+  const q=currentQuestions[currentQ];
+  const prog=Math.round((currentQ/currentQuestions.length)*100);
+  document.getElementById('progressBar').style.width=prog+'%';
+  document.getElementById('scoreNum').textContent=score;
+  wrap.innerHTML=`
+    <div class="q-card">
+      <div class="q-num">السؤال ${currentQ+1} من ${currentQuestions.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="q-options">
+        ${q.opts.map((o,i)=>`<button class="q-opt" onclick="checkAnswer(${i})" id="opt${i}">${o}</button>`).join('')}
+      </div>
+      <div class="q-result" id="qResult"></div>
+      <div class="q-next" id="qNext" style="display:none">
+        <button onclick="nextQ()">${currentQ<currentQuestions.length-1?'السؤال التالي →':'عرض النتيجة 🏆'}</button>
+      </div>
+    </div>`;
+}
+
+function checkAnswer(idx){
+  if(answered)return;
+  answered=true;
+  const q=currentQuestions[currentQ];
+  const opts=document.querySelectorAll('.q-opt');
+  opts.forEach(o=>o.classList.add('disabled'));
+  if(idx===q.ans){
+    score++;
+    document.getElementById('scoreNum').textContent=score;
+    opts[idx].classList.add('correct');
+    const res=document.getElementById('qResult');
+    res.className='q-result correct-msg show';
+    res.innerHTML=`✅ صحيح! ${q.exp}<div class="q-src">${q.src}</div>`;
+  } else {
+    opts[idx].classList.add('wrong');
+    opts[q.ans].classList.add('correct');
+    const res=document.getElementById('qResult');
+    res.className='q-result wrong-msg show';
+    res.innerHTML=`❌ الإجابة الصحيحة: <strong>${q.opts[q.ans]}</strong><br>${q.exp}<div class="q-src">${q.src}</div>`;
+  }
+  document.getElementById('qNext').style.display='block';
+}
+
+function nextQ(){
+  currentQ++;
+  renderQuestion();
+}
+
+// ===========================
+// GENERAL MODAL DATA
+// ===========================
+const modalData={
+  // Stories
+  children:{emoji:'🌸',title:'رحمة النبي ﷺ بالأطفال',body:`
+    <h4>تقبيله للأطفال</h4>
+    <div class="hb">«جاءَ الأقرَعُ بنُ حابسٍ فرأى النبيَّ ﷺ يُقبِّلُ الحسَنَ فقالَ: إنَّ لي عَشرةً من الوَلَدِ ما قَبَّلتُ منهم أحدًا. فنَظَر إليه النبيُّ ﷺ وقال: مَن لا يَرحَمُ لا يُرحَم»<div class="hs">📖 صحيح البخاري • مسلم — كتاب الأدب</div></div>
+    <h4>إطالة السجود من أجل الطفل</h4>
+    <div class="hb">«سجَد ﷺ فرَكِبَ الحسَنُ أو الحُسَينُ على ظَهرِه فأَطالَ السُّجودَ. فقيل: يا رسولَ اللهِ أَطَلتَ! قال: إنَّ ابني ارتَحَلَني فكَرِهتُ أن أُعجِّلَه حتَّى يَقضيَ حاجَته»<div class="hs">📖 سنن النسائي | المستدرك للحاكم</div></div>
+    <h4>البكاء على ابنه إبراهيم</h4>
+    <div class="hb">«تَدمَعُ العَينُ ويَحزَنُ القَلبُ ولا نقولُ إلَّا ما يَرضى ربُّنا، واللهِ يا إبراهيمُ إنَّا بكَ لَمَحزونون»<div class="hs">📖 صحيح البخاري — الجنائز</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • النسائي • الحاكم</div>`},
+  bedouin:{emoji:'🕌',title:'الأعرابي في المسجد',body:`
+    <p>دخل أعرابيٌّ المسجد النبوي وبال في ناحية منه فثار الصحابة غاضبين!</p>
+    <h4>موقف النبي ﷺ الحكيم</h4>
+    <div class="hb">«دَعوهُ ولا تُزرِموهُ» ثم لمَّا فرَغَ دعاهُ وقالَ: «إنَّ هذه المساجدَ لا تَصلُحُ لشيءٍ من هذا البَولِ والقَذَرِ، إنَّما هي لذِكرِ اللهِ والصَّلاةِ وقراءةِ القرآنِ»<div class="hs">📖 صحيح البخاري • مسلم</div></div>
+    <p>فقال الأعرابي: «اللهمَّ ارحَمني ومحمَّدًا ولا تَرحَمْ معَنا أحدًا» فقال ﷺ: «لقد تَحجَّرتَ واسِعًا».</p>
+    <div class="msrc">المصادر: البخاري • مسلم</div>`},
+  taif:{emoji:'🌧️',title:'موقفه من أهل الطائف',body:`
+    <p>في عام الحزن توجَّه ﷺ إلى الطائف يرجو النصرة. رفضه سادتها وأمروا سفهاءهم بإيذائه حتى دمي قدماه الشريفتان.</p>
+    <h4>الدعاء الخالد</h4>
+    <div class="hb">«اللهمَّ إليكَ أَشكو ضَعفَ قوَّتي وقِلَّةَ حيلَتي وهَواني على الناسِ... إن لم يكُنْ بكَ غَضَبٌ عليَّ فلا أُبالي، غيرَ أنَّ عافيَتَك هي أَوسَعُ لي»<div class="hs">📖 دلائل النبوة | الرحيق المختوم</div></div>
+    <h4>رفض الانتقام</h4>
+    <div class="hb">«بل أرجو أن يُخرِجَ اللهُ من أصلابِهم من يعبُدُه ولا يُشرِكُ به شيئًا»<div class="hs">📖 صحيح مسلم — الجهاد</div></div>
+    <div class="msrc">المصادر: مسلم • الرحيق المختوم</div>`},
+  fathmecca:{emoji:'⚔️',title:'عفوه يوم فتح مكة',body:`
+    <h4>دخوله متواضعًا</h4>
+    <div class="hb">«دخَل مكَّةَ يومَ الفتحِ وعليه عمامةٌ سوداءُ ورأسُه مُطَأطَأٌ»<div class="hs">📖 صحيح مسلم — الحج</div></div>
+    <h4>تطهير الكعبة</h4>
+    <div class="hb">«جاءَ الحقُّ وزَهَقَ الباطِلُ» وهو يطعَنُ الأصنامَ<div class="hs">📖 صحيح البخاري</div></div>
+    <h4>العفو العام الخالد</h4>
+    <div class="hb">«يا معشرَ قُريشٍ ما تَظُنُّون أنِّي فاعِلٌ بكم؟» قالوا: أخٌ كريمٌ وابنُ أخٍ كريمٍ. قال: «اذهَبوا فأنتُم الطُّلَقاءُ»<div class="hs">📖 ابن هشام — السيرة | الرحيق المختوم</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • ابن هشام</div>`},
+  neighbor:{emoji:'🏠',title:'تعامله مع جيرانه ﷺ',body:`
+    <h4>الوصية بالجار</h4>
+    <div class="hb">«ما زالَ جبريلُ يُوصيني بالجارِ حتَّى ظَنَنتُ أنَّه سيُوَرِّثُه»<div class="hs">📖 صحيح البخاري • مسلم</div></div>
+    <h4>لا يؤمن من يؤذي جاره</h4>
+    <div class="hb">«واللهِ لا يُؤمِنُ، واللهِ لا يُؤمِنُ، واللهِ لا يُؤمِنُ» قيل: مَن؟ قال: «الذي لا يَأمَنُ جارُه بَوائِقَه»<div class="hs">📖 صحيح البخاري — الأدب</div></div>
+    <h4>الهدية للجار الأقرب أولًا</h4>
+    <div class="hb">قالتْ عائشة: يا رسولَ اللهِ إنَّ لي جارَينِ فأيُّهما أَهدي؟ قال: «إلى أَقرَبِهما مِنكِ بابًا»<div class="hs">📖 صحيح البخاري — الهبة</div></div>
+    <h4>إكرام الجار</h4>
+    <div class="hb">«مَن كانَ يُؤمِنُ باللهِ واليومِ الآخِرِ فَليُكرِمْ جارَه»<div class="hs">📖 صحيح البخاري — الأدب</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم</div>`},
+  humility:{emoji:'🌿',title:'تواضعه ﷺ',body:`
+    <div class="hb">«كانَ يَكونُ في مِهنةِ أهلِه — يَخيطُ ثَوبَه، ويَخصِفُ نَعلَه، ويَحلُبُ شاتَه» — عائشة<div class="hs">📖 مسند أحمد | صحيح الشمائل</div></div>
+    <div class="hb">«لا تُطروني كما أَطرَتِ النَّصارى ابنَ مَريمَ، إنَّما أنا عَبدٌ فقولوا: عَبدُ اللهِ ورسولُه»<div class="hs">📖 صحيح البخاري</div></div>
+    <div class="hb">كانَ يجلِسُ بين أصحابِه فإذا جاءَ غريبٌ سَأَل: أيُّكم محمَّدٌ؟ لأنَّه لا يتميَّزُ عنهم<div class="hs">📖 صحيح البخاري — المناقب</div></div>
+    <div class="msrc">المصادر: البخاري • أحمد • الشمائل</div>`},
+  food:{emoji:'🍯',title:'طعامه وعيشه ﷺ',body:`
+    <div class="hb">قالتْ عائشة: «ما شَبِعَ آلُ محمَّدٍ ﷺ مُنذُ قَدِم المدينةَ من طعامِ البُرِّ ثَلاثَ ليالٍ تِباعًا حتَّى قُبِض»<div class="hs">📖 صحيح البخاري — الأطعمة</div></div>
+    <div class="hb">«ما أكَل رسولُ اللهِ ﷺ على خِوانٍ قَطُّ حتَّى ماتَ»<div class="hs">📖 صحيح البخاري — الأطعمة</div></div>
+    <div class="hb">«كانَ لا يذُمُّ طعامًا، إن اشتَهاهُ أكَله وإن كَرِهَه تَرَكَه»<div class="hs">📖 صحيح مسلم</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • الشمائل</div>`},
+  smile_story:{emoji:'😊',title:'ابتسامته ومزاحه ﷺ',body:`
+    <div class="hb">«ما رأيتُ أحدًا أكثَرَ تَبسُّمًا من رسولِ اللهِ ﷺ» — عبدالله بن الحارث<div class="hs">📖 صحيح الشمائل المحمدية للترمذي</div></div>
+    <div class="hb">«تَبَسُّمُك في وَجهِ أَخيكَ صَدَقةٌ»<div class="hs">📖 الترمذي — البر والصلة</div></div>
+    <p>جاءه شيخٌ فقال: "يا رسول الله ادعُ الله أن يُدخِلَني الجنة" فقال: "إن الجنة لا تدخلها عجوز" فبكت! فقال: "أما إنها لا تدخلها وهي عجوز، إن الله تعالى يُنشئهن فيجعلهن أبكارًا".</p>
+    <div class="hb">قال لرجل: «يا ذا الأُذُنَينِ» يُمازِحُه<div class="hs">📖 سنن أبي داود | الترمذي</div></div>
+    <div class="msrc">المصادر: صحيح الشمائل • الترمذي • أبو داود</div>`},
+  animals:{emoji:'🐦',title:'رحمته بالحيوانات',body:`
+    <div class="hb">«في كلِّ ذاتِ كَبِدٍ رَطبةٍ أجرٌ»<div class="hs">📖 صحيح البخاري — الشرب</div></div>
+    <div class="hb">«إنَّ اللهَ كَتَبَ الإحسانَ على كلِّ شيءٍ، فإذا قَتَلتُم فأَحسِنوا القِتلةَ وإذا ذَبَحتُم فأَحسِنوا الذِّبحةَ»<div class="hs">📖 صحيح مسلم — الصيد</div></div>
+    <div class="hb">دخَل حائطًا فحنَّ إليه جمَلٌ وذَرَفَتْ عيناهُ. فمسَح ﷺ ذِفرَاهُ فسَكَن. ثم قال: «مَن رَبُّ هذا الجَمَلِ؟»<div class="hs">📖 سنن أبي داود | أحمد</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • أبو داود</div>`},
+  poor_story:{emoji:'🤲',title:'كرمه مع الفقراء',body:`
+    <div class="hb">«كانَ رسولُ اللهِ ﷺ أجوَدَ الناسِ، وكانَ أجوَدَ ما يكونُ في رمضانَ حين يَلقاهُ جبريلُ، فكانَ أجوَدَ بالخيرِ من الرِّيحِ المُرسَلة»<div class="hs">📖 صحيح البخاري — الصيام</div></div>
+    <div class="hb">«ما سُئِلَ رسولُ اللهِ ﷺ شيئًا قَطُّ فقالَ لا»<div class="hs">📖 صحيح مسلم — الفضائل</div></div>
+    <div class="hb">أعطى رجلًا غنمًا بين جبلَينِ فرجَع إلى قومِه وقال: «يا قومِ أَسلِموا فإنَّ محمَّدًا يُعطي عَطاءَ من لا يَخشى الفَقر»<div class="hs">📖 صحيح مسلم — الفضائل</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم</div>`},
+  women_story:{emoji:'🌺',title:'تكريمه للمرأة ﷺ',body:`
+    <div class="hb">«استَوصوا بالنِّساءِ خَيرًا»<div class="hs">📖 صحيح البخاري • مسلم</div></div>
+    <div class="hb">«خيرُكم خيرُكم لأَهلِه وأنا خيرُكم لأَهلي»<div class="hs">📖 الترمذي | ابن ماجه</div></div>
+    <div class="hb">كانَ ﷺ إذا دَخَلَتْ فاطِمةُ قامَ إليها وقبَّلَها وأَجلَسَها في مَجلِسِه<div class="hs">📖 أبو داود | الترمذي</div></div>
+    <div class="hb">قالَ في خطبةِ الوَداع: «فاتَّقوا اللهَ في النِّساءِ فإنَّكم أَخَذتُموهُنَّ بأَمانةِ اللهِ»<div class="hs">📖 صحيح مسلم — الحج</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • الترمذي</div>`},
+  friends_story:{emoji:'🤝',title:'مع أصدقائه الكرام',body:`
+    <div class="hb">«إذا أَحبَّ أحدُكم أخاهُ فَليُعلِمْه إيَّاه»<div class="hs">📖 الترمذي — الزهد</div></div>
+    <div class="hb">قال أنس: «كانَ النبيُّ ﷺ يَمزَحُ مع أصحابِه»<div class="hs">📖 الترمذي — البر</div></div>
+    <div class="hb">«الدِّينُ النَّصيحةُ» قلنا: لمَن؟ قال: «للهِ ولكتابِه ولرسولِه ولأئمَّةِ المسلمينَ وعامَّتِهم»<div class="hs">📖 صحيح مسلم — الإيمان</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • الترمذي</div>`},
+  // Morals
+  mercy:{emoji:'💚',title:'رحمته ﷺ',body:`
+    <div class="hb">«ارحَموا مَن في الأرضِ يَرحَمْكم مَن في السَّماء»<div class="hs">📖 الترمذي</div></div>
+    <div class="hb">«لا تُنزَعُ الرَّحمةُ إلَّا من شَقيٍّ»<div class="hs">📖 الترمذي | أبو داود</div></div>
+    <div class="hb">«إنِّي لأَدخُلُ في الصَّلاةِ وأنا أُريدُ إطالَتَها فأَسمَعُ بُكاءَ الصَّبيِّ فأَتَجَوَّزُ خَشيةَ أن أَشُقَّ على أُمِّه»<div class="hs">📖 صحيح البخاري — الأذان</div></div>
+    <div class="msrc">المصادر: البخاري • الترمذي</div>`},
+  patience:{emoji:'🌊',title:'صبره ﷺ',body:`
+    <div class="hb">«إنَّما الصَّبرُ عند الصَّدمةِ الأُولى»<div class="hs">📖 صحيح البخاري — الجنائز</div></div>
+    <div class="hb">«لَقَد أُوذِيتُ في اللهِ وما يُؤذى أحدٌ»<div class="hs">📖 الترمذي</div></div>
+    <div class="hb">«عَجَبًا لأَمرِ المُؤمِنِ إنَّ أَمرَه كلَّه خيرٌ»<div class="hs">📖 صحيح مسلم — الزهد</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم • الترمذي</div>`},
+  tawadu:{emoji:'🌱',title:'تواضعه ﷺ',body:`
+    <div class="hb">«ما ضَرَب ﷺ بيَدِه امرأةً ولا خادِمًا إلَّا أن يُجاهِدَ في سبيلِ اللهِ»<div class="hs">📖 صحيح مسلم</div></div>
+    <div class="hb">«لا تُطروني... فقولوا: عَبدُ اللهِ ورسولُه»<div class="hs">📖 البخاري</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم</div>`},
+  justice:{emoji:'⚖️',title:'عدله ﷺ',body:`
+    <div class="hb">«لو أنَّ فاطِمةَ بنتَ محمَّدٍ سَرَقَتْ لَقَطَعتُ يَدَها»<div class="hs">📖 صحيح البخاري — الحدود</div></div>
+    <div class="hb">«إنَّما أَهلَك الذينَ من قَبلَكم أنَّهم كانوا إذا سرَق فيهم الشَّريفُ تَرَكوهُ»<div class="hs">📖 البخاري</div></div>
+    <div class="msrc">المصادر: البخاري</div>`},
+  honesty:{emoji:'✨',title:'صدقه ﷺ',body:`
+    <div class="hb">«إنَّ الصِّدقَ يَهدي إلى البِرِّ وإنَّ البِرَّ يَهدي إلى الجنَّةِ»<div class="hs">📖 البخاري</div></div>
+    <div class="hb">شهِد أبو سُفيانَ لهِرَقلَ: «ما جَرَّبنا عليه كَذِبًا قَطُّ»<div class="hs">📖 صحيح البخاري — أول حديث</div></div>
+    <div class="msrc">المصادر: البخاري</div>`},
+  hilm:{emoji:'🕊️',title:'حلمه ﷺ',body:`
+    <div class="hb">«ما خُيِّرَ بين أَمرَينِ إلَّا اختارَ أَيسَرَهما ما لم يكُنْ إثمًا»<div class="hs">📖 البخاري</div></div>
+    <div class="hb">«ما انتَقَم رسولُ اللهِ ﷺ لنَفسِه في شيءٍ قَطُّ إلَّا أن تُنتَهَك حُرمةُ اللهِ» — عائشة<div class="hs">📖 صحيح مسلم</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم</div>`},
+  karam:{emoji:'🌊',title:'كرمه ﷺ',body:`
+    <div class="hb">«كانَ أجوَدَ الناسِ... كالرِّيحِ المُرسَلة»<div class="hs">📖 البخاري</div></div>
+    <div class="hb">«ما سُئِل شيئًا قَطُّ فقالَ لا»<div class="hs">📖 مسلم</div></div>
+    <div class="msrc">المصادر: البخاري • مسلم</div>`},
+  haya2:{emoji:'🌸',title:'حياؤه ﷺ',body:`
+    <div class="hb">«كانَ أشَدَّ حَياءً من العَذراءِ في خِدرِها»<div class="hs">📖 البخاري</div></div>
+    <div class="msrc">المصادر: البخاري</div>`},
+  wafa2:{emoji:'💛',title:'وفاؤه ﷺ',body:`
+    <div class="hb">«كانَ إذا ذَبَح الشَّاةَ تَذكَّر خديجةَ فأَرسَل إلى صَديقاتِها»<div class="hs">📖 البخاري</div></div>
+    <div class="msrc">المصادر: البخاري</div>`},
+  // Shamail
+  sh_face:{emoji:'🌟',title:'وجهه الشريف',body:`
+    <div class="hb">«كانَ أحسَنَ الناسِ وَجهًا وأَحسَنَهم خَلقًا»<div class="hs">📖 البخاري — المناقب</div></div>
+    <div class="hb">قال جابر: «رأيتُه في ليلةٍ قَمراءَ فكانَ عِندي أحسَنَ من القمرِ»<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+    <div class="hb">«كانَ وَجهُه ﷺ مُستَديرًا كالقمرِ، وكانَ أبيضَ مُشرَبًا بحُمرةٍ»<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+    <div class="msrc">المصادر: البخاري • صحيح الشمائل المحمدية</div>`},
+  sh_walk:{emoji:'🚶',title:'مشيته وهيئته',body:`
+    <div class="hb">«إذا مَشى تَقلَّعَ كأنَّما يَنحَطُّ من صَبَبٍ، وإذا التَفَت التَفَت جميعًا» — علي ﵁<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+    <div class="hb">«كانَ ﷺ أسرَعَ الناسِ مِشيةً وأَحسَنَهم» — عائشة<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+    <div class="msrc">المصادر: صحيح الشمائل المحمدية</div>`},
+  sh_speech:{emoji:'🗣️',title:'كلامه وحديثه',body:`
+    <div class="hb">«كانَ يُعيدُ الكلمةَ ثلاثًا لتُعقَلَ عنه» — أنس<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+    <div class="hb">«كانَ كلامُه كلامًا فَصلًا يَفهَمُه كلُّ من سَمِعَه» — عائشة<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+    <div class="msrc">المصادر: صحيح الشمائل المحمدية</div>`},
+  sh_laugh:{emoji:'😊',title:'ضحكته وبشاشته',body:`
+    <div class="hb">«ما رأيتُ أحدًا أكثَرَ تَبسُّمًا من رسولِ اللهِ ﷺ»<div class="hs">📖 صحيح الشمائل</div></div>
+    <div class="hb">«كانَ لا يضحَكُ إلَّا تَبسُّمًا»<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+    <div class="msrc">المصادر: صحيح الشمائل المحمدية</div>`},
+  sh_prayer:{emoji:'🌙',title:'عبادته وقيام الليل',body:`
+    <div class="hb">«كانَ يقومُ من الليلِ حتَّى تَتَفطَّرَ قَدَماه... قال: أَفلا أكونُ عبدًا شكورًا»<div class="hs">📖 البخاري — التهجد</div></div>
+    <div class="hb">«كانَ أحَبُّ الأعمالِ إلى النبيِّ ﷺ الذي يَدومُ عليه صاحِبُه وإن قَلَّ»<div class="hs">📖 البخاري</div></div>
+    <div class="msrc">المصادر: البخاري</div>`},
+  sh_eat:{emoji:'🍯',title:'أكله وشربه',body:`
+    <div class="hb">«كانَ لا يذُمُّ طعامًا»<div class="hs">📖 مسلم</div></div>
+    <div class="hb">«كانَ يأكُلُ بثلاثِ أصابعَ ويَلعَقُ يدَه»<div class="hs">📖 مسلم</div></div>
+    <div class="msrc">المصادر: مسلم</div>`},
+  sh_sleep:{emoji:'🌙',title:'نومه ﷺ',body:`
+    <div class="hb">«إذا أخَذَ مَضجَعَه قرأ: اللهمَّ باسمِك أموتُ وأَحيا»<div class="hs">📖 البخاري</div></div>
+    <div class="msrc">المصادر: البخاري</div>`},
+  sh_clothes:{emoji:'👘',title:'لباسه وهيئته',body:`
+    <div class="hb">«البَسوا البَياضَ فإنَّها أطهَرُ وأطيَبُ»<div class="hs">📖 الترمذي</div></div>
+    <div class="hb">«رأيتُه وعليه ثوبانِ أخضَرانِ» — أبو رمثة<div class="hs">📖 صحيح الشمائل المحمدية</div></div>
+    <div class="msrc">المصادر: الترمذي • صحيح الشمائل المحمدية</div>`},
+  // Companions
+  abubakr:{emoji:'🌟',title:'أبو بكر الصديق ﵁',body:`
+    <div class="hb">«لو كنتُ مُتَّخِذًا من أهلِ الأرضِ خليلًا لاتَّخذتُ أبا بكرٍ خليلًا»<div class="hs">📖 مسلم</div></div>
+    <div class="hb">«ما نَفَعَني مالٌ قَطُّ ما نَفَعَني مالُ أبي بكرٍ»<div class="hs">📖 الترمذي</div></div>
+    <div class="hb">«ما دَعَوتُ أحدًا إلى الإسلام إلَّا كانت له كَبوةٌ، إلَّا أبا بكرٍ ما عَكَمَ عنه»<div class="hs">📖 ابن هشام</div></div>
+    <div class="msrc">المصادر: مسلم • الترمذي • ابن هشام</div>`},
+  umar:{emoji:'🌟',title:'عمر بن الخطاب ﵁',body:`
+    <div class="hb">«إنَّ اللهَ جعَل الحقَّ على لسانِ عمرَ وقلبِه»<div class="hs">📖 الترمذي</div></div>
+    <div class="hb">«لو لم أُبعَثْ فيكم لَبُعِثَ عُمَرُ»<div class="hs">📖 أحمد</div></div>
+    <div class="msrc">المصادر: الترمذي • أحمد</div>`},
+  uthman:{emoji:'🌟',title:'عثمان بن عفان ﵁',body:`
+    <div class="hb">«أَلا أَستَحيي مِن رجُلٍ تَستَحيي مِنه الملائكةُ؟»<div class="hs">📖 مسلم</div></div>
+    <div class="msrc">المصادر: مسلم</div>`},
+  ali:{emoji:'🌟',title:'علي بن أبي طالب ﵁',body:`
+    <div class="hb">«أنتَ منِّي وأنا منك»<div class="hs">📖 البخاري</div></div>
+    <div class="hb">«لأُعطِيَنَّ الرَّايةَ غدًا رجُلًا يُحِبُّ اللهَ ورسولَه ويُحِبُّه اللهُ ورسولُه»<div class="hs">📖 البخاري</div></div>
+    <div class="msrc">المصادر: البخاري</div>`},
+  anas:{emoji:'🌟',title:'أنس بن مالك ﵁',body:`
+    <div class="hb">«خَدَمتُه ﷺ عَشرَ سنينَ فما قالَ لي أُفٍّ قَطُّ، ولا قالَ لشيءٍ فعَلتُه: لِمَ فعَلتَه؟»<div class="hs">📖 مسلم</div></div>
+    <div class="msrc">المصادر: مسلم</div>`},
+  bilal:{emoji:'🌟',title:'بلال بن رباح ﵁',body:`
+    <div class="hb">قال ﷺ: «يا بلالُ حدِّثني بأرجى عملٍ عَمِلتَه في الإسلام فإنِّي سَمِعتُ خَشخَشةَ نَعلَيك بين يَدَيَّ في الجنَّة»<div class="hs">📖 صحيح البخاري — التهجد</div></div>
+    <div class="msrc">المصادر: البخاري</div>`},
+  zaid:{emoji:'🌟',title:'زيد بن حارثة ﵁',body:`
+    <div class="hb">«ما دعَوتُ زيدَ بنَ حارثةَ قَطُّ إلَّا قلتُ: زيدٌ حِبِّي»<div class="hs">📖 الترمذي</div></div>
+    <div class="msrc">المصادر: الترمذي</div>`},
+  ibnmasood:{emoji:'🌟',title:'عبدالله بن مسعود ﵁',body:`
+    <div class="hb">«مَن أحبَّ أن يقرأَ القرآنَ غضًّا فليقرأه بقراءةِ ابنِ أمِّ عَبدٍ»<div class="hs">📖 ابن ماجه</div></div>
+    <div class="msrc">المصادر: ابن ماجه</div>`},
+  // Kids
+  k_kiss:{emoji:'🌸',title:'كان يُقبِّل الأطفال 💚',body:`
+    <p>كان النبي ﷺ يُقبِّل الحسن والحسين ويضمُّهما بمحبة!</p>
+    <div class="kh">«جاءَ الأقرَعُ بنُ حابسٍ فرأى النبيَّ ﷺ يُقبِّلُ الحسَنَ فقالَ: إنَّ لي عَشرةً ما قَبَّلتُ أحدًا منهم. فقال ﷺ: مَن لا يَرحَمُ لا يُرحَمُ»<div class="ks">📖 البخاري • مسلم</div></div>
+    <p style="font-size:.9rem;color:var(--brown)">💡 الدرس: التعبير عن الحب للأطفال سنَّة نبوية يُحبُّها الله!</p>`},
+  k_prayer:{emoji:'🕌',title:'أطال السجود من أجل طفل!',body:`
+    <p>كان ﷺ يصلي والحسين ركب على ظهره كحصان 🐴 فأطال السجود حتى ينزل وحده!</p>
+    <div class="kh">«إنَّ ابني ارتَحَلَني فكَرِهتُ أن أُعجِّلَه حتَّى يَقضيَ حاجَته»<div class="ks">📖 النسائي | الحاكم</div></div>
+    <p style="font-size:.9rem;color:var(--brown)">💡 كان لا يريد أن يُزعج الطفل حتى لو كان يصلي!</p>`},
+  k_bird:{emoji:'🐦',title:'قصة أبي عُمير والعصفور',body:`
+    <p>كان لأبي عُمير الصغير عصفور صغير اسمه "النُّغير" فمات. فجاء النبي ﷺ ورأى الطفل حزينًا.</p>
+    <div class="kh">«يا أبا عُمَيرٍ ما فَعَلَ النُّغَيرُ؟»<div class="ks">📖 البخاري | مسلم</div></div>
+    <p style="font-size:.9rem;color:var(--brown)">💡 سأل النبي ﷺ عن عصفور طفل صغير بمحبة واهتمام حقيقي!</p>`},
+  k_food:{emoji:'🍇',title:'علَّم طفلًا آداب الأكل',body:`
+    <p>جلس طفل يأكل ويده تتحرك في كل الصحن! فعلَّمه النبي ﷺ بكلمات بسيطة جميلة.</p>
+    <div class="kh">«يا غُلامُ سَمِّ اللهَ وكُلْ بيَمينِك وكُلْ ممَّا يَليك»<div class="ks">📖 البخاري • مسلم</div></div>
+    <p style="font-size:.9rem;color:var(--brown)">💡 ثلاثة دروس في جملة واحدة — هكذا يُعلِّم الحكيم!</p>`},
+  k_hug:{emoji:'🤗',title:'كان يحمل الأطفال ويدعو لهم',body:`
+    <div class="kh">«اللهمَّ ارحَمهُما فإنِّي أَرحَمُهما» — وهو يضع الحسن والحسين على فخذيه<div class="ks">📖 البخاري</div></div>
+    <p style="font-size:.9rem;color:var(--brown)">💡 كان يحمل الأطفال ويدعو لهم بالرحمة من الله!</p>`},
+  k_fatima:{emoji:'🌹',title:'حبُّه لفاطمة ابنته',body:`
+    <div class="kh">«فاطِمةُ بَضعةٌ مِنِّي فمَن أَغضَبَها أَغضَبَني»<div class="ks">📖 البخاري</div></div>
+    <div class="kh">كانَ ﷺ إذا دَخَلَتْ فاطِمةُ قامَ إليها ورحَّبَ بها وقَبَّلَها وأَجلَسَها في مَجلِسِه<div class="ks">📖 أبو داود | الترمذي</div></div>
+    <p style="font-size:.9rem;color:var(--brown)">💡 كان يقوم من مكانه لاستقبال ابنته — هذا هو الحب الحقيقي!</p>`},
+  k_play:{emoji:'🏃',title:'كان يداعب الأطفال',body:`
+    <div class="kh">«كانَ يَمسَحُ وُجوهَ الغِلمانِ ويُداعِبُهم ويُمازِحُهم»<div class="ks">📖 صحيح الشمائل المحمدية</div></div>
+    <p style="font-size:.9rem;color:var(--brown)">💡 النبي ﷺ كان يلعب مع الأطفال ويمسح وجوههم بمحبة!</p>`},
+  k_dua:{emoji:'🤲',title:'كان يدعو للأطفال ببركة',body:`
+    <div class="kh">«كانَ يُؤتَى بالصِّبيانِ فيُبَرِّكُ عليهم ويُحنِّكُهم»<div class="hs">📖 صحيح مسلم</div></div>
+    <p style="font-size:.9rem;color:var(--brown)">💡 كان الصحابة يُحضِرون أطفالهم الجُدد ليُبرِّك عليهم النبي ﷺ!</p>`}
+};
+
+function openModal(key){
+  const d=modalData[key];
+  if(!d)return;
+  document.getElementById('mEmoji').textContent=d.emoji||'📖';
+  document.getElementById('mTitle').textContent=d.title;
+  document.getElementById('mSub').textContent=d.sub||'';
+  document.getElementById('mBody').innerHTML=d.body;
+  document.getElementById('storyModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('storyModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ===========================
+// SEARCH FUNCTIONALITY
+// ===========================
+const searchIndex=[
+  {title:'خديجة بنت خويلد',desc:'أولى زوجاته ﷺ | سيدة نساء الجنة',page:'wives',key:'khadija',icon:'🌺'},
+  {title:'عائشة بنت أبي بكر',desc:'أكثر الصحابيات رواية | أحبُّ نسائه إليه',page:'wives',key:'aisha',icon:'🌺'},
+  {title:'حفصة بنت عمر',desc:'حافظة القرآن | الصوَّامة القوَّامة',page:'wives',key:'hafsa',icon:'🌺'},
+  {title:'أم سلمة',desc:'صاحبة المشورة الحكيمة | أولى المهاجرات',page:'wives',key:'umm_salama',icon:'🌺'},
+  {title:'زينب بنت جحش',desc:'التي زوَّجها الله من فوق سبع سماوات',page:'wives',key:'zaynab_jahsh',icon:'🌺'},
+  {title:'جويرية بنت الحارث',desc:'أيمن امرأة على قومها | بركة على قومها',page:'wives',key:'juwayriya',icon:'🌺'},
+  {title:'صفية بنت حيي',desc:'بنت ملك وزوجة نبي | من نسل هارون',page:'wives',key:'safiyya',icon:'🌺'},
+  {title:'أم حبيبة',desc:'المهاجرة إلى الحبشة | زوَّجها النجاشي',page:'wives',key:'umm_habiba',icon:'🌺'},
+  {title:'ميمونة بنت الحارث',desc:'آخر من تزوجها | من أبرِّ الناس',page:'wives',key:'maymuna',icon:'🌺'},
+  {title:'سودة بنت زمعة',desc:'أول من بعد خديجة | كانت تُضحِك النبي ﷺ',page:'wives',key:'sawda',icon:'🌺'},
+  {title:'زينب بنت خزيمة',desc:'أم المساكين | توفيت في حياته ﷺ',page:'wives',key:'zaynab_khuzaima',icon:'🌺'},
+  {title:'الخط الزمني',desc:'رحلة زمنية كاملة من المولد حتى الوفاة',page:'timeline',key:null,icon:'📜'},
+  {title:'فتح مكة',desc:'اذهبوا فأنتم الطلقاء — عفو عظيم',page:'stories',key:'fathmecca',icon:'⚔️'},
+  {title:'غزوة بدر',desc:'أولى المعارك الكبرى | ٣١٣ على ألف',page:'map',key:'badr',icon:'🗺️'},
+  {title:'غزوة أحد',desc:'جُرح النبي ﷺ | استشهاد ٧٠ صحابيًا',page:'map',key:'uhud',icon:'🗺️'},
+  {title:'صلح الحديبية',desc:'الفتح المبين | أسرع انتشار للإسلام',page:'map',key:'hudaybiya',icon:'🗺️'},
+  {title:'الإسراء والمعراج',desc:'فُرضت الصلوات الخمس في هذه الليلة',page:'map',key:'quds',icon:'🌙'},
+  {title:'أخلاقه ﷺ',desc:'الرحمة والصبر والتواضع والعدل والصدق',page:'morals',key:null,icon:'🌿'},
+  {title:'رحمته بالأطفال',desc:'كان يُقبِّلهم ويُطيل السجود من أجلهم',page:'stories',key:'children',icon:'🌸'},
+  {title:'شمائله الجسدية',desc:'وصفه في هيئته ومشيته وكلامه',page:'shamail',key:null,icon:'🌹'},
+  {title:'أبو بكر الصديق',desc:'خليل النبي ﷺ | صاحبه في الغار',page:'companions',key:'abubakr',icon:'👥'},
+  {title:'عمر بن الخطاب',desc:'الفاروق | الحق على لسانه وقلبه',page:'companions',key:'umar',icon:'👥'},
+  {title:'أنس بن مالك',desc:'خادمه ﷺ عشر سنوات',page:'companions',key:'anas',icon:'👥'},
+  {title:'أدعيته وذكره',desc:'أجمل الأدعية الثابتة في مواقف الحياة',page:'duaa',key:null,icon:'🤲'},
+  {title:'قسم الأطفال',desc:'قصص وأحاديث مبسطة عن حبه ﷺ للأطفال',page:'kids',key:null,icon:'🌟'},
+  {title:'أسئلة ثقافية',desc:'اختبر معلوماتك في السيرة النبوية',page:'quiz',key:null,icon:'❓'},
+  {title:'الطائف',desc:'رُدَّ وأُهين فدعا لهم بالهداية',page:'stories',key:'taif',icon:'🌧️'},
+  {title:'الأعرابي في المسجد',desc:'درس في الرفق بالجاهل',page:'stories',key:'bedouin',icon:'🕌'},
+  {title:'كرمه مع الفقراء',desc:'ما سأله أحد شيئًا قط فقال لا',page:'stories',key:'poor_story',icon:'🤲'},
+  {title:'تكريمه للمرأة',desc:'أعلن حقوق المرأة في خطبة الوداع',page:'stories',key:'women_story',icon:'🌺'},
+  {title:'مولده ونشأته',desc:'وُلد في مكة عام الفيل يوم الاثنين',page:'timeline',key:null,icon:'⭐'},
+  {title:'وفاته ﷺ',desc:'انتقل إلى الرفيق الأعلى في حجر عائشة',page:'timeline',key:null,icon:'🕊️'},
+];
+
+function doSearch(val){
+  const res=document.getElementById('searchResults');
+  if(!val||val.length<2){res.classList.remove('open');return;}
+  const q=val.toLowerCase().trim();
+  const found=searchIndex.filter(i=>
+    i.title.includes(val)||i.desc.includes(val)||
+    i.title.toLowerCase().includes(q)||i.desc.toLowerCase().includes(q)
+  );
+  if(found.length===0){
+    res.innerHTML='<div class="sr-empty">لا توجد نتائج</div>';
+    res.classList.add('open');return;
+  }
+  // Group by page
+  const groups={};
+  found.forEach(f=>{
+    const g=f.page;
+    if(!groups[g])groups[g]=[];
+    groups[g].push(f);
+  });
+  let html='';
+  const pageNames={home:'الرئيسية',timeline:'الخط الزمني',map:'خريطة السيرة',stories:'القصص',morals:'الأخلاق',shamail:'الشمائل',wives:'أمهات المؤمنين',companions:'الصحابة',duaa:'الأدعية',lessons:'الدروس',quiz:'الأسئلة',kids:'للأطفال'};
+  Object.keys(groups).forEach(pg=>{
+    html+=`<div class="sr-section">${pageNames[pg]||pg}</div>`;
+    groups[pg].forEach(f=>{
+      html+=`<div class="sr-item" onclick="searchGo('${f.page}','${f.key||''}')"><h4>${f.icon} ${f.title}</h4><p>${f.desc}</p></div>`;
+    });
+  });
+  res.innerHTML=html;
+  res.classList.add('open');
+}
+
+function searchGo(page,key){
+  showPage(page);
+  document.getElementById('searchResults').classList.remove('open');
+  document.getElementById('searchInput').value='';
+  if(key){
+    setTimeout(()=>{
+      if(page==='wives')openWife(key);
+      else if(page==='map')showMapInfo(key);
+      else openModal(key);
+    },300);
+  }
+}
+
+function closeSearch(){
+  document.getElementById('searchResults').classList.remove('open');
+}
+
+// ===========================
+// INIT
+// ===========================
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();closeWife();}
+});
+initQuiz();
+</script>
+</body>
+</html>
