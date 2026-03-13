@@ -345,10 +345,10 @@ footer p{margin-top:.2rem;font-weight:300}
       <div class="card" onclick="showPage('lessons')"><div class="card-icon">💡</div><h3>ماذا نتعلم؟</h3><p>دروس معاصرة خالدة مع الأحاديث الداعمة لها.</p><div class="card-arrow">تعلم →</div></div>
       <div class="card" onclick="showPage('quiz')" style="background:linear-gradient(135deg,#1A2A3A,#2D3A4A);border-color:rgba(33,150,243,.3)"><div class="card-icon" style="background:rgba(33,150,243,.2)">❓</div><h3 style="color:#90CAF9">أسئلة ثقافية</h3><p style="color:rgba(245,240,232,.75)">اختبر معلوماتك بأسئلة ممتعة كثيرة من السيرة النبوية!</p><div class="card-arrow" style="color:#64B5F6">ابدأ الاختبار →</div></div>
       <div class="card" onclick="showPage('kids')" style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-color:var(--gold)"><div class="card-icon" style="background:rgba(201,168,76,.2)">🌟</div><h3 style="color:var(--gold-light)">قسم الأطفال</h3><p style="color:rgba(245,240,232,.8)">قصص وأحاديث مبسطة عن رحمة النبي ﷺ بالأطفال.</p><div class="card-arrow" style="color:var(--gold-light)">للأطفال →</div></div>
-      <div class="card" style="background:var(--beige);border:1.5px solid rgba(201,168,76,.3)"><div class="card-icon">📚</div><h3>المصادر المعتمدة</h3><p>الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • الصلابي</p><div class="card-arrow">جميع المعلومات موثقة ✓</div></div>
+      <div class="card" style="background:var(--beige);border:1.5px solid rgba(201,168,76,.3)"><div class="card-icon">📚</div><h3>المصادر المعتمدة</h3><p>الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • </p><div class="card-arrow">جميع المعلومات موثقة ✓</div></div>
     </div>
   </div>
-  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div><p>المصادر: الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • الصلابي</p><p style="margin-top:.4rem;font-size:.73rem;opacity:.45">اللهم صلِّ وسلم على سيدنا محمد وعلى آله وصحبه أجمعين</p></footer>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div><p>المصادر: الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • </p><p style="margin-top:.4rem;font-size:.73rem;opacity:.45">اللهم صلِّ وسلم على سيدنا محمد وعلى آله وصحبه أجمعين</p></footer>
 </div>
 <!-- ==================== TIMELINE ==================== -->
 <div id="timeline" class="page">
@@ -362,7 +362,7 @@ footer p{margin-top:.2rem;font-weight:300}
           <p>وُلد ﷺ بمكة يوم الاثنين في عام الفيل. أرضعته حليمة السعدية. شُقَّ صدره في بني سعد. مات أبوه قبل مولده وأمه وهو ابن ست سنين.</p>
           <div class="tl-hadiths">
             <div class="hb">«سُئِل ﷺ عن صَومِ يومِ الاثنين قال: ذاكَ يومٌ وُلِدتُ فيه، وأُنزِل عليَّ فيه»<div class="hs">📖 صحيح مسلم — كتاب الصيام</div></div>
-            <div class="hb">«إنَّ أُمِّي رأتْ حين وضَعَتْني نورًا أضاءتْ له قُصورُ الشَّام»<div class="hs">📖 مسند أحمد | الصلابي — السيرة النبوية</div></div>
+            <div class="hb">«إنَّ أُمِّي رأتْ حين وضَعَتْني نورًا أضاءتْ له قُصورُ الشَّام»<div class="hs">📖 مسند أحمد |  — السيرة النبوية</div></div>
             <div class="hb">«أنَّ جبريلَ أتاه وهو يلعبُ مع الغِلمانِ فأخذَه فصَرَعَه وشقَّ عن قلبِه فاستَخرجَ منه عَلَقةً فقال: هذا حظُّ الشَّيطانِ منك»<div class="hs">📖 صحيح مسلم — كتاب الإيمان</div></div>
           </div>
           <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
@@ -1257,7 +1257,7 @@ const wivesData={
     <p>زينب بنت خزيمة بن الحارث من قبيلة هوازن. كانت تُلقَّب بـ"أم المساكين" حتى في الجاهلية لكثرة إطعامها المساكين وسخائها. كانت قبلَه زوجةً لعبيدة بن الحارث الذي استُشهد ببدر.</p>
     <h3>زواجها ووفاتها</h3>
     <p>تزوَّجها النبي ﷺ في ربيع الأول عام ٤ هـ. توفيت في حياته ﷺ بعد نحو ثلاثة أشهر أو أقل. وهي إحدى الزوجتين اللتين ماتتا في حياته ﷺ، والأخرى خديجة.</p>
-    <div class="msrc">المصادر: ابن هشام — السيرة | الصلابي — السيرة النبوية</div>`
+    <div class="msrc">المصادر: ابن هشام — السيرة |  — السيرة النبوية</div>`
   },
   juwayriya:{
     title:'جويرية بنت الحارث ﵂',
@@ -2161,10 +2161,10 @@ footer p{margin-top:.2rem;font-weight:300}
       <div class="card" onclick="showPage('lessons')"><div class="card-icon">💡</div><h3>ماذا نتعلم؟</h3><p>دروس معاصرة خالدة مع الأحاديث الداعمة لها.</p><div class="card-arrow">تعلم →</div></div>
       <div class="card" onclick="showPage('quiz')" style="background:linear-gradient(135deg,#1A2A3A,#2D3A4A);border-color:rgba(33,150,243,.3)"><div class="card-icon" style="background:rgba(33,150,243,.2)">❓</div><h3 style="color:#90CAF9">أسئلة ثقافية</h3><p style="color:rgba(245,240,232,.75)">اختبر معلوماتك بأسئلة ممتعة كثيرة من السيرة النبوية!</p><div class="card-arrow" style="color:#64B5F6">ابدأ الاختبار →</div></div>
       <div class="card" onclick="showPage('kids')" style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-color:var(--gold)"><div class="card-icon" style="background:rgba(201,168,76,.2)">🌟</div><h3 style="color:var(--gold-light)">قسم الأطفال</h3><p style="color:rgba(245,240,232,.8)">قصص وأحاديث مبسطة عن رحمة النبي ﷺ بالأطفال.</p><div class="card-arrow" style="color:var(--gold-light)">للأطفال →</div></div>
-      <div class="card" style="background:var(--beige);border:1.5px solid rgba(201,168,76,.3)"><div class="card-icon">📚</div><h3>المصادر المعتمدة</h3><p>الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • الصلابي</p><div class="card-arrow">جميع المعلومات موثقة ✓</div></div>
+      <div class="card" style="background:var(--beige);border:1.5px solid rgba(201,168,76,.3)"><div class="card-icon">📚</div><h3>المصادر المعتمدة</h3><p>الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • </p><div class="card-arrow">جميع المعلومات موثقة ✓</div></div>
     </div>
   </div>
-  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div><p>المصادر: الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • الصلابي</p><p style="margin-top:.4rem;font-size:.73rem;opacity:.45">اللهم صلِّ وسلم على سيدنا محمد وعلى آله وصحبه أجمعين</p></footer>
+  <footer><div class="f-logo">رحلة في رحاب السيرة ﷺ</div><p>المصادر: الرحيق المختوم • ابن هشام • البخاري • مسلم • الشمائل المحمدية • صحيح الشمائل • </p><p style="margin-top:.4rem;font-size:.73rem;opacity:.45">اللهم صلِّ وسلم على سيدنا محمد وعلى آله وصحبه أجمعين</p></footer>
 </div>
 <!-- ==================== TIMELINE ==================== -->
 <div id="timeline" class="page">
@@ -2178,7 +2178,7 @@ footer p{margin-top:.2rem;font-weight:300}
           <p>وُلد ﷺ بمكة يوم الاثنين في عام الفيل. أرضعته حليمة السعدية. شُقَّ صدره في بني سعد. مات أبوه قبل مولده وأمه وهو ابن ست سنين.</p>
           <div class="tl-hadiths">
             <div class="hb">«سُئِل ﷺ عن صَومِ يومِ الاثنين قال: ذاكَ يومٌ وُلِدتُ فيه، وأُنزِل عليَّ فيه»<div class="hs">📖 صحيح مسلم — كتاب الصيام</div></div>
-            <div class="hb">«إنَّ أُمِّي رأتْ حين وضَعَتْني نورًا أضاءتْ له قُصورُ الشَّام»<div class="hs">📖 مسند أحمد | الصلابي — السيرة النبوية</div></div>
+            <div class="hb">«إنَّ أُمِّي رأتْ حين وضَعَتْني نورًا أضاءتْ له قُصورُ الشَّام»<div class="hs">📖 مسند أحمد |  — السيرة النبوية</div></div>
             <div class="hb">«أنَّ جبريلَ أتاه وهو يلعبُ مع الغِلمانِ فأخذَه فصَرَعَه وشقَّ عن قلبِه فاستَخرجَ منه عَلَقةً فقال: هذا حظُّ الشَّيطانِ منك»<div class="hs">📖 صحيح مسلم — كتاب الإيمان</div></div>
           </div>
           <button class="tl-btn" onclick="event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'">الأحاديث ▼</button>
@@ -3073,7 +3073,7 @@ const wivesData={
     <p>زينب بنت خزيمة بن الحارث من قبيلة هوازن. كانت تُلقَّب بـ"أم المساكين" حتى في الجاهلية لكثرة إطعامها المساكين وسخائها. كانت قبلَه زوجةً لعبيدة بن الحارث الذي استُشهد ببدر.</p>
     <h3>زواجها ووفاتها</h3>
     <p>تزوَّجها النبي ﷺ في ربيع الأول عام ٤ هـ. توفيت في حياته ﷺ بعد نحو ثلاثة أشهر أو أقل. وهي إحدى الزوجتين اللتين ماتتا في حياته ﷺ، والأخرى خديجة.</p>
-    <div class="msrc">المصادر: ابن هشام — السيرة | الصلابي — السيرة النبوية</div>`
+    <div class="msrc">المصادر: ابن هشام — السيرة |  — السيرة النبوية</div>`
   },
   juwayriya:{
     title:'جويرية بنت الحارث ﵂',
