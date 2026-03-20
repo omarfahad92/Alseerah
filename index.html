@@ -1751,33 +1751,20 @@ footer p{margin-top:.2rem;font-weight:300}
 // PAGE NAVIGATION
 // ===========================
 function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const pg=document.getElementById(id);
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var pg=document.getElementById(id);
   if(pg) pg.classList.add('active');
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  const nl=document.getElementById('nav-'+id);
+  document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active');});
+  var nl=document.getElementById('nav-'+id);
   if(nl) nl.classList.add('active');
   window.scrollTo(0,0);
   if(id==='quiz') initQuiz();
-  // Update URL hash for shareable links
-  try{ history.pushState(null, '', '#' + id); }catch(e){ location.hash = id; }
+  try{ history.pushState(null,'','#'+id); }catch(e){ try{ location.hash=id; }catch(e2){} }
 }
 
 // Navigate to hash on load and on back/forward
-function navigateToHash(){
-  const hash = location.hash.replace('#','') || 'home';
-  const validPages = ['home','timeline','map','stories','morals','shamail','companions','duaa','lessons','wives','quiz','kids','museum','futuhaat','prayer'];
-  const id = validPages.includes(hash) ? hash : 'home';
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const pg=document.getElementById(id);
-  if(pg) pg.classList.add('active');
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  const nl=document.getElementById('nav-'+id);
-  if(nl) nl.classList.add('active');
-  window.scrollTo(0,0);
-  if(id==='quiz') initQuiz();
-}
-window.addEventListener('popstate', navigateToHash);
+
+
 
 // ===========================
 // MAP DATA
@@ -3842,4 +3829,1255 @@ const pageSubMap = {
 function applyCompanionNames(lang){
   const compPage = document.getElementById('companions');
   if(!compPage) return;
-  const arNames=['أبو بكر الصديق (رضي الله عنه)','عمر بن الخطاب (رضي الله عنه)','عثمان بن عفان (رضي الله عنه)','علي بن أبي طالب (رضي الله عنه)','طلحة بن عبيدالله (رضي الله عنه)','الزبير بن العوام (رضي الله عنه)','عبدالرحمن بن عوف (رضي الله عنه)','سعد بن أبي وقاص (رضي الله عنه)','سعيد بن زيد (رضي الله عنه)','أبو عبيدة بن الجراح (رضي الله عنه)','أنس بن مالك (رضي الله عنه)','بلال بن رباح (رضي الله عنه)','زيد بن حارثة (رضي الله عنه)','عبدالله بن مسعود (رضي الله عنه)','سلمان الفارسي (رضي الله عنه)','أبو الدرداء (رضي الله عنه)','معاذ بن جبل (رضي الله عنه)','عمار بن ياسر (رضي الله عنه)','خباب بن الأ
+  const arNames=['أبو بكر الصديق (رضي الله عنه)','عمر بن الخطاب (رضي الله عنه)','عثمان بن عفان (رضي الله عنه)','علي بن أبي طالب (رضي الله عنه)','طلحة بن عبيدالله (رضي الله عنه)','الزبير بن العوام (رضي الله عنه)','عبدالرحمن بن عوف (رضي الله عنه)','سعد بن أبي وقاص (رضي الله عنه)','سعيد بن زيد (رضي الله عنه)','أبو عبيدة بن الجراح (رضي الله عنه)','أنس بن مالك (رضي الله عنه)','بلال بن رباح (رضي الله عنه)','زيد بن حارثة (رضي الله عنه)','عبدالله بن مسعود (رضي الله عنه)','سلمان الفارسي (رضي الله عنه)','أبو الدرداء (رضي الله عنه)','معاذ بن جبل (رضي الله عنه)','عمار بن ياسر (رضي الله عنه)','خباب بن الأرت (رضي الله عنه)','صهيب الرومي (رضي الله عنه)','أبو هريرة (رضي الله عنه)','عبدالله بن عمر (رضي الله عنه)','عبدالله بن عباس (رضي الله عنه)','سعد بن معاذ (رضي الله عنه)','سعد بن عبادة (رضي الله عنه)','أُبَيُّ بن كعب (رضي الله عنه)','زيد بن ثابت (رضي الله عنه)','جابر بن عبدالله (رضي الله عنه)','خالد بن الوليد (رضي الله عنه)','عمرو بن العاص (رضي الله عنه)','أسامة بن زيد (رضي الله عنه)','مصعب بن عمير (رضي الله عنه)','عبدالله بن رواحة (رضي الله عنه)','نعيم بن مسعود (رضي الله عنه)','حمزة بن عبدالمطلب (رضي الله عنه)','جعفر بن أبي طالب (رضي الله عنه)'];
+  const enNames=['Abu Bakr al-Siddiq (رضي الله عنه)','Umar ibn al-Khattab (رضي الله عنه)','Uthman ibn Affan (رضي الله عنه)','Ali ibn Abi Talib (رضي الله عنه)','Talhah ibn Ubaydullah (رضي الله عنه)','Al-Zubayr ibn al-Awwam (رضي الله عنه)','Abd al-Rahman ibn Awf (رضي الله عنه)','Sa\'d ibn Abi Waqqas (رضي الله عنه)','Sa\'id ibn Zayd (رضي الله عنه)','Abu Ubayda ibn al-Jarrah (رضي الله عنه)','Anas ibn Malik (رضي الله عنه)','Bilal ibn Rabah (رضي الله عنه)','Zayd ibn Harithah (رضي الله عنه)','Abdullah ibn Mas\'ud (رضي الله عنه)','Salman al-Farisi (رضي الله عنه)','Abu al-Darda\' (رضي الله عنه)','Mu\'adh ibn Jabal (رضي الله عنه)','Ammar ibn Yasir (رضي الله عنه)','Khabbab ibn al-Aratt (رضي الله عنه)','Suhayb al-Rumi (رضي الله عنه)','Abu Hurairah (رضي الله عنه)','Abdullah ibn Umar (رضي الله عنه)','Abdullah ibn Abbas (رضي الله عنه)','Sa\'d ibn Mu\'adh (رضي الله عنه)','Sa\'d ibn Ubadah (رضي الله عنه)','Ubayy ibn Ka\'b (رضي الله عنه)','Zayd ibn Thabit (رضي الله عنه)','Jabir ibn Abdullah (رضي الله عنه)','Khalid ibn al-Walid (رضي الله عنه)','Amr ibn al-As (رضي الله عنه)','Usamah ibn Zayd (رضي الله عنه)','Mus\'ab ibn Umayr (رضي الله عنه)','Abdullah ibn Rawahah (رضي الله عنه)','Nu\'aym ibn Mas\'ud (رضي الله عنه)','Hamzah ibn Abd al-Muttalib (رضي الله عنه)','Ja\'far ibn Abi Talib (رضي الله عنه)'];
+  const names = compPage.querySelectorAll('.comp-name');
+  const src = lang === 'en' ? enNames : arNames;
+  names.forEach((el,i)=>{ if(src[i]) el.textContent = src[i]; });
+}
+
+function applyWifeNames(lang){
+  const wivesPage = document.getElementById('wives');
+  if(!wivesPage) return;
+  const arNames=['خديجة بنت خويلد (رضي الله عنها)','عائشة بنت أبي بكر (رضي الله عنها)','حفصة بنت عمر (رضي الله عنها)','أم سلمة هند بنت أبي أمية (رضي الله عنها)','زينب بنت جحش (رضي الله عنها)','زينب بنت خزيمة (رضي الله عنها)','جويرية بنت الحارث (رضي الله عنها)','صفية بنت حيي (رضي الله عنها)','أم حبيبة رملة بنت أبي سفيان (رضي الله عنها)','ميمونة بنت الحارث (رضي الله عنها)','سودة بنت زمعة (رضي الله عنها)'];
+  const enNames=['Khadijah bint Khuwaylid (رضي الله عنها)','Aisha bint Abi Bakr (رضي الله عنها)','Hafsah bint Umar (رضي الله عنها)','Umm Salamah bint Abi Umayyah (رضي الله عنها)','Zaynab bint Jahsh (رضي الله عنها)','Zaynab bint Khuzaymah (رضي الله عنها)','Juwayriyyah bint al-Harith (رضي الله عنها)','Safiyyah bint Huyayy (رضي الله عنها)','Umm Habibah bint Abi Sufyan (رضي الله عنها)','Maymunah bint al-Harith (رضي الله عنها)','Sawdah bint Zam\'ah (رضي الله عنها)'];
+  const arTitles=['أولى زوجاته ﷺ | سيدة نساء الجنة','الصدِّيقة بنت الصدِّيق | أحبُّ النساء إليه','حافظة القرآن | الصوَّامة القوَّامة','صاحبة المشورة الحكيمة | أولى المهاجرات','التي زوَّجها الله من فوق سبع سماوات','أم المساكين','أيمن امرأة على قومها','بنت ملك وزوجة نبي','المهاجرة إلى الحبشة | زوَّجها النجاشي','آخر من تزوجها النبي ﷺ','أول من تزوجها بعد خديجة'];
+  const enTitles=['First wife · Lady of the Women of Paradise','Daughter of al-Siddiq · Most beloved to him ﷺ','Guardian of the Quran · Devoted worshipper','The wise counselor · First emigrant','Married by divine command from above seven heavens','Mother of the Poor','The greatest blessing upon her people','Daughter of a king, wife of a Prophet','Emigrant to Abyssinia · Married by al-Najashi','Last wife of the Prophet ﷺ','First wife after Khadijah'];
+  const nameEls = wivesPage.querySelectorAll('.wife-name');
+  const titleEls = wivesPage.querySelectorAll('.wife-title');
+  const ns = lang==='en' ? enNames : arNames;
+  const ts = lang==='en' ? enTitles : arTitles;
+  nameEls.forEach((el,i)=>{ if(ns[i]) el.textContent=ns[i]; });
+  titleEls.forEach((el,i)=>{ if(ts[i]) el.textContent=ts[i]; });
+}
+
+// ===========================
+// DARK MODE
+// ===========================
+function toggleDark(on){
+  document.documentElement.setAttribute('data-theme', on ? 'dark' : '');
+  document.getElementById('darkIcon').textContent = on ? '🌙' : '☀️';
+  try{ localStorage.setItem('seerah_dark', on ? '1' : '0'); }catch(e){}
+}
+
+// ===========================
+// MODAL OPEN/CLOSE  
+// ===========================
+function openModal(key){
+  const d = modalData[key];
+  if(!d) return;
+  const isEn = getLang() === 'en';
+  document.getElementById('mEmoji').textContent = d.emoji || '📖';
+  document.getElementById('mTitle').textContent = isEn && d.en_title ? d.en_title : d.title;
+  document.getElementById('mSub').textContent = d.sub || '';
+  document.getElementById('mBody').innerHTML = isEn && d.en_body ? d.en_body : d.body;
+  const cb = document.querySelector('.mclose-btn button');
+  if(cb) cb.textContent = translations[getLang()].modal_close;
+  document.getElementById('storyModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  document.getElementById('storyModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openWife(key){
+  const w = wivesData[key];
+  if(!w) return;
+  const isEn = getLang() === 'en';
+  document.getElementById('wmTitle').textContent = isEn && w.en_title ? w.en_title : w.title;
+  document.getElementById('wmSub').textContent = isEn && w.en_sub ? w.en_sub : w.sub;
+  document.getElementById('wmBody').innerHTML = isEn && w.en_body ? w.en_body : w.body;
+  const cb = document.querySelector('.wm-close-btn button');
+  if(cb) cb.textContent = translations[getLang()].wife_close;
+  document.getElementById('wifeModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWife(){
+  document.getElementById('wifeModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ closeModal(); closeWife(); }
+});
+
+// ===========================
+// COMPREHENSIVE ENGLISH CONTENT
+// ===========================
+
+const enContent = {
+
+  // ---- TIMELINE ----
+  timeline: [
+    { year:'610 CE — 1 BH', title:'The First Revelation — The Dawn of Prophethood',
+      desc:'In the cave of Hira\', the Archangel Jibreel came to him ﷺ with the first revelation: "Read in the name of your Lord who created." He returned trembling to Khadijah (رضي الله عنها) who consoled and reassured him.',
+      hadiths:[
+        {text:'"He came to me whilst I was asleep, with a cloth of brocade wherein was writing, and said: Read. I said: I cannot read. He pressed me until I could bear it no more, then released me and said: Read."',src:'📖 Sahih al-Bukhari — The Beginning of Revelation'},
+        {text:'Waraqah said: "This is the same Angel who came to Moses. Would that I were young — would that I could be alive when your people drive you out." The Prophet ﷺ asked: "Will they drive me out?" Waraqah said: "Yes — never has a man brought what you bring without being opposed."',src:'📖 Sahih al-Bukhari — The Beginning of Revelation'}
+      ],
+      badges:['📍 Cave of Hira\'','📖 Al-Bukhari'], btn:'Hadiths ▼', hide:'Hide ▲' },
+    { year:'610–622 CE', title:'The Call in Makkah — Persecution and Steadfastness',
+      desc:'Thirteen years of secret then open preaching. Torture of the weak and vulnerable. Blockade in the Pass of Abu Talib for three years. The Night Journey and Ascension — the Prayers were prescribed. The Year of Grief.',
+      hadiths:[
+        {text:'He ﷺ passed by Ammar and his parents being tortured and said: "Be patient, O family of Yasir — for your appointed meeting is Paradise."',src:'📖 Al-Hakim | Al-Rahiq al-Makhtum'},
+        {text:'"I have been harmed in the cause of Allah as no one else has been harmed, and I have been made to fear in the cause of Allah as no one else has been made to fear."',src:'📖 Sunan al-Tirmidhi — The Virtues'},
+        {text:'"Fifty prayers were prescribed upon me, then reduced to five. And it was proclaimed: O Muhammad — the word is not changed with Me, and these five are equal to the fifty."',src:'📖 Sahih al-Bukhari — Times of Prayer'}
+      ],
+      badges:['📍 Makkah','📖 Al-Bukhari • Muslim • Al-Tirmidhi'], btn:'Hadiths ▼', hide:'Hide ▲' },
+    { year:'622 CE — 1 AH', title:'The Migration to Madinah al-Munawwarah',
+      desc:'He ﷺ and Abu Bakr (رضي الله عنه) departed at night. They stayed three days in the Cave of Thawr. They arrived in Madinah to great rejoicing.',
+      hadiths:[
+        {text:'Abu Bakr said: "I said to the Prophet ﷺ while we were in the cave: If one of them looks beneath his feet he will see us. He said: O Abu Bakr — what is your opinion of two whose third is Allah?"',src:'📖 Sahih al-Bukhari — The Virtues'},
+        {text:'When the Prophet ﷺ arrived in Madinah, the people chanted: "The full moon has risen upon us from the valleys of farewell..."',src:'📖 Al-Mawahib al-Ladunniyyah | Al-Shamail al-Muhammadiyyah'}
+      ],
+      badges:['📍 Makkah → Madinah','📖 Al-Bukhari'], btn:'Hadiths ▼', hide:'Hide ▲' },
+    { year:'622–625 CE', title:'Building the State — Badr and Uhud',
+      desc:'He built the Prophet\'s Mosque and established brotherhood between the Muhajirun and Ansar. Badr: a victory of 313 against 1,000. Uhud: 70 martyred and the Prophet ﷺ was wounded.',
+      hadiths:[
+        {text:'"Abd al-Rahman ibn Awf came and the Prophet ﷺ established brotherhood between him and Sa\'d ibn al-Rabi\'. Sa\'d said: I have two halves of my wealth — take which half you wish..."',src:'📖 Sahih al-Bukhari — The Virtues'},
+        {text:'He ﷺ said on the day of Badr: "O Allah — here are the Quraysh coming in their arrogance... O Allah, grant me the victory You promised me."',src:'📖 Sahih Muslim — The Book of Jihad'},
+        {text:'"How can a people prosper when they have wounded their Prophet?" So Allah revealed: ﴿You have no part in the matter﴾',src:'📖 Sahih Muslim — The Book of Jihad'}
+      ],
+      badges:['📍 Madinah • Badr • Uhud','📖 Al-Bukhari • Muslim'], btn:'Hadiths ▼', hide:'Hide ▲' },
+    { year:'627 CE — 5 AH', title:'The Battle of the Confederates — The Trench',
+      desc:'10,000 fighters besieged Madinah. Salman al-Farisi (رضي الله عنه) advised digging the trench. The Prophet ﷺ dug with his own hands. The Confederates withdrew after a month.',
+      hadiths:[
+        {text:'They were digging and chanting: "We are those who pledged to Muhammad — to wage Jihad for as long as we live." And he ﷺ would answer: "O Allah — there is no goodness except the goodness of the Hereafter — so bless the Ansar and the Muhajirun."',src:'📖 Sahih al-Bukhari — Jihad'},
+        {text:'"I saw the Messenger of Allah ﷺ carrying the soil until his belly was covered in dust."',src:'📖 Sahih al-Bukhari — Jihad'}
+      ],
+      badges:['📍 Madinah','📖 Al-Bukhari'], btn:'Hadiths ▼', hide:'Hide ▲' },
+    { year:'628 CE — 6 AH', title:'The Treaty of Hudaybiyyah — The Clear Victory',
+      desc:'He ﷺ set out with 1,400 for \'Umrah and was turned back. The treaty was signed. In less than two years, more people embraced Islam than in the previous twenty years.',
+      hadiths:[
+        {text:'Umar said: "Are we not upon the truth and our enemy upon falsehood?" He said: "Yes." He said: "Why then do we accept humiliation in our religion?" He said: "I am the servant of Allah and His Messenger — I will not go against His command."',src:'📖 Sahih al-Bukhari — The Book of Conditions'},
+        {text:'"You consider the Conquest of Makkah to be the great victory — but we consider the great victory to be the Pledge of Ridwan at Hudaybiyyah."',src:'📖 Sahih al-Bukhari — Jihad'}
+      ],
+      badges:['📍 Hudaybiyyah','📖 Al-Bukhari'], btn:'Hadiths ▼', hide:'Hide ▲' },
+    { year:'630 CE — 8 AH', title:'The Conquest of Makkah al-Mukarramah',
+      desc:'He ﷺ entered Makkah in Ramadan with his head bowed low, at the head of 10,000. He purified the Ka\'bah of its idols. He proclaimed a general amnesty.',
+      hadiths:[
+        {text:'"Truth has arrived and falsehood has perished — for falsehood is bound to perish." And he was striking the idols.',src:'📖 Sahih al-Bukhari'},
+        {text:'"O people of Quraysh... Go — for you are free."',src:'📖 Ibn Hisham — The Seerah | Al-Rahiq al-Makhtum'},
+        {text:'He entered Makkah wearing a black turban.',src:'📖 Sahih Muslim — The Book of Hajj'}
+      ],
+      badges:['📍 Makkah al-Mukarramah','📖 Al-Bukhari • Muslim • Ibn Hisham'], btn:'Hadiths ▼', hide:'Hide ▲' },
+    { year:'632 CE — 10 AH', title:'The Farewell Pilgrimage — The Eternal Testament',
+      desc:'His only Hajj, with 124,000 Companions. The Farewell Sermon at Arafah. The verse was revealed: ﴿Today I have perfected your religion for you﴾.',
+      hadiths:[
+        {text:'"Verily your blood, your wealth, and your honour are sacred to you as sacred as this day of yours in this month of yours."',src:'📖 Sahih al-Bukhari — Hajj'},
+        {text:'"I have left among you that which, if you hold to it, you will never go astray: the Book of Allah and my Sunnah."',src:'📖 Muwatta\' Malik | Al-Hakim'},
+        {text:'"Have I delivered the message?" They said: Yes. He said: "O Allah, be my witness" — three times.',src:'📖 Sahih al-Bukhari — Hajj'}
+      ],
+      badges:['📍 Arafat','📖 Al-Bukhari • Muslim'], btn:'Hadiths ▼', hide:'Hide ▲' },
+    { year:'632 CE — 11 AH', title:'His Passing ﷺ',
+      desc:'On the twelfth of Rabi\' al-Awwal, he ﷺ departed to the Highest Companion, in the chamber of \'A\'ishah (رضي الله عنها). His final words were: "The Highest Companion."',
+      hadiths:[
+        {text:'\'A\'ishah said: "The last words he spoke were: O Allah — the Highest Companion."',src:'📖 Sahih al-Bukhari — Al-Maghazi'},
+        {text:'Abu Bakr said: "Whoever was worshipping Muhammad — Muhammad has died. And whoever was worshipping Allah — Allah is Ever-Living and does not die." Then he recited: ﴿Muhammad is but a messenger﴾.',src:'📖 Sahih al-Bukhari — Al-Maghazi'},
+        {text:'"On the day he died ﷺ, everything was darkened by it." — Anas (رضي الله عنه)',src:'📖 Sunan al-Tirmidhi — The Virtues'}
+      ],
+      badges:['📍 Madinah al-Munawwarah','📖 Al-Bukhari • Al-Tirmidhi'], btn:'Hadiths ▼', hide:'Hide ▲' }
+  ],
+
+  // ---- MAP ----
+  mapHint: '🗺️ Click any city to discover its story',
+  mapLabels: { mecca:'● Makkah al-Mukarramah', hira:'● Cave of Hira\'', taif:'● Al-Ta\'if',
+    madinah:'● Madinah al-Munawwarah', badr:'● Badr', uhud:'● Uhud', hudaybiya:'● Hudaybiyyah',
+    khaybar:'● Khaybar', tabuk:'● Tabuk', quds:'● Jerusalem' },
+  mapBtns: ['Makkah','Madinah','Cave of Hira\'','Badr','Uhud','Al-Ta\'if','Hudaybiyyah','Khaybar','Tabuk','Jerusalem'],
+
+  // ---- STORIES GRID ----
+  stories: [
+    {tag:'Patience', title:'His Response to the People of Ta\'if', desc:'Rejected and humiliated — he prayed for their guidance instead of revenge.'},
+    {tag:'Forbearance', title:'The Bedouin in the Mosque', desc:'A timeless lesson in patience with the ignorant — "Do not startle him, leave him."'},
+    {tag:'Forgiveness', title:'His Pardon on the Day of Conquest', desc:'"Go — for you are all free." — The greatest act of clemency in history.'},
+    {tag:'Neighbourliness', title:'His Treatment of Neighbours', desc:'His counsel for the neighbour was so persistent the Companions thought he would inherit.'},
+    {tag:'Mercy', title:'His Mercy towards Children', desc:'He would kiss them and prolong his prostration out of consideration for them.'},
+    {tag:'Humility', title:'His Humility with the Companions', desc:'The master of his people used to serve them and work with his own hands.'},
+    {tag:'Asceticism', title:'His Food and Way of Living ﷺ', desc:'The family of Muhammad never ate their fill of wheat bread for three consecutive nights.'},
+    {tag:'Cheerfulness', title:'His Smile and Gentle Humour ﷺ', desc:'He was the most cheerful of people — his jokes were sincere and never hurtful.'},
+    {tag:'Mercy', title:'His Compassion for Animals', desc:'He forbade harming animals and commanded gentleness with all creatures.'},
+    {tag:'Generosity', title:'His Generosity towards the Poor', desc:'Never once did he turn away a person who asked him for something.'},
+    {tag:'Justice', title:'His Honouring of Women', desc:'He proclaimed the rights of women in his Farewell Sermon before all.'},
+    {tag:'Friendship', title:'With His Noble Companions', desc:'He would visit them, joke with them, and ask about any who were absent.'},
+    {tag:'Worship', title:'His Night Prayer ﷺ', desc:'He would stand in prayer until his feet were swollen out of gratitude to Allah.'},
+    {tag:'Mercy', title:'Visiting the Sick', desc:'He visited the young Jewish boy and invited him to Islam — and he embraced it.'},
+    {tag:'Virtue', title:'The Merit of Charity', desc:'Authenticated accounts of his own charity ﷺ and his encouragement to give.'},
+    {tag:'Forgiveness', title:'His Pardoning of Wrongdoers', desc:'He forgave Wahshi — the killer of his uncle — and his fiercest enemies.'},
+    {tag:'Knowledge', title:'His Encouragement of Knowledge', desc:'He ordered the prisoners of Badr to teach the Muslim children as their ransom.'},
+    {tag:'Supplication', title:'His Supplication ﷺ for the Ummah', desc:'He saved his guaranteed answered prayer as intercession for the Ummah on Judgement Day.'},
+    {tag:'Commerce', title:'His Trustworthiness in Trade', desc:'He was called "The Trustworthy" before Prophethood and never deceived anyone.'},
+    {tag:'Miracle', title:'The Night of Al-Isra\' and Al-Mi\'raj', desc:'He was carried from Makkah to Jerusalem, then ascended through the heavens.'},
+    {tag:'Trust in Allah', title:'In the Cave of Thawr with Abu Bakr', desc:'"O Abu Bakr — what is your opinion of two whose third is Allah?"'},
+    {tag:'Trust in Allah', title:'His Supplication on the Day of Badr', desc:'He kept supplicating his Lord with sincerity until his cloak fell from his shoulders.'},
+    {tag:'Patience', title:'His Wound at the Battle of Uhud', desc:'He was wounded and his tooth was broken — yet he said: "O Allah, forgive my people."'},
+    {tag:'Leadership', title:'Digging the Trench', desc:'He descended to dig alongside his Companions until dust covered his chest.'},
+    {tag:'Wisdom', title:'The Treaty of Hudaybiyyah', desc:'A peace that appeared to be weakness — but proved to be a magnificent triumph.'},
+    {tag:'Miracle', title:'The Longing of the Date Palm Trunk', desc:'The trunk wept with yearning for the Prophet ﷺ — so he embraced it until it was still.'},
+  ],
+
+  // ---- MORALS ----
+  morals: [
+    {icon:'💚', title:'Mercy', desc:'He was merciful to the elderly, the young, Muslims and non-Muslims alike, and even to animals.',
+     hadith:'"Show mercy to those on earth — the One above the heavens will show mercy to you."', src:'📖 Al-Tirmidhi',
+     quote:'He ﷺ was seen prolonging his prostration because al-Husayn had climbed upon his back.'},
+    {icon:'🌊', title:'Patience', desc:'He bore the loss of his children, his wife, and his uncle, and endured the harm of the polytheists for thirteen years.',
+     hadith:'"I have been harmed in the cause of Allah as no one else has been harmed."', src:'📖 Al-Tirmidhi',
+     quote:'"True patience is at the first strike of calamity." — Al-Bukhari'},
+    {icon:'🌱', title:'Humility', desc:'He would pass by children and greet them, visit the sick, and work with his own hands.',
+     hadith:'"He never struck a servant with his hand, nor a woman."', src:'📖 Muslim',
+     quote:'He would sit among his Companions and strangers could not distinguish him without asking.'},
+    {icon:'⚖️', title:'Justice', desc:'He made no distinction between the noble and the lowly, nor between Muslim and non-Muslim in judgement.',
+     hadith:'"If Fatimah bint Muhammad were to steal, I would cut off her hand."', src:'📖 Al-Bukhari',
+     quote:'He ﷺ ruled in favour of a Jewish man in a dispute with a Muslim.'},
+    {icon:'✨', title:'Truthfulness', desc:'He was called "The Trustworthy" before Prophethood, and his very enemies bore witness to his honesty.',
+     hadith:'"Truthfulness leads to righteousness, and righteousness leads to Paradise."', src:'📖 Al-Bukhari',
+     quote:'Abu Sufyan said to Heraclius: "We have never known him to lie."'},
+    {icon:'🕊️', title:'Forbearance', desc:'He never took revenge for himself, and whenever given a choice between two matters he always chose the easier.',
+     hadith:'"He was never given a choice between two matters except he chose the easier of them, so long as it was not a sin."', src:'📖 Al-Bukhari',
+     quote:'Whenever someone came to him with rudeness, he smiled and gave them more.'},
+    {icon:'🌊', title:'Generosity', desc:'He ﷺ was the most generous of people. He was never seen refusing his hand to one who asked.',
+     hadith:'"He was the most generous of people... like the blowing wind."', src:'📖 Al-Bukhari',
+     quote:'He gave a man a valley full of sheep — and the man\'s entire tribe embraced Islam out of joy at his generosity.'},
+    {icon:'🌸', title:'Modesty', desc:'He ﷺ was more modest than a virgin in her seclusion.',
+     hadith:'"He was more modest than a virgin in her seclusion."', src:'📖 Al-Bukhari',
+     quote:'If he wished to reproach someone he would say: "What is the matter with certain people?" — never naming anyone.'},
+    {icon:'💛', title:'Loyalty', desc:'He was the most loyal of people to his word and the most mindful of those who showed him kindness.',
+     hadith:'"He would then remember Khadijah and send gifts to her friends after her passing."', src:'📖 Al-Bukhari',
+     quote:'Whenever something was gifted to him, he would remember Khadijah and send it to her friends.'}
+  ],
+
+  // ---- SHAMAIL ----
+  shamail: [
+    {title:'🌟 His Noble Face',
+     h1:'"He was the most handsome of people in face and most beautiful in form — neither excessively tall nor short."', src1:'📖 Sahih al-Bukhari — The Virtues',
+     h2:'"I saw him on a moonlit night and found him in my eyes more beautiful than the full moon." — Jabir', src2:'📖 Sahih al-Shamail al-Muhammadiyyah'},
+    {title:'🚶 His Walk and Bearing',
+     h1:'"When he walked, he walked with energy as though descending from a height, and when he turned he turned his whole body."', src1:'📖 Sahih al-Shamail — Al-Tirmidhi',
+     h2:'"He was the most energetic of walkers — he walked the walk of the brave."', src2:'📖 Sahih al-Shamail al-Muhammadiyyah'},
+    {title:'🗣️ His Speech and Conversation',
+     h1:'"His speech was clear and distinct — understood by all who heard it." — \'A\'ishah', src1:'📖 Sahih al-Shamail al-Muhammadiyyah',
+     h2:'"He would repeat a word three times so that it would be understood from him." — Anas', src2:'📖 Sahih al-Shamail al-Muhammadiyyah'},
+    {title:'😊 His Smile and Cheerfulness',
+     h1:'"I never saw anyone who smiled more than the Messenger of Allah ﷺ." — \'Abdullah ibn al-Harith', src1:'📖 Sahih al-Shamail — Al-Tirmidhi',
+     h2:'"He would not laugh except as a smile."', src2:'📖 Sahih al-Shamail al-Muhammadiyyah'},
+    {title:'🌙 His Worship and Night Prayer',
+     h1:'"He would stand in prayer until his feet were swollen. \'A\'ishah said: Why do you do this when Allah has forgiven your past and future sins? He said: Should I not be a grateful servant?"', src1:'📖 Sahih al-Bukhari — The Night Prayer',
+     h2:'', src2:''},
+    {title:'🍯 His Eating and Drinking',
+     h1:'"He never criticised food — if he desired it he ate it, and if he disliked it he left it."', src1:'📖 Sahih Muslim',
+     h2:'"He would eat with three fingers and lick his hand before wiping it."', src2:'📖 Sahih Muslim'},
+    {title:'🌙 His Sleep ﷺ',
+     h1:'"When he took to his bed he would say: In Your name, O Allah, I die and I live."', src1:'📖 Sahih al-Bukhari — Supplications',
+     h2:'', src2:''},
+    {title:'👘 His Clothing and Appearance',
+     h1:'"Wear white garments — for they are purer and more pleasant."', src1:'📖 Al-Tirmidhi',
+     h2:'"I saw him wearing two green garments." — Abu Rimthah', src2:'📖 Sahih al-Shamail al-Muhammadiyyah'}
+  ],
+
+  // ---- COMPANIONS SECTION HEADERS ----
+  compSections: [
+    'The Four Rightly-Guided Caliphs',
+    'The Ten Promised Paradise',
+    'His Closest Companions',
+    'The Noble Helpers of the Prophet ﷺ',
+    'Noble Commanders and Callers'
+  ],
+  compTitles: [
+    'Intimate friend of the Prophet ﷺ · First Caliph · Companion in the Cave',
+    'Al-Faruq · The Second Caliph',
+    'Dhu al-Nurayn · The Third Caliph',
+    'Gate of the City of Knowledge · The Fourth Caliph',
+    'Talhah the Good · Shielded the Prophet ﷺ with his body at Uhud',
+    'The Disciple of the Messenger of Allah ﷺ',
+    'One of the wealthiest and most generous Companions',
+    'The first to shoot an arrow in the cause of Allah',
+    'Among the earliest forerunners',
+    'The Trustworthy of this Ummah',
+    'His servant ﷺ for ten years · Servant of the Prophet',
+    'Mu\'adhdhin of the Messenger of Allah ﷺ · The Patient Abyssinian',
+    'The Beloved of the Messenger of Allah ﷺ · His adopted son',
+    'Carrier of his sandals and water vessel · Jurist of the Ummah',
+    'Companion of the counsel of the Trench · Of the Prophet\'s Household',
+    'The Sage of this Ummah',
+    'Most knowledgeable of the Ummah in the lawful and unlawful',
+    'Son of the first martyr woman in Islam',
+    'The craftsman tortured for his faith',
+    'Who sold himself to Allah for all his wealth',
+    'Greatest narrator of Hadith',
+    'The Jurist who followed the Sunnah most closely',
+    'The Scholar of the Quran · Habr al-Ummah',
+    'Chief of the Helpers · The Throne of the Most Merciful shook at his death',
+    'Chief of the Khazraj · Owner of the communal vessel',
+    'Master of the Quran reciters · Most knowledgeable of the Ummah in the Quran',
+    'Scribe of the Revelation · Compiler of the Quran',
+    'The Devoted Narrator · Approximately 1,540 hadiths',
+    'The Sword of Allah Unsheathed',
+    'Conqueror of Egypt · The Brilliant Strategist',
+    'The Beloved and Son of the Beloved',
+    'The First Ambassador of Islam · Martyr of Uhud',
+    'Poet of the Prophet ﷺ · Commander at Mu\'tah',
+    'Who scattered the Confederates single-handedly',
+    'Master of the Martyrs · Uncle of the Prophet ﷺ',
+    'The Two-Winged One · Martyr of Mu\'tah'
+  ],
+  compHadiths:[
+    {text:'"Were I to take a close friend from among the people of the earth, I would take Abu Bakr as a close friend."',src:'📖 Muslim'},
+    {text:'"Allah has placed truth upon the tongue of Umar and in his heart."',src:'📖 Al-Tirmidhi'},
+    {text:'"Should I not feel modest before a man from whom even the angels feel modesty?"',src:'📖 Muslim'},
+    {text:'"You are from me and I am from you."',src:'📖 Al-Bukhari'},
+    {text:'"If anyone wishes to look upon a martyr walking on the face of the earth, let him look at Talhah."',src:'📖 Al-Tirmidhi'},
+    {text:'"Every Prophet has a disciple, and my disciple is al-Zubayr."',src:'📖 Al-Bukhari'},
+    {text:'"Abd al-Rahman will enter Paradise crawling."',src:'📖 Al-Tirmidhi'},
+    {text:'"O Allah — make his arrow true and answer his supplication."',src:'📖 Ahmad'},
+    {text:'Promised Paradise in the well-known authentic hadith.',src:'📖 Abu Dawud | Al-Tirmidhi'},
+    {text:'"Every nation has a trustworthy one, and the trustworthy one of this nation is Abu Ubayda."',src:'📖 Al-Bukhari'},
+    {text:'"He never once said \'Uff\' to me, nor said of anything I did: \'Why did you do that?\'"',src:'📖 Muslim'},
+    {text:'"I heard the shuffling of your sandals in Paradise."',src:'📖 Al-Bukhari'},
+    {text:'"I have never called him except that I said: Zayd is my beloved."',src:'📖 Al-Tirmidhi'},
+    {text:'"Whoever wishes to recite the Quran fresh as it was revealed, let him recite it in the recitation of Ibn Umm \'Abd."',src:'📖 Ibn Majah'},
+    {text:'"Salman is of us — the People of the Household."',src:'📖 Al-Hakim'},
+    {text:'"What a fine man Abu al-Darda\' is."',src:'📖 Al-Tirmidhi'},
+    {text:'"The most knowledgeable of you in the lawful and unlawful is Mu\'adh ibn Jabal."',src:'📖 Ibn Majah'},
+    {text:'"Be patient, O family of Yasir — for your appointed meeting is Paradise."',src:'📖 Al-Hakim'},
+    {text:'He complained of the torture and the Prophet ﷺ said: "Among those before you, a man would be sawn in half..."',src:'📖 Al-Bukhari'},
+    {text:'The Prophet ﷺ said upon hearing his story: "The transaction was profitable, O Suhayb."',src:'📖 Ibn Hibban | Al-Hakim'},
+    {text:'The Prophet ﷺ said: "O Allah, make him beloved to Your believing servants."',src:'📖 Muslim'},
+    {text:'"What a fine man Abdullah is — if only he would pray more at night."',src:'📖 Al-Bukhari'},
+    {text:'"O Allah, grant him deep understanding in the religion and teach him interpretation."',src:'📖 Al-Bukhari'},
+    {text:'"The Throne of the Most Merciful shook at the death of Sa\'d ibn Mu\'adh."',src:'📖 Al-Bukhari'},
+    {text:'His communal vessel circulated among the homes of Madinah for the poor.',src:'📖 Ibn Hisham'},
+    {text:'"The finest reciter of my Ummah is Ubayy ibn Ka\'b."',src:'📖 Al-Tirmidhi'},
+    {text:'"The most knowledgeable of you in matters of inheritance is Zayd ibn Thabit."',src:'📖 Ibn Majah'},
+    {text:'He narrated approximately 1,540 hadiths from the Prophet ﷺ.',src:'📖 Introduction to al-Fath'},
+    {text:'"What a fine servant of Allah is Khalid ibn al-Walid — a sword among the swords of Allah."',src:'📖 Ahmad'},
+    {text:'"Amr ibn al-As is in a chain, wresting from the hands of the devil."',src:'📖 Ahmad'},
+    {text:'"This is my beloved and the son of my beloved."',src:'📖 Al-Bukhari'},
+    {text:'The Prophet ﷺ wept over him and shrouded him in his own cloak.',src:'📖 Al-Bukhari'},
+    {text:'The Prophet ﷺ wept when he was martyred at Mu\'tah.',src:'📖 Al-Bukhari'},
+    {text:'"War is strategy." — And Nu\'aym was the most brilliant at applying this.',src:'📖 Ibn Hisham'},
+    {text:'"The Master of Martyrs is Hamzah ibn Abd al-Muttalib."',src:'📖 Al-Hakim'},
+    {text:'"I saw Ja\'far flying in Paradise with the angels on two wings."',src:'📖 Al-Tirmidhi'}
+  ],
+
+  // ---- DU'A SECTION ----
+  duaCards: [
+    {title:'🌙 Supplication for Sleep', text:'"O Allah, in Your name I die and I live."', meaning:'Said when retiring to one\'s bed.', src:'📖 Al-Bukhari — Supplications'},
+    {title:'☀️ Supplication upon Waking', text:'"Praise be to Allah who gave us life after causing us to die, and to Him is the Resurrection."', meaning:'Upon waking from sleep.', src:'📖 Al-Bukhari'},
+    {title:'🍽️ Before Eating', text:'"In the name of Allah" — and if one forgets: "In the name of Allah at its beginning and its end."', meaning:'He would say Bismillah before eating and eat with his right hand.', src:'📖 Abu Dawud | Al-Tirmidhi'},
+    {title:'🙏 After Eating', text:'"Praise be to Allah who fed me this and provided it to me without power or strength on my part."', meaning:'Said after finishing a meal.', src:'📖 Abu Dawud | Al-Tirmidhi'},
+    {title:'🤲 The Master Supplication for Forgiveness', text:'"O Allah, You are my Lord — there is no god but You. You created me and I am Your servant, and I am upon Your covenant and promise to the best of my ability..."', meaning:'"Whoever says it with certainty and dies shall enter Paradise."', src:'📖 Al-Bukhari — Supplications'},
+    {title:'💛 Supplication in Distress', text:'"There is no god but Allah, the Almighty, the Forbearing. There is no god but Allah, Lord of the Great Throne. There is no god but Allah, Lord of the heavens and Lord of the earth."', meaning:'He would say it in times of hardship and distress.', src:'📖 Al-Bukhari — Supplications'},
+    {title:'🌧️ Supplication for Rain', text:'"O Allah — beneficial rain."', meaning:'Said when rain falls.', src:'📖 Al-Bukhari'},
+    {title:'🌟 The Supplication of Dhu al-Nun', text:'"There is no god but You — Glory be to You — I was indeed among the wrongdoers."', meaning:'"No Muslim supplicates with it for anything except that Allah answers him."', src:'📖 Al-Tirmidhi | Ahmad'},
+    {title:'📿 Most Beloved Words to Allah', text:'"Glory be to Allah and His praise — Glory be to Allah the Almighty."', meaning:'"Light on the tongue, heavy on the scales, beloved to the Most Merciful."', src:'📖 Al-Bukhari'},
+    {title:'🏠 Supplication upon Entering the Home', text:'"O Allah, I ask You for goodness in entering and goodness in leaving. In the name of Allah we enter, and in the name of Allah we leave."', meaning:'Upon entering the home.', src:'📖 Abu Dawud | Ibn Majah'},
+    {title:'🚶 Supplication upon Leaving the Home', text:'"In the name of Allah, I place my trust in Allah — there is no power and no strength except with Allah."', meaning:'Said upon leaving the house.', src:'📖 Abu Dawud | Al-Tirmidhi'},
+    {title:'🕌 Supplication upon Entering the Mosque', text:'"O Allah, open for me the doors of Your mercy."', meaning:'Upon entering the mosque.', src:'📖 Muslim'},
+    {title:'🚪 Supplication upon Leaving the Mosque', text:'"O Allah, I ask You of Your bounty."', meaning:'Upon leaving the mosque.', src:'📖 Muslim'},
+    {title:'🌅 Morning Remembrance', text:'"We have entered the morning, and sovereignty belongs to Allah, and all praise is for Allah — there is no god but Allah alone with no partner."', meaning:'Recited in the morning.', src:'📖 Muslim — Remembrance'},
+    {title:'🌆 Evening Remembrance', text:'"We have entered the evening, and sovereignty belongs to Allah, and all praise is for Allah — there is no god but Allah alone."', meaning:'Recited in the evening.', src:'📖 Muslim — Remembrance'},
+    {title:'🛡️ Ayat al-Kursi', text:'"Allah — there is no god but He, the Ever-Living, the Self-Subsisting..." — Ayat al-Kursi', meaning:'"Whoever recites it after every obligatory prayer — nothing will prevent him from entering Paradise but death."', src:'📖 Al-Nasa\'i | Al-Tabarani'},
+    {title:'🌙 Supplication upon Seeing the New Crescent', text:'"O Allah — make it rise upon us with blessing, faith, safety, and Islam. My Lord and your Lord is Allah."', meaning:'Upon sighting the crescent of the new month.', src:'📖 Al-Tirmidhi'},
+    {title:'✈️ Supplication for Travel', text:'"O Allah, we ask You for righteousness and piety in this our journey, and for deeds that please You."', meaning:'Said upon riding for travel.', src:'📖 Muslim'},
+    {title:'🏠 Supplication upon Returning from Travel', text:'"We return, we repent, we worship, and we praise our Lord."', meaning:'Said upon returning from a journey.', src:'📖 Muslim'},
+    {title:'💊 Supplication when Visiting the Sick', text:'"No harm — may it be a purification, if Allah wills."', meaning:'Said to the sick person when visiting them.', src:'📖 Al-Bukhari'},
+    {title:'🩺 The Prescribed Ruqyah', text:'"In the name of Allah I recite over you — from every ailment that harms you, from the evil of every soul or envious eye — may Allah heal you."', meaning:'An authenticated healing supplication for the sick and afflicted.', src:'📖 Muslim'},
+    {title:'😰 Supplication in Worry and Grief', text:'"O Allah, I am Your servant, son of Your servant, son of Your maidservant — my forelock is in Your hand, Your decree upon me is just..."', meaning:'"Allah will remove the worry and grief of the believer."', src:'📖 Ahmad | Ibn Hibban'},
+    {title:'🙏 The Complete Glorification', text:'"Glory be to Allah, praise be to Allah, there is no god but Allah, and Allah is the Greatest."', meaning:'"The four most beloved words to Allah."', src:'📖 Muslim'},
+    {title:'🌿 La Hawla wa La Quwwata Illa Billah', text:'"There is no power and no strength except with Allah."', meaning:'"A treasure from the treasures of Paradise."', src:'📖 Al-Bukhari'},
+    {title:'⛑️ Supplication of Complete Reliance', text:'"Allah is sufficient for us, and He is the best Disposer of affairs."', meaning:'Said by Ibrahim ﷺ when cast into the fire, and said by the Prophet ﷺ when told people had gathered against him.', src:'📖 Al-Bukhari'},
+    {title:'🚿 Supplication upon Entering the Restroom', text:'"O Allah, I seek Your protection from the male and female impure spirits."', meaning:'Said upon entering the restroom.', src:'📖 Al-Bukhari'},
+    {title:'💒 Supplication for the Newlywed', text:'"May Allah bless you, and may He bestow blessings upon you, and may He unite you in goodness."', meaning:'Said to the newly married as congratulation and blessing.', src:'📖 Abu Dawud | Al-Tirmidhi'},
+    {title:'🤧 Supplication for Sneezing', text:'"Praise be to Allah" — the listener says: "May Allah have mercy on you" — and the reply is: "May Allah guide you and rectify your affairs."', meaning:'The Sunnah of sneezing and its response.', src:'📖 Al-Bukhari'},
+    {title:'🌊 Supplication for Anger', text:'"I seek refuge in Allah from the accursed devil."', meaning:'When he saw two men quarrelling he said: "I know a word — if he says it, what he feels will leave him."', src:'📖 Al-Bukhari'},
+    {title:'🌟 The Comprehensive Refuge', text:'"O Allah, I seek Your refuge from worry and grief, from incapacity and laziness, from miserliness and cowardice, from the burden of debt and the overpowering of men."', meaning:'He ﷺ would frequently say this in his mornings and evenings.', src:'📖 Al-Bukhari'}
+  ],
+
+  // ---- LESSONS ----
+  lessons: [
+    {num:'01', title:'Leading by Example', desc:'He dug the Trench with his Companions until dust covered his chest. The true leader walks at the front.',
+     quote:'"He carried the soil with them." — Al-Bukhari'},
+    {num:'02', title:'Patience in Crisis', desc:'He lost his wife and uncle in a single year, then went to al-Ta\'if and was humiliated — yet he never surrendered.',
+     quote:'"True patience is at the first strike of calamity." — Al-Bukhari'},
+    {num:'03', title:'The Power of Forgiveness', desc:'The Conquest of Makkah taught us that the mightiest weapon of the victor is clemency, not revenge.',
+     quote:'"Go — for you are all free." — Ibn Hisham'},
+    {num:'04', title:'Building Society', desc:'The fraternity between the Muhajirun and Ansar is a model for building a community on values, not bloodlines.',
+     quote:'"The believers in their mutual mercy are like one body." — Muslim'},
+    {num:'05', title:'Strategic Planning', desc:'The Trench and the Treaty of Hudaybiyyah are masterclasses in long-term strategy.',
+     quote:'"War is strategy." — Al-Bukhari'},
+    {num:'06', title:'Social Justice', desc:'He abolished class distinctions and made God-consciousness alone the criterion of distinction.',
+     quote:'"You all descend from Adam and Adam was from dust." — Al-Tirmidhi'},
+    {num:'07', title:'Managing Change', desc:'In 23 years he transformed a tribal society into a civilisation — through gradualness and wisdom.',
+     quote:'"Make things easy and do not make them difficult." — Al-Bukhari'},
+    {num:'08', title:'Emotional Intelligence', desc:'He would address each person by name, concern himself with their affairs, ask about the absent, and visit the sick.',
+     quote:'"The Muslim has six rights over his fellow Muslim." — Muslim'}
+  ],
+
+  // ---- WIVES CARDS ----
+  wivesCards: [
+    {title:'Mother of the Believers · First wife and the most beloved to him ﷺ',
+     hadiths:'Many authenticated narrations of her virtue',
+     desc:'The first to believe in the Prophet ﷺ, the first to affirm and support him with her wealth and herself. She was the mother of his six children. She passed away in the Year of Grief before the Migration.',
+     tags:['First of the Believers','Mother of His Children','Lady of the Women of Paradise']},
+    {title:'Al-Siddiqah, daughter of al-Siddiq · Most beloved of all people to him',
+     hadiths:'2,942 hadiths in the collections',
+     desc:'The most prolific narrator of hadith among the female Companions. The most learned woman in jurisprudence, biography, poetry, and medicine. His blessed hand was in her lap at his passing ﷺ.',
+     tags:['Most beloved of his wives','The Woman Jurist','Mother of the Hadith Scholars']},
+    {title:'Guardian of the Holy Quran',
+     hadiths:'60 hadiths in the collections',
+     desc:'Daughter of Umar ibn al-Khattab (رضي الله عنه). She was devoted to fasting and night prayer. With her was the Mushaf compiled by Abu Bakr al-Siddiq (رضي الله عنه). The Prophet ﷺ divorced her then took her back.',
+     tags:['Guardian of the Quran','Devoted in Fasting and Prayer']},
+    {title:'The Wise Counsellor · First of the Female Emigrants',
+     hadiths:'378 hadiths in the collections',
+     desc:'The first woman to emigrate. She advised him ﷺ on the Day of Hudaybiyyah with wise counsel and he took it. The longest-lived of his wives ﷺ, she passed away in 61 AH.',
+     tags:['First of the Emigrants','The Counsellor']},
+    {title:'Married by divine command from above seven heavens',
+     hadiths:'11 hadiths in the collections',
+     desc:'Cousin of the Prophet ﷺ. Allah revealed her marriage to him from above seven heavens. She was known for great generosity — her door was never closed to the poor. She passed away in 20 AH.',
+     tags:['Married by Divine Command','Known for Her Generosity']},
+    {title:'Mother of the Poor',
+     hadiths:'7 hadiths in the collections',
+     desc:'Zaynab bint Khuzaymah was known for her immense generosity and care for the poor and needy — earning the title "Mother of the Poor." She passed away only a few months after her marriage to the Prophet ﷺ.',
+     tags:['Mother of the Poor','Devoted to Charity']},
+    {title:'A great blessing upon her people',
+     hadiths:'Several authenticated narrations',
+     desc:'She was the daughter of al-Harith ibn Abi Dirar, chief of the Banu Mustaliq. After being taken captive, she came to the Prophet ﷺ. Her marriage to him led to the freeing of one hundred families of her people.',
+     tags:['Her marriage freed one hundred families','From the noble Arabs']},
+    {title:'Daughter of a king — wife of a Prophet',
+     hadiths:'10 hadiths in the collections',
+     desc:'Of the lineage of Harun ﷺ. She embraced Islam and the Prophet ﷺ married her and freed her, making her freedom her dowry. When she felt pride in her lineage he ﷺ said: "Say: my father is Aaron, my uncle is Moses, and my husband is Muhammad."',
+     tags:['Of the Lineage of Aaron','Her Freedom was her Dowry']},
+    {title:'Emigrant to Abyssinia · Married by al-Najashi',
+     hadiths:'65 hadiths in the collections',
+     desc:'She emigrated to Abyssinia with her husband \'Ubaydullah ibn Jahsh who then apostatised and became a Christian and died, leaving her alone. The Prophet ﷺ sent a proposal to her, and al-Najashi conducted her marriage and provided her dowry of four thousand dirhams.',
+     tags:['Emigrant to Abyssinia','Married by al-Najashi']},
+    {title:'Last wife of the Prophet ﷺ',
+     hadiths:'46 hadiths in the collections',
+     desc:'The Prophet ﷺ married her during the \'Umrah of Fulfilment in 7 AH — she was his last wife. Ibn \'Abbas said of her: "She was among the most righteous and most devoted to upholding family ties." She passed away in 61 AH.',
+     tags:['His Last Marriage','Among the Most Righteous']},
+    {title:'First wife after Khadijah',
+     hadiths:'5 hadiths in the collections',
+     desc:'The first wife the Prophet ﷺ married after the passing of Khadijah. She was a kind woman who would make the Messenger of Allah ﷺ laugh. She gifted her day to \'A\'ishah out of love for the Prophet ﷺ.',
+     tags:['First after Khadijah','She Made the Prophet ﷺ Smile']}
+  ],
+  wivesStats: ['Mothers of the Believers','hadiths narrated by \'A\'ishah (رضي الله عنها)','passed away in his lifetime ﷺ','passed away after him ﷺ'],
+  wivesStatLabels: ['11','2942','2','9'],
+  wivesNote: 'Click each name to read her complete story and authenticated hadiths',
+  wivesQuranNote: '﴿And it is not right for you to cause distress to the Messenger of Allah, nor to ever marry his wives after him﴾\nAl-Ahzab: 53',
+
+  // ---- MUSEUM ----
+  museumHero: {
+    title:'The Virtual Prophetic Museum',
+    desc:'Browse the authentic possessions and characteristics of the Prophet ﷺ — established from sound hadiths — from his sword and turban to his ring and vessel.'
+  },
+  exhibits: [
+    {num:'Exhibit 01 — His Noble Weapons', title:'Dhu al-Faqar', desc:'The sword gifted to him by Ali (رضي الله عنه) from the spoils of Badr — the most famous of his swords ﷺ.',
+     tags:['Confirmed by narrations','Spoils of Badr'],
+     detail:'The Prophet ﷺ had nine swords at his passing. Dhu al-Faqar was the most celebrated, distinguished by a notch in its blade.',
+     overlay:'Click to learn more'},
+    {num:'Exhibit 02 — His Noble Garments', title:'The Black Turban', desc:'He ﷺ would wear the turban on many occasions — and he wore it when entering Makkah on the Day of Conquest.',
+     tags:['Established in Sahih','Day of Conquest'],
+     detail:'Ibn Umar (رضي الله عنه) narrated that the Prophet ﷺ entered Makkah on the Day of Conquest wearing a black turban. He also had a turban called "al-Sahab."',
+     overlay:'Click to learn more'},
+    {num:'Exhibit 03 — The Seal of Prophethood', title:'The Silver Ring', desc:'A silver ring engraved with "Muhammad, Messenger of Allah" — made to seal his letters.',
+     tags:['Established in Sahih','For sealing letters'],
+     detail:'Its inscription was on three lines: Muhammad / Messenger / Allah. He wore it on his right hand and according to some narrations on his left. The Caliphs inherited it after him.',
+     overlay:'Click to learn more'},
+    {num:'Exhibit 04 — His Noble Vessels', title:'The Drinking Vessel', desc:'He ﷺ drank from vessels of wood, glass, and patched silver.',
+     tags:['Established in Sahih','Simplicity of Life'],
+     detail:'Anas narrated that the Prophet\'s vessel cracked and he mended it with a silver chain. He also had a wooden vessel with a silver ring.',
+     overlay:'Click to learn more'},
+    {num:'Exhibit 05 — His Noble Sandal', title:'The Blessed Sandal', desc:'His sandal ﷺ had two straps — the Companions described it in precise detail and sought its blessing.',
+     tags:['Described in Sahih','Two-Strapped'],
+     detail:'His sandal ﷺ was studded with two straps. Ibn Mas\'ud would carry his sandals ﷺ and walk before him when he removed them.',
+     overlay:'Click to learn more'},
+    {num:'Exhibit 06 — The Prophet\'s Mosque', title:'The Pulpit of the Prophet ﷺ', desc:'The pulpit from which he ﷺ delivered his sermons — and at which the date palm trunk wept when replaced.',
+     tags:['Established in Sahih','The Weeping Trunk'],
+     detail:'When the pulpit was made for the Prophet ﷺ and he moved to it from the date palm trunk — the trunk wept like a camel. He ﷺ went to it and embraced it until it grew quiet.',
+     overlay:'Click to learn more'},
+    {num:'Exhibit 07 — His Noble Weapons', title:'His Bow ﷺ', desc:'He ﷺ would encourage archery and say: "Shoot and I am with the sons of so-and-so."',
+     tags:['Established in Sahih','He encouraged archery'],
+     detail:'The Prophet ﷺ had a bow he would sometimes lean upon. He ﷺ encouraged learning archery and said: "Verily strength is archery."',
+     overlay:'Click to learn more'},
+    {num:'Exhibit 08 — The Armour of Protection', title:'The Chain Mail Armour', desc:'He ﷺ wore armour at Uhud — and wore two coats of armour on the Day of the Trench.',
+     tags:['Established in Sahih','Day of Uhud'],
+     detail:'He ﷺ wore armour in battle. He passed away with his armour pledged to a Jewish man for thirty sa\'a of barley — such was his renunciation of the world.',
+     overlay:'Click to learn more'}
+  ],
+  museumNote: 'All exhibits are authenticated from sound sources: Al-Bukhari • Muslim • Al-Shamail al-Muhammadiyyah of al-Tirmidhi • Sahih al-Shamail\nClick any card to view the complete authentic hadiths',
+
+  // ---- KIDS SECTION ----
+  kids: {
+    badge:'🌟 Special Section for Children',
+    title:'The Prophet ﷺ Loved Children',
+    desc:'Discover the Prophet Muhammad ﷺ — how he loved children, played with them, kissed them, and prayed for them 💚',
+    secTitle:'The Prophet\'s ﷺ Interactions with Children',
+    cards: [
+      {num:'1', title:'He Would Kiss Children', desc:'The Prophet ﷺ would kiss al-Hasan and al-Husayn and press them close to him with love.',
+       hadith:'"He who does not show mercy will not be shown mercy." — Said when he saw a man who did not kiss his children.', src:'📖 Al-Bukhari • Muslim'},
+      {num:'2', title:'He Prolonged His Prostration for a Child!', desc:'He ﷺ was praying when al-Husayn climbed upon his back, so he prolonged his prostration until the child got down by himself!',
+       hadith:'"My son was riding me and I was reluctant to startle him."', src:'📖 Al-Nasa\'i | Al-Hakim'},
+      {num:'3', title:'He Asked about a Child\'s Little Bird', desc:'Abu Umayr had a little bird called "al-Nughayr" that died. The Prophet ﷺ asked about it!',
+       hadith:'"O Abu Umayr — what happened to the little nughayr?"', src:'📖 Al-Bukhari | Muslim'},
+      {num:'4', title:'He Taught a Child Table Manners', desc:'A child sat eating with his hand moving all over the dish — so the Prophet ﷺ taught him with beautiful simple words.',
+       hadith:'"O young boy — say Bismillah, eat with your right hand, and eat from what is nearest to you."', src:'📖 Al-Bukhari • Muslim'},
+      {num:'5', title:'He Would Carry Children and Pray for Them', desc:'He ﷺ would place al-Hasan and al-Husayn on his knees and pray for them with mercy.',
+       hadith:'"O Allah, have mercy on them — for I have mercy on them."', src:'📖 Sahih al-Bukhari'},
+      {num:'6', title:'His Love for His Daughter Fatimah', desc:'Whenever Fatimah entered, the Prophet ﷺ would stand for her, kiss her, and seat her in his place.',
+       hadith:'"Fatimah is a part of me — whoever angers her has angered me."', src:'📖 Sahih al-Bukhari'},
+      {num:'7', title:'He Would Play with Children', desc:'He ﷺ would stroke the faces of children and joke and play with them.',
+       hadith:'"He would stroke the faces of the boys and play with them."', src:'📖 Sahih al-Shamail al-Muhammadiyyah'},
+      {num:'8', title:'He Would Bless Newborn Children', desc:'The Companions would bring their newborn children to the Prophet ﷺ for him to bless them.',
+       hadith:'"Children would be brought to him and he would bless them and perform tahnik for them."', src:'📖 Sahih Muslim'}
+    ],
+    reminder: {
+      title:'Always Remember',
+      text:'The Prophet ﷺ longed to see you! He ﷺ said: "I wish I could see my brothers." They said: Are we not your brothers? He said: "You are my Companions — my brothers are those who have not yet come."',
+      src:'📖 Sahih Muslim — The Book of Purification'
+    }
+  },
+
+  // ---- BACK BUTTONS ----
+  backHome: '← Back to Home',
+  backMain: '← Return to Home',
+  footerLogo: 'A Journey through the Prophetic Biography ﷺ',
+  footerPrayer: 'O Allah, bestow peace and blessings upon our Prophet Muhammad ﷺ',
+  modalCloseBtn: '← Close and Return',
+  wifeCloseBtn: '← Return to Mothers of the Believers',
+  exhibitOverlay: 'Click to learn more',
+  quizScore: 'Score:',
+  quizCatPrompt: 'Select a question category:',
+  wifeSectionBack: '← The Mothers of the Believers'
+};
+
+// ---- ENGLISH CONTENT INJECTORS ----
+
+function injectTimelineEN(){
+  const items = document.querySelectorAll('#timeline .tl-c');
+  const data = enContent.timeline;
+  items.forEach((item, i)=>{
+    if(!data[i]) return;
+    const d = data[i];
+    const yearEl = item.querySelector('.tl-year');
+    const titleEl = item.querySelector('h3');
+    const descEl = item.querySelector('p');
+    const btn = item.querySelector('.tl-btn');
+    const badges = item.querySelectorAll('.mb-badge');
+    if(yearEl) yearEl.textContent = d.year;
+    if(titleEl) titleEl.textContent = d.title;
+    if(descEl) descEl.textContent = d.desc;
+    if(btn){ btn.textContent = d.btn; btn.setAttribute('data-hide', d.hide); btn.setAttribute('data-show', d.btn); }
+    // replace hadiths
+    let hbox = item.querySelector('.tl-hadiths');
+    if(hbox && d.hadiths){
+      hbox.innerHTML = d.hadiths.map(h=>`<div class="hb">${h.text}<div class="hs">${h.src}</div></div>`).join('');
+    }
+    // badges
+    if(d.badges) badges.forEach((b,j)=>{ if(d.badges[j]) b.textContent=d.badges[j]; });
+  });
+  // back button
+  const bb = document.querySelector('#timeline .back-bottom button');
+  if(bb) bb.textContent = enContent.backHome;
+  const btt = document.querySelector('#timeline .back-top');
+  if(btt) btt.textContent = '← Home';
+}
+
+function injectTimelineAR(){
+  const items = document.querySelectorAll('#timeline .tl-c');
+  items.forEach(item=>{
+    const yearEl = item.querySelector('.tl-year');
+    const titleEl = item.querySelector('h3');
+    const descEl = item.querySelector('p');
+    const btn = item.querySelector('.tl-btn');
+    if(yearEl && yearEl.dataset.arOrig) yearEl.textContent=yearEl.dataset.arOrig;
+    if(titleEl && titleEl.dataset.arOrig) titleEl.textContent=titleEl.dataset.arOrig;
+    if(descEl && descEl.dataset.arOrig) descEl.textContent=descEl.dataset.arOrig;
+    if(btn && btn.dataset.arText) btn.textContent=btn.dataset.arText;
+    const hbox = item.querySelector('.tl-hadiths');
+    if(hbox && hbox.dataset.arOrig) hbox.innerHTML=hbox.dataset.arOrig;
+    const badges = item.querySelectorAll('.mb-badge');
+    badges.forEach(b=>{ if(b.dataset.arOrig) b.textContent=b.dataset.arOrig; });
+  });
+  const bb = document.querySelector('#timeline .back-bottom button');
+  if(bb && bb.dataset.arOrig) bb.textContent=bb.dataset.arOrig;
+  const btt = document.querySelector('#timeline .back-top');
+  if(btt && btt.dataset.arOrig) btt.textContent=btt.dataset.arOrig;
+}
+
+function storeARTimeline(){
+  // Only store if we are currently in Arabic (original) state
+  if(typeof currentLang !== 'undefined' && currentLang === 'en') return;
+  const items = document.querySelectorAll('#timeline .tl-c');
+  items.forEach(item=>{
+    const yearEl = item.querySelector('.tl-year');
+    const titleEl = item.querySelector('h3');
+    const descEl = item.querySelector('p');
+    const btn = item.querySelector('.tl-btn');
+    // Always overwrite to ensure AR originals are stored
+    if(yearEl) yearEl.dataset.arOrig=yearEl.textContent;
+    if(titleEl) titleEl.dataset.arOrig=titleEl.textContent;
+    if(descEl) descEl.dataset.arOrig=descEl.textContent;
+    if(btn){ btn.dataset.arText=btn.textContent; btn.dataset.arHide='إخفاء ▲'; }
+    const hbox=item.querySelector('.tl-hadiths');
+    if(hbox) hbox.dataset.arOrig=hbox.innerHTML;
+    const badges=item.querySelectorAll('.mb-badge');
+    badges.forEach(b=>{ b.dataset.arOrig=b.textContent; });
+    // also keep data-ar for restoreAllAR compatibility
+    if(yearEl && !yearEl.dataset.ar) yearEl.dataset.ar=yearEl.textContent;
+    if(titleEl && !titleEl.dataset.ar) titleEl.dataset.ar=titleEl.textContent;
+    if(descEl && !descEl.dataset.ar) descEl.dataset.ar=descEl.textContent;
+    if(hbox && !hbox.dataset.ar) hbox.dataset.ar=hbox.innerHTML;
+    badges.forEach(b=>{ if(!b.dataset.ar) b.dataset.ar=b.textContent; });
+  });
+  const bb=document.querySelector('#timeline .back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.dataset.arOrig=bb.textContent; }
+  const btt=document.querySelector('#timeline .back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.dataset.arOrig=btt.textContent; }
+}
+
+function injectMapEN(){
+  const hint=document.getElementById('mapHint');
+  if(hint) hint.textContent=enContent.mapHint;
+
+  // Update pin labels
+  const pinLabels={mecca:'Makkah',hira:'Cave of Hira\'',taif:'Al-Ta\'if',madinah:'Madinah',badr:'Badr',uhud:'Uhud',hudaybiya:'Hudaybiyyah',khaybar:'Khaybar',tabuk:'Tabuk',quds:'Jerusalem'};
+  document.querySelectorAll('.map-pin').forEach(pin=>{
+    const k=pin.dataset.key;
+    if(pinLabels[k]){ const lbl=pin.querySelector('.pin-lbl'); if(lbl) lbl.textContent=pinLabels[k]; }
+  });
+
+  // Update quick buttons
+  const btnLabels={mecca:'🕋 Makkah',hira:'🏔️ Cave of Hira\'',taif:'🌿 Al-Ta\'if',madinah:'🕌 Madinah',badr:'⚔️ Badr',uhud:'🛡️ Uhud',hudaybiya:'📜 Hudaybiyyah',khaybar:'🏰 Khaybar',tabuk:'🏜️ Tabuk',quds:'✨ Jerusalem'};
+  document.querySelectorAll('.map-quick-btn').forEach(btn=>{
+    const k=btn.dataset.key;
+    if(btnLabels[k]) btn.textContent=btnLabels[k];
+  });
+
+  // Re-render active location if any
+  const activePin=document.querySelector('.map-pin.active');
+  if(activePin) showMapInfo(activePin.dataset.key);
+
+  const bb=document.querySelector('#map .back-bottom button');
+  if(bb) bb.textContent=enContent.backHome;
+  const btt=document.querySelector('#map .back-top');
+  if(btt) btt.textContent='← Home';
+  const ph=document.querySelector('#map .ph p');
+  if(ph){ if(!ph.dataset.ar) ph.dataset.ar=ph.textContent; ph.textContent='Click any location to discover its story with authentic Hadith'; }
+}
+
+function storeARGeneric(pageId, selectors){
+  const page=document.getElementById(pageId);
+  if(!page) return;
+  selectors.forEach(sel=>{
+    page.querySelectorAll(sel).forEach(el=>{ if(!el.dataset.ar) el.dataset.ar=el.textContent||el.innerHTML; });
+  });
+}
+
+function injectStoriesEN(){
+  const cards=document.querySelectorAll('#stories .sc');
+  const data=enContent.stories;
+  cards.forEach((card,i)=>{
+    if(!data[i]) return;
+    const tag=card.querySelector('.story-tag');
+    const title=card.querySelector('h3');
+    const desc=card.querySelector('p');
+    if(tag){ if(!tag.dataset.ar) tag.dataset.ar=tag.textContent; tag.textContent=data[i].tag; }
+    if(title){ if(!title.dataset.ar) title.dataset.ar=title.textContent; title.textContent=data[i].title; }
+    if(desc){ if(!desc.dataset.ar) desc.dataset.ar=desc.textContent; desc.textContent=data[i].desc; }
+  });
+  const bb=document.querySelector('#stories .back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=document.querySelector('#stories .back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+}
+
+function injectMoralsEN(){
+  const cards=document.querySelectorAll('#morals .mc-card');
+  const data=enContent.morals;
+  cards.forEach((card,i)=>{
+    if(!data[i]) return;
+    const d=data[i];
+    const icon=card.querySelector('span:first-child');
+    const title=card.querySelector('h3');
+    const desc=card.querySelector('p');
+    const hb=card.querySelector('.hb');
+    const hs=hb ? hb.querySelector('.hs') : null;
+    const mq=card.querySelector('.mq');
+    if(icon){ if(!icon.dataset.ar) icon.dataset.ar=icon.textContent; icon.textContent=d.icon; }
+    if(title){ if(!title.dataset.ar) title.dataset.ar=title.textContent; title.textContent=d.title; }
+    if(desc){ if(!desc.dataset.ar) desc.dataset.ar=desc.textContent; desc.textContent=d.desc; }
+    if(hb){
+      if(!hb.dataset.ar) hb.dataset.ar=hb.innerHTML;
+      hb.innerHTML = `${d.hadith}<div class="hs">${d.src}</div>`;
+    }
+    if(mq){ if(!mq.dataset.ar) mq.dataset.ar=mq.textContent; mq.textContent=d.quote; }
+  });
+  const bb=document.querySelector('#morals .back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=document.querySelector('#morals .back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+}
+
+function injectShamailEN(){
+  const cards=document.querySelectorAll('#shamail .shmail-card');
+  const data=enContent.shamail;
+  cards.forEach((card,i)=>{
+    if(!data[i]) return;
+    const d=data[i];
+    const title=card.querySelector('h3');
+    if(title){ if(!title.dataset.ar) title.dataset.ar=title.textContent; title.textContent=d.title; }
+    const hbs=card.querySelectorAll('.hb');
+    const hbData=[{text:d.h1,src:d.src1},{text:d.h2,src:d.src2}];
+    hbs.forEach((hb,j)=>{
+      if(!hbData[j] || !hbData[j].text) return;
+      if(!hb.dataset.ar) hb.dataset.ar=hb.innerHTML;
+      hb.innerHTML=`${hbData[j].text}<div class="hs">${hbData[j].src}</div>`;
+    });
+  });
+  const bb=document.querySelector('#shamail .back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=document.querySelector('#shamail .back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+}
+
+function injectCompanionsEN(){
+  const page=document.getElementById('companions');
+  if(!page) return;
+  // Section headers
+  const secTitles=page.querySelectorAll('.sec-title h2');
+  const enSecs=enContent.compSections;
+  secTitles.forEach((el,i)=>{ if(!el.dataset.ar) el.dataset.ar=el.textContent; if(enSecs[i]) el.textContent=enSecs[i]; });
+  // Companion titles (subtitle below name)
+  const compTitles=page.querySelectorAll('.comp-title');
+  const enTitles=enContent.compTitles;
+  compTitles.forEach((el,i)=>{ if(!el.dataset.ar) el.dataset.ar=el.textContent; if(enTitles[i]) el.textContent=enTitles[i]; });
+  // Hadiths
+  const hbs=page.querySelectorAll('.comp-card .hb');
+  const enHadiths=enContent.compHadiths;
+  hbs.forEach((hb,i)=>{
+    if(!enHadiths[i]) return;
+    if(!hb.dataset.ar) hb.dataset.ar=hb.innerHTML;
+    hb.innerHTML=`${enHadiths[i].text}<div class="hs">${enHadiths[i].src}</div>`;
+  });
+  const bb=page.querySelector('.back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=page.querySelector('.back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+}
+
+function injectDuaEN(){
+  const cards=document.querySelectorAll('#duaa .duaa-card');
+  const data=enContent.duaCards;
+  cards.forEach((card,i)=>{
+    if(!data[i]) return;
+    const d=data[i];
+    const title=card.querySelector('h3');
+    const text=card.querySelector('.duaa-text');
+    const meaning=card.querySelector('.duaa-meaning');
+    const hs=card.querySelector('.hs');
+    if(title){ if(!title.dataset.ar) title.dataset.ar=title.textContent; title.textContent=d.title; }
+    if(text){ if(!text.dataset.ar) text.dataset.ar=text.textContent; text.textContent=d.text; }
+    if(meaning){ if(!meaning.dataset.ar) meaning.dataset.ar=meaning.textContent; meaning.textContent=d.meaning; }
+    if(hs){ if(!hs.dataset.ar) hs.dataset.ar=hs.textContent; hs.textContent=d.src; }
+  });
+  const bb=document.querySelector('#duaa .back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=document.querySelector('#duaa .back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+}
+
+function injectLessonsEN(){
+  const cards=document.querySelectorAll('#lessons .lesson-card');
+  const data=enContent.lessons;
+  cards.forEach((card,i)=>{
+    if(!data[i]) return;
+    const d=data[i];
+    const num=card.querySelector('.lesson-num');
+    const title=card.querySelector('h3');
+    const desc=card.querySelector('p');
+    const quote=card.querySelector('div[style]');
+    if(num){ if(!num.dataset.ar) num.dataset.ar=num.textContent; num.textContent=d.num; }
+    if(title){ if(!title.dataset.ar) title.dataset.ar=title.textContent; title.textContent=d.title; }
+    if(desc){ if(!desc.dataset.ar) desc.dataset.ar=desc.textContent; desc.textContent=d.desc; }
+    if(quote){ if(!quote.dataset.ar) quote.dataset.ar=quote.textContent; quote.textContent=d.quote; }
+  });
+  const bb=document.querySelector('#lessons .back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=document.querySelector('#lessons .back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+}
+
+function injectWivesEN(){
+  const page=document.getElementById('wives');
+  if(!page) return;
+  const cards=page.querySelectorAll('.wife-card');
+  const data=enContent.wivesCards;
+  cards.forEach((card,i)=>{
+    if(!data[i]) return;
+    const d=data[i];
+    const titleEl=card.querySelector('.wife-title');
+    const hdCount=card.querySelector('.wife-hadiths-count');
+    const descEl=card.querySelector('p');
+    const tags=card.querySelectorAll('.wife-tag');
+    if(titleEl){ if(!titleEl.dataset.ar) titleEl.dataset.ar=titleEl.textContent; titleEl.textContent=d.title; }
+    if(hdCount){ if(!hdCount.dataset.ar) hdCount.dataset.ar=hdCount.textContent; hdCount.textContent='📚 '+d.hadiths; }
+    if(descEl){ if(!descEl.dataset.ar) descEl.dataset.ar=descEl.textContent; descEl.textContent=d.desc; }
+    tags.forEach((t,j)=>{ if(!t.dataset.ar) t.dataset.ar=t.textContent; if(d.tags[j]) t.textContent=d.tags[j]; });
+  });
+  // Stats labels
+  const statLabels=page.querySelectorAll('[style*="font-size:.75rem"]');
+  const enLabels=enContent.wivesStats;
+  statLabels.forEach((el,i)=>{ if(!el.dataset.ar) el.dataset.ar=el.textContent; if(enLabels[i]) el.textContent=enLabels[i]; });
+  // Info note
+  const noteSpan=page.querySelector('.msrc') || page.querySelector('[style*="font-size:.8rem"][style*="gold-dark"]');
+  // Footer note
+  const infoNote=page.querySelector('span[style*="font-size:.8rem"]');
+  if(infoNote){ if(!infoNote.dataset.ar) infoNote.dataset.ar=infoNote.textContent; infoNote.textContent=enContent.wivesNote; }
+  const bb=page.querySelector('.back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=page.querySelector('.back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+  // Wife modal close btn
+  const wmc=document.querySelector('.wm-close-btn button');
+  if(wmc){ if(!wmc.dataset.ar) wmc.dataset.ar=wmc.textContent; wmc.textContent=enContent.wifeCloseBtn; }
+}
+
+function injectMuseumEN(){
+  const page=document.getElementById('museum');
+  if(!page) return;
+  // Hero
+  const heroTitle=page.querySelector('.museum-hero h1');
+  const heroDesc=page.querySelector('.museum-hero p');
+  if(heroTitle){ if(!heroTitle.dataset.ar) heroTitle.dataset.ar=heroTitle.textContent; heroTitle.textContent=enContent.museumHero.title; }
+  if(heroDesc){ if(!heroDesc.dataset.ar) heroDesc.dataset.ar=heroDesc.textContent; heroDesc.textContent=enContent.museumHero.desc; }
+  // Exhibits
+  const exhibits=page.querySelectorAll('.exhibit-card');
+  enContent.exhibits.forEach((d,i)=>{
+    const card=exhibits[i];
+    if(!card) return;
+    const num=card.querySelector('.exhibit-num');
+    const title=card.querySelector('h3');
+    const desc=card.querySelector('.exhibit-body > p');
+    const detail=card.querySelector('.exhibit-detail p');
+    const overlay=card.querySelector('.exhibit-overlay p');
+    const tags=card.querySelectorAll('.exhibit-tag');
+    if(num){ if(!num.dataset.ar) num.dataset.ar=num.textContent; num.textContent=d.num; }
+    if(title){ if(!title.dataset.ar) title.dataset.ar=title.textContent; title.textContent=d.title; }
+    if(desc){ if(!desc.dataset.ar) desc.dataset.ar=desc.textContent; desc.textContent=d.desc; }
+    if(detail){ if(!detail.dataset.ar) detail.dataset.ar=detail.textContent; detail.textContent=d.detail; }
+    if(overlay){ if(!overlay.dataset.ar) overlay.dataset.ar=overlay.textContent; overlay.textContent=d.overlay; }
+    tags.forEach((t,j)=>{ if(!t.dataset.ar) t.dataset.ar=t.textContent; if(d.tags[j]) t.textContent=d.tags[j]; });
+  });
+  // Note at bottom
+  const noteP=page.querySelector('[style*="border-right:4px solid"] p');
+  if(noteP){
+    if(!noteP.dataset.ar) noteP.dataset.ar=noteP.innerHTML;
+    const museumMainText = 'All exhibits are authenticated from sound sources: Al-Bukhari • Muslim • Al-Shamail al-Muhammadiyyah of al-Tirmidhi • Sahih al-Shamail';
+    noteP.innerHTML = museumMainText + '<br><span style="font-size:.8rem;color:var(--gold-dark);font-family:\'Poppins\',sans-serif">Click any card to view the complete authentic hadiths</span>';
+  }
+  const bb=page.querySelector('[style*="justify-content:center"] button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=page.querySelector('.back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+}
+
+function injectKidsEN(){
+  const page=document.getElementById('kids');
+  if(!page) return;
+  const k=enContent.kids;
+  const badge=page.querySelector('.kids-hero div[style*="FF8C42"]');
+  const title=page.querySelector('.kids-hero h1');
+  const desc=page.querySelector('.kids-hero p');
+  const secTitle=page.querySelector('h2[style]');
+  if(badge){ if(!badge.dataset.ar) badge.dataset.ar=badge.textContent; badge.textContent=k.badge; }
+  if(title){ if(!title.dataset.ar) title.dataset.ar=title.textContent; title.textContent=k.title; }
+  if(desc){ if(!desc.dataset.ar) desc.dataset.ar=desc.textContent; desc.textContent=k.desc; }
+  if(secTitle){ if(!secTitle.dataset.ar) secTitle.dataset.ar=secTitle.textContent; secTitle.textContent=k.secTitle; }
+  const cards=page.querySelectorAll('.kids-card');
+  k.cards.forEach((d,i)=>{
+    const card=cards[i];
+    if(!card) return;
+    const num=card.querySelector('.kc-num');
+    const cardTitle=card.querySelector('h3');
+    const cardDesc=card.querySelector('p');
+    const kh=card.querySelector('.kh');
+    const ks=kh ? kh.querySelector('.ks') : null;
+    if(num){ if(!num.dataset.ar) num.dataset.ar=num.textContent; num.textContent=d.num; }
+    if(cardTitle){ if(!cardTitle.dataset.ar) cardTitle.dataset.ar=cardTitle.textContent; cardTitle.textContent=d.title; }
+    if(cardDesc){ if(!cardDesc.dataset.ar) cardDesc.dataset.ar=cardDesc.textContent; cardDesc.textContent=d.desc; }
+    if(kh){
+      if(!kh.dataset.ar) kh.dataset.ar=kh.innerHTML;
+      kh.innerHTML=`${d.hadith}<div class="ks">${d.src}</div>`;
+    }
+  });
+  // Reminder box
+  const reminderTitle=page.querySelector('.kids-hero ~ div h3');
+  const reminderText=page.querySelector('.kids-hero ~ div p[style*="font-family"]');
+  const remBox=page.querySelector('div[style*="green-mid"] h3');
+  const remP=page.querySelector('div[style*="green-mid"] p[style*="Amiri"]');
+  const remSrc=page.querySelector('div[style*="green-mid"] div[style*="font-size"]');
+  if(remBox){ if(!remBox.dataset.ar) remBox.dataset.ar=remBox.textContent; remBox.textContent=k.reminder.title; }
+  if(remP){ if(!remP.dataset.ar) remP.dataset.ar=remP.textContent; remP.textContent=k.reminder.text; }
+  if(remSrc){ if(!remSrc.dataset.ar) remSrc.dataset.ar=remSrc.textContent; remSrc.textContent=k.reminder.src; }
+  const bb=page.querySelector('.back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=page.querySelector('.back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+}
+
+function injectFutuhaatEN(){
+  const page=document.getElementById('futuhaat');
+  if(!page) return;
+  const enBattles=[
+    {name:'⚔️ Battle of Badr',sub:'17 Ramadan 2 AH — Day of Distinction',desc:'313 against 1,000 — the first great victory in Islam'},
+    {name:'🩸 Battle of Uhud',sub:'15 Shawwal 3 AH — The Lesson of Tribulation',desc:'The Prophet ﷺ was wounded, his tooth broken — 70 martyred'},
+    {name:'🏗️ Battle of the Trench (Ahzab)',sub:'Shawwal 5 AH — Victory from Allah',desc:'10,000 against 3,000 — the Confederates withdrew after a month'},
+    {name:'🏰 Battle of Khaybar',sub:'Muharram 7 AH — The Opening of the Fortresses',desc:'The impregnable fortresses of Khaybar fell in weeks'},
+    {name:'🕋 Conquest of Makkah',sub:'Ramadan 8 AH — The Greatest Victory',desc:'He entered with 10,000 without fighting — general amnesty'},
+    {name:'⚔️ Battle of Hunayn',sub:'Shawwal 8 AH — After the Conquest',desc:'Muslims initially retreated then returned and were victorious'},
+    {name:'🏜️ Battle of Tabuk',sub:'Rajab 9 AH — The Hour of Difficulty',desc:'30,000 in the summer heat — his final major expedition ﷺ'},
+    {name:'🏴 Battle of Mu\'tah',sub:'Jumada al-Ula 8 AH — First Encounter with the Romans',desc:'3,000 Muslims facing the Byzantine army'},
+  ];
+  const enStories=[
+    {tag:'Miracle', title:'Breaking the Rock in the Trench',desc:'When the Companions could not break a rock, he ﷺ struck it three times — it shattered and light emerged.'},
+    {tag:'Miracle', title:'Naming the Fallen of Quraysh at Badr',desc:'Before the battle ended, he foretold the names of the Quraysh dead and the exact spots where they would fall.'},
+    {tag:'Wisdom', title:'Hatib ibn Abi Balta\'ah\'s Letter',desc:'He sent a letter to Quraysh before the Conquest of Makkah — the Prophet ﷺ was informed and sent someone to intercept it.'},
+    {tag:'Heroism', title:'His Steadfastness at Uhud Alone',desc:'He stood firm ﷺ when people fled — Abu Talhah, Sa\'d, and Talhah defended him with their lives.'},
+    {tag:'Eloquence', title:'His Speech on the Day of the Conquest',desc:'He stood at the door of the Ka\'bah and delivered the most eloquent address of pardon in human history.'},
+    {tag:'Miracle', title:'The Multiplication of Food at the Trench',desc:'Jabir invited him to a small amount of food — the entire army ate and there was still food remaining.'},
+    {tag:'Miracle', title:'Restoring the Eye of Qatadah at Uhud',desc:'Qatadah\'s eye slid from its socket at Uhud — he ﷺ restored it and it became the better of his two eyes.'},
+  ];
+  // Update battle cards
+  const cards=page.querySelectorAll('.comp-grid .comp-card');
+  cards.forEach((card,i)=>{
+    if(!enBattles[i]) return;
+    const name=card.querySelector('.comp-name');
+    const sub=card.querySelector('.comp-title');
+    const desc=card.querySelector('p');
+    if(name){ if(!name.dataset.ar) name.dataset.ar=name.textContent; name.textContent=enBattles[i].name; }
+    if(sub){ if(!sub.dataset.ar) sub.dataset.ar=sub.textContent; sub.textContent=enBattles[i].sub; }
+    if(desc){ if(!desc.dataset.ar) desc.dataset.ar=desc.textContent; desc.textContent=enBattles[i].desc; }
+  });
+  // Update story cards
+  const stCards=page.querySelectorAll('.stories-grid .sc');
+  stCards.forEach((card,i)=>{
+    if(!enStories[i]) return;
+    const tag=card.querySelector('.story-tag');
+    const title=card.querySelector('h3');
+    const desc=card.querySelector('p');
+    if(tag){ if(!tag.dataset.ar) tag.dataset.ar=tag.textContent; tag.textContent=enStories[i].tag; }
+    if(title){ if(!title.dataset.ar) title.dataset.ar=title.textContent; title.textContent=enStories[i].title; }
+    if(desc){ if(!desc.dataset.ar) desc.dataset.ar=desc.textContent; desc.textContent=enStories[i].desc; }
+  });
+  // Stats box
+  const statsTitle=page.querySelector('[style*="إحصاءات"] h3');
+  if(statsTitle){ if(!statsTitle.dataset.ar) statsTitle.dataset.ar=statsTitle.textContent; statsTitle.textContent='📊 Battle Statistics'; }
+  const statLabels=page.querySelectorAll('[style*="font-size:.72rem"]');
+  const enStatLabels=['Expeditions led personally ﷺ','Fought with the sword','Expeditions dispatched','Year of complete victory'];
+  statLabels.forEach((el,i)=>{ if(!el.dataset.ar) el.dataset.ar=el.textContent; if(enStatLabels[i]) el.textContent=enStatLabels[i]; });
+  // Section headers
+  const secH2s=page.querySelectorAll('.sec-title h2');
+  const enSecH=['Major Expeditions','Unique Stances in the Conquests'];
+  secH2s.forEach((h,i)=>{ if(!h.dataset.ar) h.dataset.ar=h.textContent; if(enSecH[i]) h.textContent=enSecH[i]; });
+  const bb=page.querySelector('.back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=page.querySelector('.back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+  const ph=page.querySelector('.ph h1');
+  if(ph){ if(!ph.dataset.ar) ph.dataset.ar=ph.textContent; ph.textContent='Expeditions and Conquests'; }
+  const php=page.querySelector('.ph p');
+  if(php){ if(!php.dataset.ar) php.dataset.ar=php.textContent; php.textContent='Authenticated battles — stances, miracles and lessons'; }
+}
+
+function injectPrayerEN(){
+  const page=document.getElementById('prayer');
+  if(!page) return;
+
+  // Full EN content for each prayer card: [h3 title, [...hadiths as {text,src}]]
+  const sections=[
+    {
+      title:'① Purification — A Condition of Prayer',
+      hadiths:[
+        {t:'"No prayer is accepted without purification."', s:'📖 Sahih Muslim — Purification'},
+        {t:'"The key to prayer is purification; its beginning is the takbeer; its end is the tasleem."', s:'📖 Abu Dawud | Al-Tirmidhi'}
+      ]
+    },
+    {
+      title:'② The Opening Takbeer',
+      hadiths:[
+        {t:'"When the Messenger of Allah ﷺ stood for prayer, he would raise his hands level with his shoulders and say: Allahu Akbar."', s:'📖 Sahih al-Bukhari | Muslim — Prayer'}
+      ]
+    },
+    {
+      title:'③ The Opening Supplication',
+      hadiths:[
+        {t:'"O Allah, distance me from my sins as You have distanced the East from the West. O Allah, cleanse me of my sins as white garments are cleansed of stains."', s:'📖 Sahih al-Bukhari | Muslim'},
+        {t:'He would also say: "Glory be to You, O Allah, and with Your praise. Blessed is Your name, exalted is Your majesty, and there is no god but You."', s:'📖 Abu Dawud | Al-Tirmidhi'}
+      ]
+    },
+    {
+      title:'④ Recitation of Al-Fatihah and a Surah',
+      hadiths:[
+        {t:'"There is no prayer for one who does not recite the Opening of the Book."', s:'📖 Sahih al-Bukhari | Muslim'},
+        {t:'"Any prayer in which Umm al-Kitab is not recited is deficient — incomplete."', s:'📖 Sahih Muslim'},
+        {t:'"He ﷺ would lengthen the first rak\'ah and recite a surah after al-Fatihah."', s:'📖 Sahih al-Bukhari'}
+      ]
+    },
+    {
+      title:'⑤ Bowing (Ruku\')',
+      hadiths:[
+        {t:'"When he bowed, he would grip his knees with both hands, spread his fingers, and bow until his back was level like a flat surface."', s:'📖 Sahih al-Bukhari | Muslim'},
+        {t:'"When he bowed he would say: Glory be to my Lord, the Magnificent" — three times.', s:'📖 Abu Dawud | Ibn Majah'},
+        {t:'"O Allah, to You I have bowed, in You I believe, to You I submit. Humbled before You are my hearing, my sight..."', s:'📖 Sahih Muslim'}
+      ]
+    },
+    {
+      title:'⑥ Rising from Ruku\' and Standing',
+      hadiths:[
+        {t:'"When he raised his head from ruku\' he would say: Allah hears the one who praises Him. Our Lord, to You be the praise."', s:'📖 Sahih al-Bukhari | Muslim'},
+        {t:'"O Allah, our Lord — to You be the praise, filling the heavens and the earth and whatever You will beyond that."', s:'📖 Sahih Muslim'}
+      ]
+    },
+    {
+      title:'⑦ Prostration (Sujud)',
+      hadiths:[
+        {t:'"When he prostrated, he would place his hands until the whiteness of his armpits showed — arms apart from his sides."', s:'📖 Sahih al-Bukhari | Muslim'},
+        {t:'"When he prostrated he would say: Glory be to my Lord, the Most High" — three times.', s:'📖 Abu Dawud | Ibn Majah'},
+        {t:'"The closest a servant is to his Lord is while prostrating — so make abundant supplication."', s:'📖 Sahih Muslim'},
+        {t:'"I was commanded to prostrate on seven bones: the forehead, the two hands, the two knees, and the tips of the two feet."', s:'📖 Sahih al-Bukhari | Muslim'}
+      ]
+    },
+    {
+      title:'⑧ Sitting Between the Two Prostrations',
+      hadiths:[
+        {t:'"O Lord, forgive me. O Lord, forgive me." — He ﷺ would sit on his left foot with his right foot upright.', s:'📖 Sunan Ibn Majah | Abu Dawud'}
+      ]
+    },
+    {
+      title:'⑨ Tashahhud and Salawat Ibrahimiyyah',
+      hadiths:[
+        {t:'"All greetings, prayers, and good words are for Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I testify there is no god but Allah and that Muhammad is His servant and messenger."', s:'📖 Sahih al-Bukhari | Muslim'},
+        {t:'"O Allah, send prayers upon Muhammad and upon the family of Muhammad, as You sent prayers upon Ibrahim... O Allah, bless Muhammad and the family of Muhammad as You blessed Ibrahim..."', s:'📖 Sahih al-Bukhari | Muslim'}
+      ]
+    },
+    {
+      title:'⑩ Tasleem and Post-Prayer Remembrance',
+      hadiths:[
+        {t:'"He would give salaam to his right and his left: Peace be upon you and the mercy of Allah."', s:'📖 Sahih Muslim'},
+        {t:'"When he finished he would seek forgiveness from Allah three times and say: O Allah, You are Peace and from You is peace. Blessed are You, O Lord of Majesty and Honor."', s:'📖 Sahih Muslim'},
+        {t:'"Whoever glorifies Allah 33 times after each prayer, praises Allah 33 times, and declares His greatness 33 times... his sins will be forgiven even if they are like the foam of the sea."', s:'📖 Sahih Muslim'}
+      ]
+    }
+  ];
+
+  // Get all white prayer cards (those with border-right style) inside the prayer page
+  const allCards = Array.from(page.querySelectorAll('div[style]')).filter(el=>
+    el.style.borderRight && el.style.borderRight.includes('5px') && el.querySelector('h3')
+  );
+
+  allCards.forEach((card, i)=>{
+    if(!sections[i]) return;
+    const h3 = card.querySelector('h3');
+    if(h3){
+      if(!h3.dataset.ar) h3.dataset.ar = h3.textContent;
+      h3.textContent = sections[i].title;
+    }
+    // Translate all .hb hadiths in this card
+    const hbs = card.querySelectorAll('.hb');
+    sections[i].hadiths.forEach((hd, j)=>{
+      if(!hbs[j]) return;
+      if(!hbs[j].dataset.ar) hbs[j].dataset.ar = hbs[j].innerHTML;
+      hbs[j].innerHTML = hd.t + '<div class="hs">' + hd.s + '</div>';
+    });
+  });
+
+  // Night prayer card (green background)
+  const nightCard = page.querySelector('div[style*="green-dark"] h3, div[style*="green-mid"] h3');
+  if(nightCard){
+    if(!nightCard.dataset.ar) nightCard.dataset.ar = nightCard.textContent;
+    nightCard.textContent = '🌙 Night Prayer and Witr';
+  }
+  const nightHbs = page.querySelectorAll('div[style*="green-dark"] .hb, div[style*="green-mid"] .hb');
+  const nightEN = [
+    {t:'"He ﷺ would stand at night until his feet became swollen... Am I not then a grateful servant?"', s:'📖 Al-Bukhari | Muslim'},
+    {t:'"Night prayer is offered two rak\'ahs at a time. When one of you fears the dawn, let him pray one rak\'ah as Witr for what he has already prayed."', s:'📖 Al-Bukhari | Muslim'}
+  ];
+  nightHbs.forEach((hb, i)=>{
+    if(!nightEN[i]) return;
+    if(!hb.dataset.ar) hb.dataset.ar = hb.innerHTML;
+    hb.innerHTML = nightEN[i].t + '<div class="hs">' + nightEN[i].s + '</div>';
+  });
+
+  const bb=page.querySelector('.back-bottom button');
+  if(bb){ if(!bb.dataset.ar) bb.dataset.ar=bb.textContent; bb.textContent=enContent.backHome; }
+  const btt=page.querySelector('.back-top');
+  if(btt){ if(!btt.dataset.ar) btt.dataset.ar=btt.textContent; btt.textContent='← Home'; }
+  const ph=page.querySelector('.ph h1');
+  if(ph){ if(!ph.dataset.ar) ph.dataset.ar=ph.textContent; ph.textContent='The Prayer of the Prophet ﷺ'; }
+  const php=page.querySelector('.ph p');
+  if(php){ if(!php.dataset.ar) php.dataset.ar=php.textContent; php.textContent='The complete description of his prayer from authenticated Hadith'; }
+}
+
+function injectFootersEN(){
+  document.querySelectorAll('.f-logo').forEach(el=>{
+    if(!el.dataset.ar) el.dataset.ar=el.textContent;
+    el.textContent=enContent.footerLogo;
+  });
+  document.querySelectorAll('footer p').forEach(el=>{
+    if(!el.dataset.ar) el.dataset.ar=el.textContent;
+    el.textContent=enContent.footerPrayer;
+  });
+}
+
+function restoreARElement(selector, useHTML=false){
+  document.querySelectorAll(selector).forEach(el=>{
+    if(el.dataset.ar){
+      if(useHTML) el.innerHTML=el.dataset.ar;
+      else el.textContent=el.dataset.ar;
+    }
+  });
+}
+
+function restoreAllAR(){
+  // Restore all elements that have data-ar
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    // Restore hadiths as HTML, others as text
+    if(el.classList.contains('hb') || el.classList.contains('tl-hadiths') || el.classList.contains('kh')){
+      el.innerHTML=el.dataset.ar;
+    } else {
+      el.textContent=el.dataset.ar;
+    }
+  });
+}
+
+function applyFullEnglish(){
+  storeARTimeline();
+  injectTimelineEN();
+  injectMapEN();
+  injectStoriesEN();
+  injectMoralsEN();
+  injectShamailEN();
+  injectCompanionsEN();
+  injectDuaEN();
+  injectLessonsEN();
+  injectWivesEN();
+  injectMuseumEN();
+  injectKidsEN();
+  injectFutuhaatEN();
+  injectPrayerEN();
+  injectFootersEN();
+  // Re-render quiz if active
+  if(document.getElementById('quiz').classList.contains('active')) initQuiz();
+  // Fix tl-btn onclick for EN toggle
+  document.querySelectorAll('.tl-btn').forEach(btn=>{
+    btn.setAttribute('onclick', "event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?(this.dataset.hide||'Hide ▲'):(this.dataset.show||'Hadiths ▼')");
+    btn.dataset.hide='Hide ▲'; btn.dataset.show='Hadiths ▼';
+  });
+}
+
+function applyFullArabic(){
+  restoreAllAR();
+  injectTimelineAR();
+  // Restore map Arabic
+  const arPinLabels={mecca:'مكة المكرمة',hira:'غار حراء',taif:'الطائف',madinah:'المدينة المنورة',badr:'بدر',uhud:'أُحد',hudaybiya:'الحديبية',khaybar:'خيبر',tabuk:'تبوك',quds:'القدس'};
+  const arBtnLabels={mecca:'🕋 مكة',hira:'🏔️ غار حراء',taif:'🌿 الطائف',madinah:'🕌 المدينة',badr:'⚔️ بدر',uhud:'🛡️ أحد',hudaybiya:'📜 الحديبية',khaybar:'🏰 خيبر',tabuk:'🏜️ تبوك',quds:'✨ القدس'};
+  document.querySelectorAll('.map-pin').forEach(pin=>{
+    const k=pin.dataset.key; const lbl=pin.querySelector('.pin-lbl');
+    if(lbl && arPinLabels[k]) lbl.textContent=arPinLabels[k];
+  });
+  document.querySelectorAll('.map-quick-btn').forEach(btn=>{
+    const k=btn.dataset.key; if(arBtnLabels[k]) btn.textContent=arBtnLabels[k];
+  });
+  const mapHint=document.getElementById('mapHint');
+  if(mapHint) mapHint.textContent='🗺️ اضغط على أي مدينة لمعرفة قصتها';
+  // Re-render active map location in Arabic
+  const activePin=document.querySelector('.map-pin.active');
+  if(activePin) showMapInfo(activePin.dataset.key);
+  const ph=document.querySelector('#map .ph p');
+  if(ph && ph.dataset.ar) ph.textContent=ph.dataset.ar;
+  // Fix tl-btn onclick for AR toggle
+  document.querySelectorAll('.tl-btn').forEach(btn=>{
+    btn.setAttribute('onclick', "event.stopPropagation();this.closest('.tl-c').classList.toggle('expanded');this.textContent=this.closest('.tl-c').classList.contains('expanded')?'إخفاء ▲':'الأحاديث ▼'");
+  });
+}
+
+// ---- OVERRIDE applyLang to call full translation ----
+const _origApplyLang = applyLang;
+applyLang = function(lang){
+  _origApplyLang(lang);
+  if(lang === 'en'){
+    applyFullEnglish();
+  } else {
+    applyFullArabic();
+  }
+};
+
+// ===========================
+// INIT ON LOAD
+// ===========================
+
+
+
+
+// ===========================
+// SINGLE CLEAN INIT
+// ===========================
+(function init(){
+  function run(){
+    // Dark mode
+    try{
+      var sd=localStorage.getItem('seerah_dark');
+      var dt=document.getElementById('darkToggle');
+      if(sd==='1' && dt){ dt.checked=true; toggleDark(true); }
+      var sl=localStorage.getItem('seerah_lang');
+      if(sl && sl!=='ar'){ currentLang=sl; applyLang(sl); }
+    }catch(e){}
+
+    // Store Arabic originals
+    storeARTimeline();
+
+    // Navigate to hash (shareable links)
+    var hash=(location.hash||'').replace('#','');
+    var valid=['home','timeline','map','stories','morals','shamail','companions','duaa','lessons','wives','quiz','kids','museum','futuhaat','prayer'];
+    var id=(hash && valid.indexOf(hash)>-1) ? hash : 'home';
+    document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+    var pg=document.getElementById(id);
+    if(pg) pg.classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active');});
+    var nl=document.getElementById('nav-'+id);
+    if(nl) nl.classList.add('active');
+    if(id==='quiz') initQuiz();
+
+    // Modal click-outside to close
+    var wm=document.getElementById('wifeModal');
+    var sm=document.getElementById('storyModal');
+    if(wm) wm.addEventListener('click',function(e){if(e.target===this)closeWife();});
+    if(sm) sm.addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+    // Back/forward navigation
+    window.addEventListener('popstate',function(){
+      var h=(location.hash||'').replace('#','');
+      var vid=['home','timeline','map','stories','morals','shamail','companions','duaa','lessons','wives','quiz','kids','museum','futuhaat','prayer'];
+      var pid=(h && vid.indexOf(h)>-1)?h:'home';
+      document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+      var p2=document.getElementById(pid);
+      if(p2) p2.classList.add('active');
+      document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active');});
+      var n2=document.getElementById('nav-'+pid);
+      if(n2) n2.classList.add('active');
+      window.scrollTo(0,0);
+      if(pid==='quiz') initQuiz();
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
+</body>
+</html>
