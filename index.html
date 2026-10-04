@@ -10,8 +10,15 @@
 (function(){var d=document.documentElement,t='light';try{var s=localStorage.getItem('seerah_dark');if(s==='1')t='dark';else if(s!=='0'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(localStorage.getItem('seerah_lang')==='en')d.classList.add('i18n-pending');}catch(e){}d.setAttribute('data-theme',t);})();
 </script>
 <title>رحلة في رحاب السيرة النبوية ﷺ</title>
+<!-- Fonts without blocking the first paint: the stylesheet is preloaded and applied as print-only, then switched to all
+     screens when it arrives (display=swap shows the text at once in a fallback face); both font servers are
+     preconnected. The font files themselves are not preloaded: measured on a throttled phone, preloading them took
+     bandwidth from the page and delayed the first paint (1.0 s → 1.2–1.7 s). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Poppins:wght@300;400;600;700;800&display=swap" as="style">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Poppins:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Poppins:wght@300;400;600;700;800&display=swap"></noscript>
 <style>
 :root{
   /* ── Brand palette: constant in both themes (brand panels, gradients, gold fills) ── */
@@ -32,7 +39,7 @@
   --heading:#1A3A2A;         /* titles on surfaces */
   --text-brand:#2D5A3D;      /* small green labels */
   --accent:#C9A84C;          /* gold used as text */
-  --accent-strong:#8B6914;   /* small gold labels: sources, tags */
+  --accent-strong:#7D5E10;   /* small gold labels: sources, tags (5:1 or more on every light surface) */
   --on-accent:#1A1208;       /* text on gold fills */
   --muted-rgb:107,78,42;     /* rgba(var(--muted-rgb),a): faint hints */
   --tint-rgb:26,58,42;       /* rgba(var(--tint-rgb),a): subtle washes on surfaces */
@@ -45,6 +52,8 @@
    properties (inline-start = right in Arabic, left in English), so layouts mirror on their own. */
 *{margin:0;padding:0;box-sizing:border-box}
 [hidden]{display:none!important}
+/* a heading for screen readers only: keeps the heading levels in order where a page shows its cards right after its title */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 html{scroll-behavior:smooth}
 body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}
@@ -97,12 +106,16 @@ nav .nav-menu{display:contents}
   .nav-ibtn{display:grid;place-items:center;flex-shrink:0;width:44px;height:44px;padding:0;border-radius:10px;border:1px solid rgba(201,168,76,.4);background:rgba(255,255,255,.06);color:var(--gold-light);cursor:pointer}
   .nav-ibtn .ico{width:19px;height:19px;vertical-align:0}
   .nav-ibtn[aria-expanded="true"]{background:rgba(201,168,76,.22)}
-  #navSearchBtn{order:4}
-  #navMenuBtn{order:5}
+  #navThemeBtn{order:4}
+  #navSearchBtn{order:5}
+  #navMenuBtn{order:6}
+  #navThemeBtn .theme-ico{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  #navThemeBtn .ico-moon,[data-theme="dark"] #navThemeBtn .ico-sun{display:none}
+  [data-theme="dark"] #navThemeBtn .ico-moon{display:block}
   nav .nav-search{display:none;position:fixed;top:56px;inset-inline:0;padding:.6rem .75rem;background:rgba(26,58,42,.98);border-bottom:1px solid rgba(201,168,76,.3)}
   nav.is-search-open .nav-search{display:block}
   nav .nav-search input,nav .nav-search input:focus{width:100%;font-size:.9rem;padding-block:.5rem}
-  nav .nav-menu{display:none;position:fixed;top:56px;inset-inline:0;height:calc(100vh - 56px);height:calc(100dvh - 56px);overflow-y:auto;overscroll-behavior:contain;background:var(--bg);padding:.8rem .9rem 1.6rem;border-top:1px solid rgba(201,168,76,.3)}
+  nav .nav-menu{display:none;position:fixed;top:56px;inset-inline:0;height:calc(100vh - 56px);height:calc(100dvh - 56px);overflow-y:auto;overscroll-behavior:contain;background:var(--bg);padding:0 .9rem 1.6rem;border-top:1px solid rgba(201,168,76,.3)}
   nav.is-menu-open .nav-menu{display:block}
   .nav-links{display:block}
   .nav-links>a.nav-top{display:flex;justify-content:center;padding:.65rem;border-radius:12px;background:var(--surface);border:1px solid rgba(201,168,76,.25);color:var(--heading);font-size:.85rem}
@@ -115,7 +128,7 @@ nav .nav-menu{display:contents}
   .nav-it small{display:none}
   .nav-it.active{background:var(--green-dark);border-color:var(--gold)}
   .nav-it.active b{color:var(--gold-light)}
-  .nav-tools{justify-content:center;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem;padding:.7rem;border-radius:14px;background:var(--green-dark)}
+  .nav-tools{position:sticky;top:0;z-index:2;justify-content:center;flex-wrap:wrap;gap:.7rem;margin:0 -.9rem .9rem;padding:.6rem .9rem;border-radius:0 0 14px 14px;background:var(--green-dark);box-shadow:0 6px 14px rgba(0,0,0,.18)}
   .nav-tools .level-chip,.nav-tools .theme-toggle,.nav-tools .lang-btn{min-height:44px;min-width:44px}
   body.nav-lock{overflow:hidden}
 }
@@ -169,7 +182,8 @@ nav .nav-menu{display:contents}
 .card-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:.9rem;box-shadow:0 3px 10px rgba(26,58,42,.3)}
 .card h3{font-family:'Amiri',serif;font-size:1.15rem;color:var(--heading);margin-bottom:.45rem}
 .card p{font-size:.82rem;color:var(--text-muted);line-height:1.9;font-weight:300}
-.card-arrow{margin-top:.9rem;color:var(--accent);font-size:.8rem;font-weight:700}
+.card-arrow{margin-top:.9rem;color:var(--accent-strong);font-size:.8rem;font-weight:700}
+[data-theme="dark"] .card-arrow{color:var(--accent)}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.3rem;max-width:1200px;margin:0 auto}
 
 /* ===== SEC TITLE ===== */
@@ -250,7 +264,7 @@ nav .nav-menu{display:contents}
 .map-info-panel{padding:1.4rem 1.8rem;background:var(--surface);border-top:2px solid rgba(201,168,76,.2);min-height:180px;transition:all .3s}
 .map-info-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:140px;text-align:center}
 .map-info-icon{font-size:2.5rem;margin-bottom:.6rem}
-.map-info-hint{color:rgba(var(--muted-rgb),.5);font-size:.9rem}
+.map-info-hint{color:var(--text-muted);font-size:.9rem}
 .map-info-header{display:flex;align-items:center;gap:1rem;margin-bottom:.6rem}
 .map-info-emoji{width:52px;height:52px;background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;box-shadow:0 3px 12px rgba(26,58,42,.3)}
 .map-info-title{font-family:'Amiri',serif;font-size:1.3rem;color:var(--heading);margin-bottom:.2rem}
@@ -375,7 +389,7 @@ nav .nav-menu{display:contents}
 .kids-card:hover{transform:translateY(-5px) scale(1.02);border-color:var(--gold);box-shadow:0 12px 32px rgba(201,168,76,.2)}
 .kc-top{height:105px;display:flex;align-items:center;justify-content:center;font-size:3rem}
 .kc-body{padding:1.2rem}
-.kc-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:#FF8C42;color:white;border-radius:50%;font-size:.85rem;font-weight:700;margin-bottom:.5rem}
+.kc-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:#FF8C42;color:#2A1F0A;border-radius:50%;font-size:.85rem;font-weight:800;margin-bottom:.5rem}
 .kc-body h3{font-family:'Amiri',serif;font-size:1.22rem;color:var(--heading);margin-bottom:.45rem}
 .kc-body p{font-size:.95rem;color:var(--text-2);line-height:1.95}
 .kh{background:linear-gradient(135deg,rgba(76,175,80,.07),rgba(76,175,80,.03));border:1px solid rgba(76,175,80,.22);border-inline-start:4px solid #4CAF50;border-radius:11px;padding:.85rem 1rem;margin:.7rem 0;font-family:'Amiri',serif;font-size:1rem;color:var(--text-2);line-height:2.1}
@@ -409,7 +423,7 @@ nav .nav-menu{display:contents}
 footer{background:var(--green-dark);color:rgba(245,240,232,.7);text-align:center;padding:2rem;font-size:.82rem;border-top:1px solid rgba(201,168,76,.2)}
 footer .f-logo{font-family:'Amiri',serif;font-size:1.4rem;color:var(--gold-light);margin-bottom:.35rem}
 footer p{margin-top:.2rem;font-weight:300}
-footer .f-note{margin-top:.4rem;font-size:.73rem;opacity:.45}
+footer .f-note{margin-top:.4rem;font-size:.73rem;opacity:.9}
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
@@ -1394,7 +1408,7 @@ html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::a
 .wt-lane>*{grid-row:var(--r);transition:opacity .25s}
 .wt-lane.is-dim>*{opacity:.28}
 .wt-lane.is-hot .wt-bar{box-shadow:0 0 0 2px rgba(201,168,76,.55)}
-.wt-name{grid-column:1;justify-self:start;background:none;border:0;font:inherit;font-size:.74rem;font-weight:700;color:var(--heading);cursor:pointer;padding:.1rem .2rem;border-radius:6px;text-align:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.wt-name{grid-column:1;justify-self:start;background:none;border:0;font:inherit;font-size:.74rem;font-weight:700;color:var(--heading);cursor:pointer;padding:.1rem .2rem;min-height:24px;border-radius:6px;text-align:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .wt-name:hover{color:var(--accent-strong);text-decoration:underline}
 .wt-bar{height:11px;border-radius:7px;margin-inline:1px;background:linear-gradient(90deg,#D8C38C,var(--gold));position:relative;display:flex;align-items:center}
 .wt-bar.is-ended{background:linear-gradient(90deg,#B9B3A4,#9B9483)}
@@ -1677,6 +1691,15 @@ span.wv-src{cursor:default;text-decoration:none}
 <nav>
   <div class="nav-logo" data-i18n="nav.logo">رحلة في رحاب السيرة ﷺ</div>
   <div class="nav-menu" id="navMenu">
+    <div class="nav-tools">
+  <button type="button" class="level-chip" id="levelChip" data-guide="open" aria-haspopup="dialog"></button>
+  <button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="الوضع الداكن" title="الوضع الداكن" data-i18n-attr="aria-label:nav.theme;title:nav.theme">
+    <svg class="theme-ico ico-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+    <svg class="theme-ico ico-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+    <span class="theme-switch" aria-hidden="true"></span>
+  </button>
+  <button class="lang-btn" id="langBtn" onclick="toggleLang()" type="button" lang="en" aria-label="التبديل إلى الإنجليزية" data-i18n-attr="aria-label:nav.lang_label">EN</button>
+    </div>
     <div class="nav-links">
       <a href="#home" onclick="showPage('home');return false" id="nav-home" class="active nav-top"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-house"/></svg><span data-i18n="nav.home">الرئيسية</span></a>
       <div class="nav-grp" data-grp="seerah">
@@ -1715,27 +1738,19 @@ span.wv-src{cursor:default;text-decoration:none}
         </div>
       </div>
     </div>
-    <div class="nav-tools">
-  <button type="button" class="level-chip" id="levelChip" data-guide="open" aria-haspopup="dialog"></button>
-  <button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="الوضع الداكن" title="الوضع الداكن" data-i18n-attr="aria-label:nav.theme;title:nav.theme">
-    <svg class="theme-ico ico-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
-    <svg class="theme-ico ico-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
-    <span class="theme-switch" aria-hidden="true"></span>
-  </button>
-  <button class="lang-btn" id="langBtn" onclick="toggleLang()" type="button" lang="en" aria-label="التبديل إلى الإنجليزية" data-i18n-attr="aria-label:nav.lang_label">EN</button>
-    </div>
   </div>
   <div class="nav-search">
     <span class="s-icon" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></span>
     <input type="text" id="searchInput" placeholder="ابحث في السيرة..." oninput="doSearch(this.value)" onblur="setTimeout(closeSearch,200)" aria-label="البحث في السيرة" data-i18n-attr="placeholder:nav.search_ph;aria-label:nav.search_label">
     <div class="search-results" id="searchResults"></div>
   </div>
+  <button type="button" class="nav-ibtn" id="navThemeBtn" role="switch" aria-checked="false" aria-label="الوضع الداكن" title="الوضع الداكن" data-i18n-attr="aria-label:nav.theme;title:nav.theme"><svg class="theme-ico ico-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><svg class="theme-ico ico-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
   <button type="button" class="nav-ibtn" id="navSearchBtn" aria-expanded="false" aria-controls="searchInput" aria-label="البحث" title="البحث" data-i18n-attr="aria-label:nav.search_open;title:nav.search_open"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></button>
   <button type="button" class="nav-ibtn" id="navMenuBtn" aria-expanded="false" aria-controls="navMenu" aria-label="القائمة" title="القائمة" data-i18n-attr="aria-label:nav.menu;title:nav.menu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </nav>
 
 <!-- ==================== HOME ==================== -->
-<div id="home" class="page active">
+<div id="home" class="page active" role="main">
   <section id="hero">
     <div class="hero-pat"></div>
     <p class="bismillah" data-i18n-keep lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
@@ -1756,6 +1771,7 @@ span.wv-src{cursor:default;text-decoration:none}
   </section>
   <div class="pg pg--home">
     <!-- Personal guide: the assessment invitation or the reader's title and recommendations (drawn by Guide) -->
+    <h2 class="sr-only" data-i18n="home.sr_start">ابدأ من هنا</h2>
     <section class="guide-panel" id="guidePanel" aria-live="polite"></section>
     <!-- «صحِّح معلومتك»: how many popular reports the site has checked (drawn by Myths) -->
     <section class="myths-promo" id="mythsPromo" hidden></section>
@@ -1783,9 +1799,10 @@ span.wv-src{cursor:default;text-decoration:none}
   <footer><div class="f-logo" data-i18n="common.footer_logo">رحلة في رحاب السيرة ﷺ</div><p data-i18n="home.footer_sources">المصادر: القرآن الكريم • الصحيحان • السنن والمسند • السيرة النبوية الصحيحة للعمري • فتح الباري • شرح النووي • صحيح الشمائل</p><p class="f-note" data-i18n="common.footer_salawat">اللهم صلِّ وسلم على سيدنا محمد وعلى آله وصحبه أجمعين</p></footer>
 </div>
 <!-- ==================== TIMELINE ==================== -->
-<div id="timeline" class="page">
+<div id="timeline" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="tl.title">الخط الزمني للسيرة</h1><div class="gold-line"></div><p data-i18n="tl.sub">رحلة زمنية كاملة — اضغط على أي حدث لعرض الأحاديث</p></div>
+    <h2 class="sr-only" data-i18n="tl.sr_h2">محطات السيرة</h2>
     <div class="tl-wrap">
       <div class="tl-line"></div>
       <div class="tl-item">
@@ -1936,7 +1953,7 @@ span.wv-src{cursor:default;text-decoration:none}
 </div>
 
 <!-- ==================== MAP ==================== -->
-<div id="map" class="page">
+<div id="map" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="map.title">خريطة السيرة</h1><div class="gold-line"></div><p data-i18n="map.sub">اضغط على أي موقع لتعرف قصته مع الأحاديث الصحيحة</p></div>
 
@@ -2049,7 +2066,7 @@ span.wv-src{cursor:default;text-decoration:none}
   <footer><div class="f-logo" data-i18n="common.footer_logo">رحلة في رحاب السيرة ﷺ</div></footer>
 </div>
 <!-- ==================== STORIES ==================== -->
-<div id="stories" class="page">
+<div id="stories" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="stories.title">قصص من السيرة النبوية</h1><div class="gold-line"></div><p data-i18n="stories.sub">رحلة زمنية مع النبي ﷺ من شبابه إلى وفاته، ثم مواقف من هديه في كل حين — موثَّقة بالأحاديث الصحيحة</p></div>
     <div id="storiesJourney" class="journey-root"></div>
@@ -2057,7 +2074,7 @@ span.wv-src{cursor:default;text-decoration:none}
   </div>
   <footer><div class="f-logo" data-i18n="common.footer_logo">رحلة في رحاب السيرة ﷺ</div></footer>
 </div>
-<div id="morals" class="page">
+<div id="morals" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="morals.title">أخلاق النبي ﷺ</h1><div class="gold-line"></div><p data-i18n="morals.sub">﴿وَإِنَّكَ لَعَلَى خُلُقٍ عَظِيمٍ﴾ — مع الأحاديث الصحيحة</p></div>
     <!-- the hub of the virtue pages: shown by Encyclopedia once a virtue page is published (or in ?preview) -->
@@ -2111,9 +2128,10 @@ span.wv-src{cursor:default;text-decoration:none}
 </div>
 
 <!-- ==================== SHAMAIL ==================== -->
-<div id="shamail" class="page">
+<div id="shamail" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="shamail.title">شمائل النبي ﷺ</h1><div class="gold-line"></div><p data-i18n="shamail.sub">وصفه الجسدي وسمته وهيئته كما رواه أصحابه — من صحيح الشمائل المحمدية</p></div>
+    <h2 class="sr-only" data-i18n="shamail.sr_h2">صفاته وشمائله ﷺ</h2>
     <div class="shmail-grid">
       <div class="shmail-card" onclick="openModal('sh_face')"><h3 data-i18n="shamail.sh_face.title"><svg class="ico ico-t" aria-hidden="true" focusable="false"><use href="#i-star8"/></svg>وجهه الشريف</h3>
         <div class="hb hb-sm" data-i18n="shamail.sh_face.hadith1">«كان رسول الله ﷺ أحسنَ الناس وجهًا، وأحسنَه خَلقًا، ليس بالطويل البائن، ولا بالقصير»<div class="hs" data-i18n="shamail.sh_face.src1">صحيح البخاري — ٣٥٤٩</div></div>
@@ -2144,7 +2162,7 @@ span.wv-src{cursor:default;text-decoration:none}
 </div>
 
 <!-- ==================== COMPANIONS ==================== -->
-<div id="companions" class="page">
+<div id="companions" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="comp.title">صحابة النبي ﷺ</h1><div class="gold-line"></div><p data-i18n="comp.sub">٣٦ صحابيًا كرامًا — مواقفهم الثابتة مع النبي ﷺ وأحاديثهم الصحيحة</p></div>
 
@@ -2207,9 +2225,10 @@ span.wv-src{cursor:default;text-decoration:none}
   </div>
   <footer><div class="f-logo" data-i18n="common.footer_logo">رحلة في رحاب السيرة ﷺ</div></footer>
 </div>
-<div id="duaa" class="page">
+<div id="duaa" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="duaa.title">أدعيته وأذكاره ﷺ</h1><div class="gold-line"></div><p data-i18n="duaa.sub">٣٠ دعاءً وذكرًا من السنة — كلٌّ منها بمصدره ورقمه وحكمه — في مواقف الحياة كلها</p></div>
+    <h2 class="sr-only" data-i18n="duaa.sr_h2">الأدعية والأذكار</h2>
     <div class="duaa-grid">
       <div class="duaa-card"><h3 data-i18n="duaa.sleep.title"><svg class="ico ico-t" aria-hidden="true" focusable="false"><use href="#i-crescent"/></svg>دعاء النوم</h3><div class="duaa-text" data-i18n="duaa.sleep.text">«اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا»</div><div class="duaa-meaning" data-i18n="duaa.sleep.meaning">يقوله حين يأوي إلى فراشه</div><div class="hs" data-i18n="duaa.sleep.src">صحيح البخاري — ٦٣١٤</div></div>
       <div class="duaa-card"><h3 data-i18n="duaa.wake.title"><svg class="ico ico-t" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>دعاء الاستيقاظ</h3><div class="duaa-text" data-i18n="duaa.wake.text">«الحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ»</div><div class="duaa-meaning" data-i18n="duaa.wake.meaning">عند الاستيقاظ من النوم</div><div class="hs" data-i18n="duaa.wake.src">صحيح البخاري — ٦٣١٤</div></div>
@@ -2246,9 +2265,10 @@ span.wv-src{cursor:default;text-decoration:none}
   </div>
   <footer><div class="f-logo" data-i18n="common.footer_logo">رحلة في رحاب السيرة ﷺ</div></footer>
 </div>
-<div id="lessons" class="page">
+<div id="lessons" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="lessons.title">ماذا نتعلم من السيرة؟</h1><div class="gold-line"></div><p data-i18n="lessons.sub">دروس معاصرة خالدة مع الأحاديث الداعمة لها</p></div>
+    <h2 class="sr-only" data-i18n="lessons.sr_h2">الدروس</h2>
     <div class="lessons-grid">
       <div class="lesson-card"><div class="lesson-num" data-i18n-num>٠١</div><h3 data-i18n="lessons.example.title">القيادة بالقدوة</h3><p data-i18n="lessons.example.desc">حفر الخندق مع أصحابه حتى اغبرَّ صدره. القائد الحقيقي يسير في المقدمة.</p>
         <div class="lesson-quote" data-i18n="lessons.example.quote">«كانَ يَحمِلُ التُّرابَ معَهم» — البخاري</div></div>
@@ -2272,7 +2292,7 @@ span.wv-src{cursor:default;text-decoration:none}
   <footer><div class="f-logo" data-i18n="common.footer_logo">رحلة في رحاب السيرة ﷺ</div></footer>
 </div>
 <!-- ==================== WIVES OF THE PROPHET ==================== -->
-<div id="wives" class="page">
+<div id="wives" class="page" role="main">
   <div class="pg">
     <div class="ph">
       <button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button>
@@ -2319,7 +2339,7 @@ span.wv-src{cursor:default;text-decoration:none}
 </div>
 
 <!-- ==================== صحِّح معلومتك ==================== -->
-<div id="myths" class="page">
+<div id="myths" class="page" role="main">
   <div class="pg">
     <div class="ph">
       <button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button>
@@ -2349,7 +2369,7 @@ span.wv-src{cursor:default;text-decoration:none}
   </div>
 </div>
 <!-- ==================== QUIZ ==================== -->
-<div id="quiz" class="page">
+<div id="quiz" class="page" role="main">
   <div class="pg">
     <div class="ph">
       <button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button>
@@ -2385,7 +2405,7 @@ span.wv-src{cursor:default;text-decoration:none}
 </div>
 
 <!-- ==================== KIDS ==================== -->
-<div id="kids" class="page">
+<div id="kids" class="page" role="main">
   <div class="kids-hero">
     <button class="back-top back-top--light" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button>
     <div class="kids-badge" data-i18n="kids.badge"><svg class="ico ico-t" aria-hidden="true" focusable="false"><use href="#i-star8"/></svg>قسم خاص للأطفال</div>
@@ -2591,10 +2611,10 @@ span.wv-src{cursor:default;text-decoration:none}
 </div>
 
 <!-- ==================== ENCYCLOPEDIA: full-story reader (filled by Encyclopedia) ==================== -->
-<div id="reader" class="page"></div>
+<div id="reader" class="page" role="main"></div>
 
 <!-- ==================== MUSEUM ==================== -->
-<div id="museum" class="page">
+<div id="museum" class="page" role="main">
   <div class="museum-hero">
     <button class="back-top back-top--light" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button>
     <h1 class="museum-title" data-i18n="museum.title">المتحف النبوي الافتراضي</h1>
@@ -2603,6 +2623,7 @@ span.wv-src{cursor:default;text-decoration:none}
   </div>
   <div class="pg pg--museum">
     <!-- Exhibit cards are built from museumData by renderMuseum() -->
+    <h2 class="sr-only" data-i18n="museum.sr_h2">المقتنيات</h2>
     <div class="museum-grid" id="museumGrid"></div>
     <div class="note-box note-box--museum">
       <p class="note-text note-text--lg" data-i18n="museum.note">
@@ -2618,7 +2639,7 @@ span.wv-src{cursor:default;text-decoration:none}
 </div>
 
 <!-- ==================== FUTUHAAT ==================== -->
-<div id="futuhaat" class="page">
+<div id="futuhaat" class="page" role="main">
   <div class="pg">
     <div class="ph"><button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button><h1 data-i18n="fut.title">رحلة الفتوحات والغزوات</h1><div class="gold-line"></div><p data-i18n="fut.sub">الغزوات والسرايا الثابتة — مواقف ودروس ومعجزات</p></div>
 
@@ -2719,7 +2740,7 @@ span.wv-src{cursor:default;text-decoration:none}
 
 
 <!-- ==================== PRAYER PAGE ==================== -->
-<div id="prayer" class="page">
+<div id="prayer" class="page" role="main">
   <div class="pg">
     <div class="ph">
       <button class="back-top" onclick="showPage('home')" data-i18n="common.back_home">← الرئيسية</button>
@@ -2727,6 +2748,7 @@ span.wv-src{cursor:default;text-decoration:none}
       <div class="gold-line"></div>
       <p data-i18n="prayer.sub">هيئة صلاة النبي ﷺ الكاملة من الأحاديث الصحيحة الثابتة</p>
     </div>
+    <h2 class="sr-only" data-i18n="prayer.sr_h2">خطوات الصلاة</h2>
     <div class="prayer-list">
       <div class="prayer-card accent-gold">
         <h3 class="prayer-title" data-i18n="prayer.purity.title">① الطهارة شرط الصلاة</h3>
@@ -2863,6 +2885,7 @@ const I18N_EN = {
   },
 
   tl: {
+    sr_h2: 'Milestones of the Seerah',
     title: 'Historical Timeline',
     sub: 'A complete journey — click any event to reveal the Hadith',
     show: 'Hadiths ▼',
@@ -3445,6 +3468,7 @@ const I18N_EN = {
   },
 
   shamail: {
+    sr_h2: 'His description and qualities ﷺ',
     title: 'His Blessed Appearance ﷺ',
     sub: "His physical appearance and manners as described by his Companions — from Sahih al-Shama'il",
     sh_face: {
@@ -3728,6 +3752,7 @@ const I18N_EN = {
   },
 
   duaa: {
+    sr_h2: 'The supplications and remembrances',
     title: 'His Supplications and Remembrance ﷺ',
     sub: '30 supplications and remembrances from the Sunnah — each with its source, number and grade — for every occasion',
     sleep: {
@@ -3913,6 +3938,7 @@ const I18N_EN = {
   },
 
   lessons: {
+    sr_h2: 'The lessons',
     title: 'Lessons from the Seerah',
     sub: 'Timeless contemporary lessons supported by authentic Hadith',
     example: {
@@ -4221,6 +4247,7 @@ const I18N_EN = {
   },
 
   prayer: {
+    sr_h2: 'The steps of the prayer',
     title: 'The Prayer of the Prophet ﷺ',
     sub: "The complete description of the Prophet's prayer from authenticated sound Hadith",
     footer_sources: "Sources: Al-Bukhari • Muslim • Abu Dawud • Al-Tirmidhi • Al-Nasa'i • Ibn Majah",
@@ -4310,6 +4337,7 @@ const I18N_EN = {
   },
 
   home: {
+    sr_start: 'Start here',
     hero_title: 'A Journey Through the',
     hero_span: 'Life of Prophet Muhammad ﷺ',
     hero_sub: 'Travel through time and explore the blessed life of Prophet Muhammad ﷺ — documented from authentic Islamic sources',
@@ -4489,6 +4517,7 @@ const I18N_EN = {
   },
 
   museum: {
+    sr_h2: 'The exhibits',
     title: 'The Virtual Prophetic Museum',
     sub: 'Browse the authentic possessions and characteristics of the Prophet ﷺ — established from sound hadiths — from his sword and turban to his ring and vessel.',
     note: "The exhibits are documented from trusted books of Sunnah and Seerah: the two Sahihs • the Sunan • al-Shama'il al-Muhammadiyyah of al-Tirmidhi • Zad al-Ma'ad of Ibn al-Qayyim",
@@ -7555,10 +7584,10 @@ const Theme = (function(){
   function system(){ return mqDark && mqDark.matches ? 'dark' : 'light'; }
   function current(){ return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; }
 
+  // the switch among the tools and, on narrow screens, the button in the header bar
+  const buttons = () => document.querySelectorAll('#themeToggle, #navThemeBtn');
   function syncUI(){
-    const btn = document.getElementById('themeToggle');
-    if(!btn) return;
-    btn.setAttribute('aria-checked', current() === 'dark' ? 'true' : 'false');   // its label is translated by I18N
+    buttons().forEach(btn => btn.setAttribute('aria-checked', current() === 'dark' ? 'true' : 'false'));   // their labels are translated by I18N
   }
   function apply(theme){
     root.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
@@ -7580,8 +7609,7 @@ const Theme = (function(){
   function toggle(){ set(current() === 'dark' ? 'light' : 'dark'); }
   function init(){
     apply(saved() || system());
-    const btn = document.getElementById('themeToggle');
-    if(btn) btn.addEventListener('click', toggle);
+    buttons().forEach(btn => btn.addEventListener('click', toggle));
     if(mqDark){
       const follow = function(e){ if(!saved()) animate(function(){ apply(e.matches ? 'dark' : 'light'); }); };
       if(mqDark.addEventListener) mqDark.addEventListener('change', follow); else mqDark.addListener(follow);
@@ -7801,7 +7829,7 @@ function renderMuseum(){
   document.getElementById('museumGrid').innerHTML = museumData.map((ex, i) => {
     const title = pick(ex, 'title');
     return `
-      <article class="exhibit-card" data-exhibit="${ex.id}" tabindex="0" role="button" aria-label="${title.replace(/"/g, '&quot;')}">
+      <div class="exhibit-card" data-exhibit="${ex.id}" tabindex="0" role="button" aria-label="${title.replace(/"/g, '&quot;')}">
         <div class="exhibit-display">
           ${museumArch(ex.art)}
           <div class="exhibit-overlay"><p>${t('museum.overlay')}</p></div>
@@ -7813,7 +7841,7 @@ function renderMuseum(){
           <div>${pick(ex, 'tags').map(tag => `<span class="exhibit-tag">${tag}</span>`).join('')}</div>
           <div class="exhibit-detail"><p>${pick(ex, 'detail')}</p></div>
         </div>
-      </article>`;
+      </div>`;
   }).join('');
 }
 I18N.onChange(renderMuseum);
